@@ -1,6 +1,11 @@
 # 1Parcial-2E
 PetShop - Aplicación realizada para el primer parcial de Laboratorio II - UTN FRA
 
+## Entidades 🛠️
+
+Para ver el desarrollo del proyecto:
+https://lucky-flea-a2b.notion.site/Primer-Parcial-a297c9aa4e8e471d94eb9c0162b88b6a
+
 # Pet Shop 🐶
 
 ## Requisitos 🗒️
@@ -33,9 +38,3 @@ El sistema deberá poder:
     ● Podrá acceder a ver la información de todos los empleados registrados en la aplicación y editarlo si es necesario.
     
     ● Podrá ver la facturación total de todas las ventas realizadas hasta el momento.(hardcodeadas)
-    
-
-## Entidades 🛠️
-
-Para ver el desarrollo del proyecto:
-https://lucky-flea-a2b.notion.site/Primer-Parcial-a297c9aa4e8e471d94eb9c0162b88b6a
