@@ -11,7 +11,5 @@ namespace Entidades
         public Administrador(string nombreDeUsuario, string password, string celular, int legajo)
             : base(nombreDeUsuario, password, Permisos.Administrador)
         { }
-
-
     }
 }

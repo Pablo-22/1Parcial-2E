@@ -6,19 +6,23 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class Cliente : Usuario
+    class Cliente
     {
         float saldo;
-        List<Producto> carrito;
         List<Venta> historialDeCompras;
+        string email;
+        string nombre;
+        int idCliente;
 
 
-        protected Cliente(string nombreDeUsuario, string password, float saldo)
-            : base(nombreDeUsuario, password, Permisos.Cliente)
+        public Cliente(string nombre, string email, float saldo)
         {
-            this.carrito = new List<Producto>();
+            this.nombre = nombre;
             this.historialDeCompras = new List<Venta>();
             this.saldo = saldo;
+            this.idCliente = CoreDelSistema.asignarId();
+            this.email = email;
         }
+
     }
 }

@@ -13,18 +13,16 @@ namespace Entidades
         float precioFinal;
         MetodoDePago metodo;
         List<Producto> productos;
-        string usuarioCliente;
         DateTime FechaDeVenta;
 
         public Venta(float impuestos, float descuentos, float precioFinal, 
-            MetodoDePago metodo, List<Producto> productos, string usuarioCliente, DateTime fechaDeVenta)
+            MetodoDePago metodo, List<Producto> productos, DateTime fechaDeVenta)
         {
             this.impuestos = impuestos;
             this.descuentos = descuentos;
             this.precioFinal = precioFinal;
             this.metodo = metodo;
             this.productos = productos;
-            this.usuarioCliente = usuarioCliente;
             FechaDeVenta = fechaDeVenta;
         }
 
