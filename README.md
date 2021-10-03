@@ -1,12 +1,14 @@
 # 1Parcial-2E
 PetShop - Aplicación realizada para el primer parcial de Laboratorio II - UTN FRA
 
+# Pet Shop 🐶
+
 ## Entidades 🛠️
 
 Para ver el desarrollo del proyecto:
 https://lucky-flea-a2b.notion.site/Primer-Parcial-a297c9aa4e8e471d94eb9c0162b88b6a
 
-# Pet Shop 🐶
+
 
 ## Requisitos 🗒️
 
