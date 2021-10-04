@@ -8,6 +8,7 @@ namespace Entidades
 {
     class Empleado : Usuario
     {
+        //PASAR ESTOS DOS DATOS A LA CLASE USUARIO
         public string celular;
         public int legajo;
 

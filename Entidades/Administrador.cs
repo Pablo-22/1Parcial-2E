@@ -12,7 +12,23 @@ namespace Entidades
             : base(nombreDeUsuario, password, ePermisos.Administrador)
         { }
 
+        private bool AltaUsuario()
+        {
+            return true;
+        }
 
-
+        private bool EditarUsuario(Empleado usuario, string nombreDeUsuario, string password, string celular, int legajo, ePermisos nivelDeAcceso)
+        {
+            foreach (Empleado item in CoreDelSistema.Usuarios)
+            {
+                if (item == usuario)
+                {
+                    usuario.NombreDeUsuario = nombreDeUsuario;
+                    usuario.Password = password;
+                    usuario.legajo = legajo;
+                }
+            }
+            return true;
+        }
     }
 }
