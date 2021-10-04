@@ -8,45 +8,21 @@ namespace Entidades
 {
     class Empleado : Usuario
     {
-        private string celular;
-        private int legajo;
+        public string celular;
+        public int legajo;
 
         public Empleado(string nombreDeUsuario, string password, string celular, int legajo) 
-            : base(nombreDeUsuario, password, Permisos.Empleado)
+            : base(nombreDeUsuario, password, ePermisos.Empleado)
         {
             this.celular = celular;
-            this.legajo = legajo;
+            this.legajo = CoreDelSistema.asignarId();
         }
 
-        public Empleado(string nombreDeUsuario, string password, string celular, int legajo, Permisos nivelDeAcceso)
+        public Empleado(string nombreDeUsuario, string password, string celular, ePermisos nivelDeAcceso)
             : base(nombreDeUsuario, password, nivelDeAcceso)
         {
             this.celular = celular;
-            this.legajo = legajo;
-        }
-
-        public string Celular
-        {
-            get
-            {
-                return this.celular;
-            }
-            set
-            {
-                this.celular = value;
-            }
-        }
-
-        public int Legajo
-        {
-            get
-            {
-                return this.legajo;
-            }
-            set
-            {
-                this.legajo = value;
-            }
+            this.legajo = CoreDelSistema.asignarId();
         }
     }
 }

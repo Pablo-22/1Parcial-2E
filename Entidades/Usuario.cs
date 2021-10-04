@@ -10,10 +10,10 @@ namespace Entidades
     {
         private string nombreDeUsuario;
         private string password;
-        private Permisos nivelDeAcceso;
+        private ePermisos nivelDeAcceso;
 
         #region Constructor
-        protected Usuario(string nombreDeUsuario, string password, Permisos nivelDeAcceso)
+        protected Usuario(string nombreDeUsuario, string password, ePermisos nivelDeAcceso)
         {
             this.nombreDeUsuario = nombreDeUsuario;
             this.password = password;
@@ -30,7 +30,7 @@ namespace Entidades
             }
             set
             {
-                if(this.NivelDeAcceso == Permisos.Administrador)
+                if(CoreDelSistema.UsuarioLogueado.NivelDeAcceso == ePermisos.Administrador)
                 {
                     this.nombreDeUsuario = value;
                 }
@@ -41,8 +41,8 @@ namespace Entidades
         {
             get
             {
-                string password = "-";
-                if (this.NivelDeAcceso == Permisos.Administrador)
+                string password = "Permisos insuficientes";
+                if (CoreDelSistema.UsuarioLogueado.NivelDeAcceso == ePermisos.Administrador)
                 {
                     password = this.password;
                 }
@@ -50,14 +50,14 @@ namespace Entidades
             }
             set
             {
-                if (this.NivelDeAcceso == Permisos.Administrador)
+                if (CoreDelSistema.UsuarioLogueado.NivelDeAcceso == ePermisos.Administrador)
                 {
                     this.password = value;
                 }
             }
         }
 
-        internal Permisos NivelDeAcceso
+        internal ePermisos NivelDeAcceso
         {
             get
             {
@@ -65,7 +65,7 @@ namespace Entidades
             }
             set
             {
-                if (this.nivelDeAcceso == Permisos.Administrador)
+                if (CoreDelSistema.UsuarioLogueado.nivelDeAcceso == ePermisos.Administrador)
                 {
                     this.nivelDeAcceso = value;
                 }
@@ -73,7 +73,6 @@ namespace Entidades
         }
         #endregion Propiedades
 
-        public enum Permisos { Administrador, Empleado, Cliente }
-
+        public enum ePermisos { Administrador, Empleado }
     }
 }

@@ -8,11 +8,83 @@ namespace Entidades
 {
     class Cliente
     {
-        float saldo;
-        List<Venta> historialDeCompras;
-        string email;
-        string nombre;
-        int idCliente;
+        private float saldo;
+        private List<Venta> historialDeCompras;
+        private string email;
+        private string nombre;
+        private int idCliente;
+
+
+        #region Propiedades
+        public float Saldo
+        {
+            get
+            {
+                return this.saldo;
+            }
+            set
+            {
+                if (CoreDelSistema.UsuarioLogueado.NivelDeAcceso == Usuario.ePermisos.Administrador)
+                {
+                    saldo = value;
+                }
+            }
+        }
+
+        public string Email 
+        {
+            get
+            {
+                return this.email;
+            }
+            set
+            {
+                if (CoreDelSistema.UsuarioLogueado.NivelDeAcceso == Usuario.ePermisos.Administrador)
+                {
+                    email = value;
+                }
+            }
+        }
+
+        public string Nombre
+        {
+            get
+            {
+                return this.nombre;  
+            }
+            set
+            {
+                if (CoreDelSistema.UsuarioLogueado.NivelDeAcceso == Usuario.ePermisos.Administrador)
+                {
+                    this.nombre = value;
+                }
+            }
+        }
+
+        public int IdCliente 
+        {
+            get
+            {
+                return this.idCliente;
+            }
+        }
+
+        public List<Venta> HistorialDeCompras 
+        {
+            get
+            {
+                return this.historialDeCompras;
+            }
+            set
+            {
+                if (CoreDelSistema.UsuarioLogueado.NivelDeAcceso == Usuario.ePermisos.Administrador)
+                {
+                    this.historialDeCompras = value;
+                }
+            }
+        }
+        #endregion Propiedades
+
 
 
         public Cliente(string nombre, string email, float saldo)

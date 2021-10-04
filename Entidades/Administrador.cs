@@ -8,8 +8,11 @@ namespace Entidades
 {
     class Administrador : Usuario
     {
-        public Administrador(string nombreDeUsuario, string password, string celular, int legajo)
-            : base(nombreDeUsuario, password, Permisos.Administrador)
+        public Administrador(string nombreDeUsuario, string password, string celular)
+            : base(nombreDeUsuario, password, ePermisos.Administrador)
         { }
+
+
+
     }
 }

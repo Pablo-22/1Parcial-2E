@@ -15,6 +15,7 @@ namespace Entidades
         List<Producto> productos;
         DateTime FechaDeVenta;
 
+        #region Constructor y sobrecargas
         public Venta(float impuestos, float descuentos, float precioFinal, 
             MetodoDePago metodo, List<Producto> productos, DateTime fechaDeVenta)
         {
@@ -25,6 +26,11 @@ namespace Entidades
             this.productos = productos;
             FechaDeVenta = fechaDeVenta;
         }
+
+        public Venta(float impuestos, float descuentos, float precioFinal, MetodoDePago metodo, List<Producto> productos) 
+            : this(impuestos, descuentos, precioFinal, metodo, productos, DateTime.Now)
+        {  }
+        #endregion Constructor y sobrecargas
 
         public enum MetodoDePago
         {
