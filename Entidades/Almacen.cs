@@ -63,5 +63,11 @@ namespace Entidades
             }
             return exit;
         }
+
+        public static int AniadirProducto(Producto producto)
+        {
+            Productos.Add(producto);
+            return Productos.IndexOf(producto);
+        }
     }
 }

@@ -55,7 +55,8 @@ namespace Entidades
             Indumentaria,
             Juguetes,
             Transportadoras,
-            Salud
+            Salud,
+            Otro
         }
 
 

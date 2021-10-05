@@ -20,6 +20,11 @@ namespace Principal
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Si encuentra producto en el índice pasado, carga todos los datos del producto en el form
+        /// Si no lo encuentra, vuelve al último elemento, o al primero, según el valor del index.
+        /// </summary>
+        /// <param name="index"></param>
         private void CargarDatosDeProducto(int index)
         {
             if (Almacen.BuscarIndiceProducto(index) == true)
@@ -31,11 +36,19 @@ namespace Principal
                 txtStock.Text = Almacen.Productos[index].Stock.ToString();
                 cmbCategoriaAnimal.SelectedIndex = (int)Almacen.Productos[index].TipoDeAnimal;
                 cmbCategoriaProducto.SelectedIndex = (int)Almacen.Productos[index].TipoDeProducto;
-                lblCantidadProductos.Text = (index + 1) + lblCantidadProductos.Text;
+                lblCantidadProductos.Text = (index + 1) + "/" + Almacen.Productos.Count.ToString();
             }
             else
             {
-                indiceActual = 0;
+                if (indiceActual > -1)
+                {
+                    indiceActual = 0;
+                }
+                else
+                {
+                    indiceActual = Almacen.Productos.Count - 1;
+                }
+
                 CargarDatosDeProducto(indiceActual);
             }
         }
@@ -56,6 +69,40 @@ namespace Principal
             }
         }
 
+        private void LimpiarForm()
+        {
+            txtNombre.Text = "";
+            txtPrecio.Text = "";
+            txtMarca.Text = "";
+            rtxtDescripcion.Text = "";
+            txtStock.Text = "";
+            cmbCategoriaAnimal.Text = "Animal";
+            cmbCategoriaProducto.Text = "Tipo de producto";
+            lblCantidadProductos.Text = "";
+        }
+
+        private void ActivarModoEdicion()
+        {
+            txtNombre.ReadOnly = false;
+            txtPrecio.ReadOnly = false;
+            txtMarca.ReadOnly = false;
+            rtxtDescripcion.ReadOnly = false;
+            txtStock.ReadOnly = false;
+            cmbCategoriaAnimal.Enabled = true;
+            cmbCategoriaProducto.Enabled = true;
+        }
+
+        private void DesactivarModoEdicion()
+        {
+            txtNombre.ReadOnly = true;
+            txtPrecio.ReadOnly = true;
+            txtMarca.ReadOnly = true;
+            rtxtDescripcion.ReadOnly = true;
+            txtStock.ReadOnly = true;
+            cmbCategoriaAnimal.Enabled = false;
+            cmbCategoriaProducto.Enabled = false;
+        }
+
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
             lblCantidadProductos.Text = "/" + Almacen.Productos.Count.ToString();
@@ -65,12 +112,115 @@ namespace Principal
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            CargarDatosDeProducto(indiceActual++);
+            DesactivarModoEdicion();
+            indiceActual++;
+            CargarDatosDeProducto(indiceActual);
         }
 
         private void btnAnterior_Click(object sender, EventArgs e)
         {
-            CargarDatosDeProducto(indiceActual--);
+            DesactivarModoEdicion();
+            indiceActual--;
+            CargarDatosDeProducto(indiceActual);
+        }
+
+        private void btnAniadirProducto_Click(object sender, EventArgs e)
+        {
+            if (btnAniadirProducto.Text == "Aceptar")
+            {
+                //Construyo un nuevo producto a partir de los datos cargados en los campos del form.
+                Producto nuevoProducto = new Producto(txtNombre.Text, float.Parse(txtPrecio.Text),
+                    txtMarca.Text, (Producto.CategoriaAnimal)cmbCategoriaAnimal.SelectedItem, (Producto.CategoriaProducto)cmbCategoriaProducto.SelectedItem,
+                    rtxtDescripcion.Text, int.Parse(txtStock.Text));
+
+                //Aniadir producto devuelve el índice del producto añadido.
+                indiceActual = Almacen.AniadirProducto(nuevoProducto);
+                CargarDatosDeProducto(indiceActual);
+
+                //Cambios visuales
+                btnAniadirProducto.Text = "Añadir producto";
+
+                btnAutocompletarProducto.Visible = false;
+                btnCancelar.Visible = false;
+
+                btnSiguiente.Visible = true;
+                btnAnterior.Visible = true;
+
+                DesactivarModoEdicion();
+
+            }
+            else
+            {
+                //Cambios visuales
+                LimpiarForm();
+                ActivarModoEdicion();
+                btnAniadirProducto.Text = "Aceptar";
+
+                btnSiguiente.Visible = false;
+                btnAnterior.Visible = false;
+                btnEditar.Visible = false;
+                btnVender.Visible = false;
+
+                btnCancelar.Visible = true;
+                btnAutocompletarProducto.Visible = true;
+            }
+        }
+
+        private void btnAutocompletarProducto_Click(object sender, EventArgs e)
+        {
+            txtNombre.Text = "Pecera";
+            txtPrecio.Text = "750";
+            txtMarca.Text = "Fishi";
+            rtxtDescripcion.Text = "Pecera de acrílico transparente, esférica y con capacidad de 10 litros.";
+            txtStock.Text = "12";
+            cmbCategoriaAnimal.SelectedItem = "Peces";
+            cmbCategoriaProducto.SelectedItem = "Otro";
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            //Cambios visuales
+            ActivarModoEdicion();
+
+            btnAniadirProducto.Visible = false;
+            btnEditar.Visible = false;
+            btnVender.Visible = false;
+
+            btnAceptar.Visible = true;
+            btnCancelar.Visible = true;
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            //Cambios visuales
+            DesactivarModoEdicion();
+
+            btnAniadirProducto.Visible = true;
+            btnEditar.Visible = true;
+            btnVender.Visible = true;
+            btnAnterior.Visible = true;
+            btnSiguiente.Visible = true;
+
+            btnAceptar.Visible = false;
+            btnCancelar.Visible = false;
+            btnAutocompletarProducto.Visible = false;
+
+            btnAniadirProducto.Text = "Añadir producto";
+
+            CargarDatosDeProducto(indiceActual);
+
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            Producto nuevoProducto = new Producto(txtNombre.Text, float.Parse(txtPrecio.Text),
+                    txtMarca.Text, (Producto.CategoriaAnimal)cmbCategoriaAnimal.SelectedItem, (Producto.CategoriaProducto)cmbCategoriaProducto.SelectedItem,
+                    rtxtDescripcion.Text, int.Parse(txtStock.Text));
+
+            Almacen.Productos[indiceActual] = nuevoProducto;
+
+            //Cambios visuales
+            btnCancelar_Click(null, null);
         }
     }
 }

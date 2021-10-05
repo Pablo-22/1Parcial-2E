@@ -65,6 +65,7 @@ namespace Principal
             this.txtContrasenia.Name = "txtContrasenia";
             this.txtContrasenia.Size = new System.Drawing.Size(250, 39);
             this.txtContrasenia.TabIndex = 2;
+            this.txtContrasenia.UseSystemPasswordChar = true;
             // 
             // txtNombreDeUsuario
             // 
