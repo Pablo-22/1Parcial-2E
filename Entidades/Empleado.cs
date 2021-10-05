@@ -8,22 +8,14 @@ namespace Entidades
 {
     class Empleado : Usuario
     {
-        //PASAR ESTOS DOS DATOS A LA CLASE USUARIO
-        public string celular;
-        public int legajo;
-
         public Empleado(string nombreDeUsuario, string password, string celular, int legajo) 
-            : base(nombreDeUsuario, password, ePermisos.Empleado)
+            : base(nombreDeUsuario, password, celular, ePermisos.Empleado)
         {
-            this.celular = celular;
-            this.legajo = CoreDelSistema.asignarId();
+            this.legajo = legajo;
         }
 
         public Empleado(string nombreDeUsuario, string password, string celular, ePermisos nivelDeAcceso)
-            : base(nombreDeUsuario, password, nivelDeAcceso)
-        {
-            this.celular = celular;
-            this.legajo = CoreDelSistema.asignarId();
-        }
+            : base(nombreDeUsuario, password, celular, nivelDeAcceso)
+        { }
     }
 }

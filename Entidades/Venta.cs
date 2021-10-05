@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class Venta
+    public class Venta
     {
         float impuestos;
         float descuentos;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class Cliente
+    public class Cliente
     {
         private float saldo;
         private List<Venta> historialDeCompras;
@@ -92,7 +92,7 @@ namespace Entidades
             this.nombre = nombre;
             this.historialDeCompras = new List<Venta>();
             this.saldo = saldo;
-            this.idCliente = CoreDelSistema.asignarId();
+            this.idCliente = CoreDelSistema.AsignarId();
             this.email = email;
         }
 
