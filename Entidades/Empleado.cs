@@ -8,8 +8,8 @@ namespace Entidades
 {
     class Empleado : Usuario
     {
-        public Empleado(string nombreDeUsuario, string password, string celular, int legajo) 
-            : base(nombreDeUsuario, password, celular, ePermisos.Empleado)
+        public Empleado(string nombreDeUsuario, string password, string celular, ePermisos nivelDeAcceso, int legajo) 
+            : base(nombreDeUsuario, password, celular, nivelDeAcceso)
         {
             this.legajo = legajo;
         }

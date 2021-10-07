@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    abstract class Usuario
+    public abstract class Usuario
     {
         private string nombreDeUsuario;
         private string password;
@@ -51,12 +51,11 @@ namespace Entidades
         {
             get
             {
-                string password = "Permisos insuficientes";
                 if (CoreDelSistema.UsuarioLogueado.NivelDeAcceso == ePermisos.Administrador)
                 {
-                    password = this.password;
+                    return this.password;
                 }
-                return password;
+                return "";
             }
             set
             {

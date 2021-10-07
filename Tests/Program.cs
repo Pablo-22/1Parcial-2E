@@ -7,7 +7,7 @@ namespace Tests
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(CoreDelSistema.Usuarios);
+            Console.WriteLine();
         }
     }
 }

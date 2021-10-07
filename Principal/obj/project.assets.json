@@ -33,9 +33,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Material UTN\\Programación 2E\\Parcial 2E\\repo\\1Parcial-2E\\Principal\\Principal.csproj",
-      "projectName": "Principal",
-      "projectPath": "D:\\Material UTN\\Programación 2E\\Parcial 2E\\repo\\1Parcial-2E\\Principal\\Principal.csproj",
+      "projectUniqueName": "D:\\Material UTN\\Programación 2E\\Parcial 2E\\repo\\1Parcial-2E\\Principal\\Forms.csproj",
+      "projectName": "Forms",
+      "projectPath": "D:\\Material UTN\\Programación 2E\\Parcial 2E\\repo\\1Parcial-2E\\Principal\\Forms.csproj",
       "packagesPath": "C:\\Users\\pablo\\.nuget\\packages\\",
       "outputPath": "D:\\Material UTN\\Programación 2E\\Parcial 2E\\repo\\1Parcial-2E\\Principal\\obj\\",
       "projectStyle": "PackageReference",

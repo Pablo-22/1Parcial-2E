@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class Administrador : Usuario
+    class Administrador : Empleado
     {
         public Administrador(string nombreDeUsuario, string password, string celular)
             : base(nombreDeUsuario, password, celular, ePermisos.Administrador)
+        { }
+
+        public Administrador(string nombreDeUsuario, string password, string celular, int id)
+            : base(nombreDeUsuario, password, celular, ePermisos.Administrador, id)
         { }
 
         private bool AltaUsuario()
@@ -21,19 +25,17 @@ namespace Entidades
         private bool EditarUsuario(int index, string nombreDeUsuario, string password, string celular, int legajo, ePermisos nivelDeAcceso)
         {
             bool exit = false;
-            Usuario usuario = CoreDelSistema.Usuarios.ElementAtOrDefault<Usuario>(index);
            
-            if (usuario != null)
+            if (CoreDelSistema.Usuarios[index] != null)
             {
                 exit = true;
-                usuario.NombreDeUsuario = nombreDeUsuario;
-                usuario.Password = password;
-                usuario.legajo = legajo;
-                usuario.NivelDeAcceso = nivelDeAcceso;
+                CoreDelSistema.Usuarios[index].NombreDeUsuario = nombreDeUsuario;
+                CoreDelSistema.Usuarios[index].Password = password;
+                CoreDelSistema.Usuarios[index].legajo = legajo;
+                CoreDelSistema.Usuarios[index].NivelDeAcceso = nivelDeAcceso;
+                CoreDelSistema.Usuarios[index].celular = celular;
             }
             return exit;
         }
-
-
     }
 }

@@ -22,9 +22,7 @@ namespace Principal
         {
             if(CoreDelSistema.LoguearUsuario(txtNombreDeUsuario.Text, txtContrasenia.Text) == true)
             {
-                frmPrincipal main = new frmPrincipal();
-                this.Hide();
-                main.Show();
+                this.DialogResult = DialogResult.OK;
             }
             else
             {

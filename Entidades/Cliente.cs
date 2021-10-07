@@ -54,9 +54,14 @@ namespace Entidades
             }
             set
             {
-                if (CoreDelSistema.UsuarioLogueado.NivelDeAcceso == Usuario.ePermisos.Administrador)
+                if (CoreDelSistema.UsuarioLogueado.NivelDeAcceso == Usuario.ePermisos.Administrador 
+                    && ValidarNombre(value) == true)
                 {
                     this.nombre = value;
+                }
+                else
+                {
+                    this.nombre = null;
                 }
             }
         }
@@ -86,6 +91,24 @@ namespace Entidades
         #endregion Propiedades
 
 
+        private bool ValidarNombre(string nombre)
+        {
+            bool exit = false;
+            if (string.IsNullOrEmpty(nombre) == false)
+            {
+                for (int i = 0; i < nombre.Length; i++)
+                {
+                    exit = true;
+                    if (char.IsDigit(nombre[i]) == true)
+                    {
+                        exit = false;
+                        break;
+                    }
+                    
+                }
+            }
+            return exit;
+        }
 
         public Cliente(string nombre, string email, float saldo)
         {
@@ -95,6 +118,5 @@ namespace Entidades
             this.idCliente = CoreDelSistema.AsignarId();
             this.email = email;
         }
-
     }
 }

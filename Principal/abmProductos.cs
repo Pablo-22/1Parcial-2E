@@ -11,11 +11,11 @@ using Entidades;
 
 namespace Principal
 {
-    public partial class frmPrincipal : Form
+    public partial class frmProductos : Form
     {
         static int indiceActual = 0;
 
-        public frmPrincipal()
+        public frmProductos()
         {
             InitializeComponent();
         }
@@ -25,7 +25,7 @@ namespace Principal
         /// Si no lo encuentra, vuelve al último elemento, o al primero, según el valor del index.
         /// </summary>
         /// <param name="index"></param>
-        private void CargarDatosDeProducto(int index)
+        protected void CargarDatosDeProducto(int index)
         {
             if (Almacen.BuscarIndiceProducto(index) == true)
             {
@@ -53,7 +53,7 @@ namespace Principal
             }
         }
 
-        private void CargarCategorias()
+        protected void CargarCategorias()
         {
             var categoriasDeAnimales = Enum.GetNames(typeof(Producto.CategoriaAnimal)).Length;
             var categoriasDeProductos = Enum.GetNames(typeof(Producto.CategoriaProducto)).Length;
@@ -69,7 +69,7 @@ namespace Principal
             }
         }
 
-        private void LimpiarForm()
+        protected void LimpiarForm()
         {
             txtNombre.Text = "";
             txtPrecio.Text = "";
@@ -81,7 +81,7 @@ namespace Principal
             lblCantidadProductos.Text = "";
         }
 
-        private void ActivarModoEdicion()
+        protected void ActivarModoEdicion()
         {
             txtNombre.ReadOnly = false;
             txtPrecio.ReadOnly = false;
@@ -92,7 +92,7 @@ namespace Principal
             cmbCategoriaProducto.Enabled = true;
         }
 
-        private void DesactivarModoEdicion()
+        protected void DesactivarModoEdicion()
         {
             txtNombre.ReadOnly = true;
             txtPrecio.ReadOnly = true;
@@ -143,6 +143,8 @@ namespace Principal
                 btnAutocompletarProducto.Visible = false;
                 btnCancelar.Visible = false;
 
+                btnVender.Visible = true;
+                btnEditar.Visible = true;
                 btnSiguiente.Visible = true;
                 btnAnterior.Visible = true;
 
@@ -178,49 +180,24 @@ namespace Principal
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
-        {
-            //Cambios visuales
-            ActivarModoEdicion();
-
-            btnAniadirProducto.Visible = false;
-            btnEditar.Visible = false;
-            btnVender.Visible = false;
-
-            btnAceptar.Visible = true;
-            btnCancelar.Visible = true;
-        }
+        { }
 
         private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            //Cambios visuales
-            DesactivarModoEdicion();
-
-            btnAniadirProducto.Visible = true;
-            btnEditar.Visible = true;
-            btnVender.Visible = true;
-            btnAnterior.Visible = true;
-            btnSiguiente.Visible = true;
-
-            btnAceptar.Visible = false;
-            btnCancelar.Visible = false;
-            btnAutocompletarProducto.Visible = false;
-
-            btnAniadirProducto.Text = "Añadir producto";
-
-            CargarDatosDeProducto(indiceActual);
-
-        }
+        { }
 
         private void btnAceptar_Click(object sender, EventArgs e)
+        { }
+
+        private void btnVolver_Click(object sender, EventArgs e)
         {
-            Producto nuevoProducto = new Producto(txtNombre.Text, float.Parse(txtPrecio.Text),
-                    txtMarca.Text, (Producto.CategoriaAnimal)cmbCategoriaAnimal.SelectedItem, (Producto.CategoriaProducto)cmbCategoriaProducto.SelectedItem,
-                    rtxtDescripcion.Text, int.Parse(txtStock.Text));
+            frmMenuPrincipal menu = new frmMenuPrincipal();
+            this.Hide();
+            menu.Show();
+        }
 
-            Almacen.Productos[indiceActual] = nuevoProducto;
+        private void btnVender_Click(object sender, EventArgs e)
+        {
 
-            //Cambios visuales
-            btnCancelar_Click(null, null);
         }
     }
 }

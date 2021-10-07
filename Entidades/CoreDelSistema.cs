@@ -13,8 +13,20 @@ namespace Entidades
         private static List<Cliente> clientes;
         static Usuario usuarioLogueado;
 
-        internal static List<Usuario> Usuarios { get; set; }
+        public static List<Usuario> Usuarios { get; set; }
         public static int UltimoIdGenerado { get; set; }
+
+        public static Usuario UsuarioLogueado 
+        { 
+            get
+            {
+                return CoreDelSistema.usuarioLogueado;
+            }
+            set
+            {
+                CoreDelSistema.usuarioLogueado = value;
+            }
+        }
 
         public static List<Cliente> Clientes
         { 
@@ -24,13 +36,12 @@ namespace Entidades
             }
         }
 
-        internal static Usuario UsuarioLogueado { get => usuarioLogueado; set => usuarioLogueado = value; }
 
         static CoreDelSistema()
         {
             Usuarios = new List<Usuario>();
             clientes = new List<Cliente>();
-            usuarioLogueado = new Administrador("admin", "admin", "00 0000-0000");
+            usuarioLogueado = new Administrador("admin", "admin", "00 0000-0000", -1);
             ultimoIdGenerado = 0;
 
             CargarUsuarios();
