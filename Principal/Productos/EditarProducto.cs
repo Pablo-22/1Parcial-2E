@@ -11,7 +11,7 @@ using Entidades;
 
 namespace Principal
 {
-    public partial class frmEditarProducto : frmProductos
+    public partial class frmEditarProducto : frmProductosBase
     {
         private static int indiceActual;
 
@@ -37,16 +37,6 @@ namespace Principal
             rtxtDescripcion.ReadOnly = false;
             txtStock.ReadOnly = false;
 
-            btnSiguiente.Visible = false;
-            btnAnterior.Visible = false;
-            btnAniadirProducto.Visible = false;
-            btnEditar.Visible = false;
-            btnVender.Visible = false;
-
-
-            btnAceptar.Visible = true;
-            btnCancelar.Visible = true;
-
             cmbCategoriaProducto.Enabled = true;
             cmbCategoriaAnimal.Enabled = true;
         }
@@ -67,18 +57,6 @@ namespace Principal
         {
             //Cambios visuales
             DesactivarModoEdicion();
-
-            btnAniadirProducto.Visible = true;
-            btnEditar.Visible = true;
-            btnVender.Visible = true;
-            btnAnterior.Visible = true;
-            btnSiguiente.Visible = true;
-
-            btnAceptar.Visible = false;
-            btnCancelar.Visible = false;
-            btnAutocompletarProducto.Visible = false;
-
-            btnAniadirProducto.Text = "Añadir producto";
 
             CargarDatosDeProducto(indiceActual);
         }

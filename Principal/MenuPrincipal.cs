@@ -65,7 +65,7 @@ namespace Principal
 
         private void btnProducto_Click(object sender, EventArgs e)
         {
-            frmProductos main = new frmProductos();
+            frmVisualizarProductos main = new frmVisualizarProductos();
             this.Hide();
             main.Show();
         }

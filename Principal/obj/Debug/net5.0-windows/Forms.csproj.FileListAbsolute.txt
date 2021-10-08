@@ -20,4 +20,7 @@ D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Principal\obj\Debug
 D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Principal\obj\Debug\net5.0-windows\Forms.pdb
 D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Principal\obj\Debug\net5.0-windows\Forms.genruntimeconfig.cache
 D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Principal\obj\Debug\net5.0-windows\Principal.frmMenuPrincipal.resources
-D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Principal\obj\Debug\net5.0-windows\Principal.frmProductos.resources
+D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Principal\obj\Debug\net5.0-windows\Principal.frmAniadirProducto.resources
+D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Principal\obj\Debug\net5.0-windows\Principal.frmEditarProducto.resources
+D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Principal\obj\Debug\net5.0-windows\Principal.frmProductosBase.resources
+D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Principal\obj\Debug\net5.0-windows\Principal.frmVisualizarProductos.resources
