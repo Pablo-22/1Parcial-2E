@@ -13,32 +13,17 @@ namespace Principal
 {
     public partial class frmEditarProducto : frmProductosBase
     {
-        private static int indiceActual;
 
         public frmEditarProducto()
         {
             InitializeComponent();
         }
 
-        public frmEditarProducto(int indice)
-        {
-            InitializeComponent();
-            indiceActual = indice;
-        }
-
         private void frmEditarProducto_Load(object sender, EventArgs e)
         {
             CargarCategorias();
-            CargarDatosDeProducto(indiceActual);
-
-            txtNombre.ReadOnly = false;
-            txtPrecio.ReadOnly = false;
-            txtMarca.ReadOnly = false;
-            rtxtDescripcion.ReadOnly = false;
-            txtStock.ReadOnly = false;
-
-            cmbCategoriaProducto.Enabled = true;
-            cmbCategoriaAnimal.Enabled = true;
+            CargarDatosDeProducto(IndiceActual);
+            ActivarModoEdicion();
         }
 
         private void btnAceptarEdicion_Click(object sender, EventArgs e)
@@ -47,10 +32,11 @@ namespace Principal
                     txtMarca.Text, (Producto.CategoriaAnimal)cmbCategoriaAnimal.SelectedItem, (Producto.CategoriaProducto)cmbCategoriaProducto.SelectedItem,
                     rtxtDescripcion.Text, int.Parse(txtStock.Text));
 
-            Almacen.Productos[indiceActual] = nuevoProducto;
+            Almacen.Productos[IndiceActual] = nuevoProducto;
 
             //Cambios visuales
-            btnCancelarEdicion_Click(null, null);
+            DesactivarModoEdicion();
+            this.DialogResult = DialogResult.OK;
         }
 
         private void btnCancelarEdicion_Click(object sender, EventArgs e)
@@ -58,7 +44,8 @@ namespace Principal
             //Cambios visuales
             DesactivarModoEdicion();
 
-            CargarDatosDeProducto(indiceActual);
+            CargarDatosDeProducto(IndiceActual);
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }

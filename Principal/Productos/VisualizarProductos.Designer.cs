@@ -29,79 +29,97 @@ namespace Principal
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnVender1 = new System.Windows.Forms.Button();
-            this.btnEditar1 = new System.Windows.Forms.Button();
-            this.btnAniadir1 = new System.Windows.Forms.Button();
-            this.btnAnterior1 = new System.Windows.Forms.Button();
-            this.btnSiguiente1 = new System.Windows.Forms.Button();
+            this.btnVender = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnAniadir = new System.Windows.Forms.Button();
+            this.btnAnterior = new System.Windows.Forms.Button();
+            this.btnSiguiente = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnVolver
             // 
             this.btnVolver.FlatAppearance.BorderSize = 0;
             // 
-            // btnVender1
+            // btnVender
             // 
-            this.btnVender1.Location = new System.Drawing.Point(387, 87);
-            this.btnVender1.Name = "btnVender1";
-            this.btnVender1.Size = new System.Drawing.Size(126, 37);
-            this.btnVender1.TabIndex = 25;
-            this.btnVender1.Text = "Vender";
-            this.btnVender1.UseVisualStyleBackColor = true;
-            this.btnVender1.Click += new System.EventHandler(this.btnVender1_Click);
+            this.btnVender.FlatAppearance.BorderSize = 0;
+            this.btnVender.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVender.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnVender.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btnVender.Location = new System.Drawing.Point(400, 87);
+            this.btnVender.Name = "btnVender";
+            this.btnVender.Size = new System.Drawing.Size(148, 48);
+            this.btnVender.TabIndex = 25;
+            this.btnVender.Text = "Vender";
+            this.btnVender.UseVisualStyleBackColor = true;
+            this.btnVender.Click += new System.EventHandler(this.btnVender1_Click);
             // 
-            // btnEditar1
+            // btnEditar
             // 
-            this.btnEditar1.Location = new System.Drawing.Point(574, 87);
-            this.btnEditar1.Name = "btnEditar1";
-            this.btnEditar1.Size = new System.Drawing.Size(126, 37);
-            this.btnEditar1.TabIndex = 26;
-            this.btnEditar1.Text = "Editar";
-            this.btnEditar1.UseVisualStyleBackColor = true;
-            this.btnEditar1.Click += new System.EventHandler(this.btnEditar1_Click);
+            this.btnEditar.FlatAppearance.BorderSize = 0;
+            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditar.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnEditar.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btnEditar.Location = new System.Drawing.Point(606, 87);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(148, 48);
+            this.btnEditar.TabIndex = 26;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar1_Click);
             // 
-            // btnAniadir1
+            // btnAniadir
             // 
-            this.btnAniadir1.Location = new System.Drawing.Point(765, 87);
-            this.btnAniadir1.Name = "btnAniadir1";
-            this.btnAniadir1.Size = new System.Drawing.Size(126, 37);
-            this.btnAniadir1.TabIndex = 27;
-            this.btnAniadir1.Text = "Añadir";
-            this.btnAniadir1.UseVisualStyleBackColor = true;
-            this.btnAniadir1.Click += new System.EventHandler(this.btnAniadir1_Click);
+            this.btnAniadir.FlatAppearance.BorderSize = 0;
+            this.btnAniadir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAniadir.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAniadir.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btnAniadir.Location = new System.Drawing.Point(812, 87);
+            this.btnAniadir.Name = "btnAniadir";
+            this.btnAniadir.Size = new System.Drawing.Size(148, 48);
+            this.btnAniadir.TabIndex = 27;
+            this.btnAniadir.Text = "Añadir";
+            this.btnAniadir.UseVisualStyleBackColor = true;
+            this.btnAniadir.Click += new System.EventHandler(this.btnAniadir1_Click);
             // 
-            // btnAnterior1
+            // btnAnterior
             // 
-            this.btnAnterior1.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAnterior1.Location = new System.Drawing.Point(41, 385);
-            this.btnAnterior1.Name = "btnAnterior1";
-            this.btnAnterior1.Size = new System.Drawing.Size(53, 82);
-            this.btnAnterior1.TabIndex = 28;
-            this.btnAnterior1.Text = "<";
-            this.btnAnterior1.UseVisualStyleBackColor = true;
-            this.btnAnterior1.Click += new System.EventHandler(this.btnAnterior1_Click);
+            this.btnAnterior.FlatAppearance.BorderSize = 0;
+            this.btnAnterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAnterior.Font = new System.Drawing.Font("Calibri", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAnterior.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.btnAnterior.Location = new System.Drawing.Point(41, 385);
+            this.btnAnterior.Name = "btnAnterior";
+            this.btnAnterior.Size = new System.Drawing.Size(53, 98);
+            this.btnAnterior.TabIndex = 28;
+            this.btnAnterior.Text = "<";
+            this.btnAnterior.UseVisualStyleBackColor = true;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior1_Click);
             // 
-            // btnSiguiente1
+            // btnSiguiente
             // 
-            this.btnSiguiente1.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnSiguiente1.Location = new System.Drawing.Point(1271, 385);
-            this.btnSiguiente1.Name = "btnSiguiente1";
-            this.btnSiguiente1.Size = new System.Drawing.Size(53, 82);
-            this.btnSiguiente1.TabIndex = 29;
-            this.btnSiguiente1.Text = ">";
-            this.btnSiguiente1.UseVisualStyleBackColor = true;
-            this.btnSiguiente1.Click += new System.EventHandler(this.btnSiguiente1_Click);
+            this.btnSiguiente.FlatAppearance.BorderSize = 0;
+            this.btnSiguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSiguiente.Font = new System.Drawing.Font("Calibri", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSiguiente.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.btnSiguiente.Location = new System.Drawing.Point(1271, 385);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.Size = new System.Drawing.Size(53, 98);
+            this.btnSiguiente.TabIndex = 29;
+            this.btnSiguiente.Text = ">";
+            this.btnSiguiente.UseVisualStyleBackColor = true;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente1_Click);
             // 
             // frmVisualizarProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1360, 768);
-            this.Controls.Add(this.btnSiguiente1);
-            this.Controls.Add(this.btnAnterior1);
-            this.Controls.Add(this.btnAniadir1);
-            this.Controls.Add(this.btnEditar1);
-            this.Controls.Add(this.btnVender1);
+            this.ClientSize = new System.Drawing.Size(1360, 784);
+            this.Controls.Add(this.btnSiguiente);
+            this.Controls.Add(this.btnAnterior);
+            this.Controls.Add(this.btnAniadir);
+            this.Controls.Add(this.btnEditar);
+            this.Controls.Add(this.btnVender);
             this.Name = "frmVisualizarProductos";
             this.Text = "VisualizarProductos";
             this.Load += new System.EventHandler(this.VisualizarProductos_Load);
@@ -122,11 +140,11 @@ namespace Principal
             this.Controls.SetChildIndex(this.lblCantidadProductos, 0);
             this.Controls.SetChildIndex(this.btnVolver, 0);
             this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.btnVender1, 0);
-            this.Controls.SetChildIndex(this.btnEditar1, 0);
-            this.Controls.SetChildIndex(this.btnAniadir1, 0);
-            this.Controls.SetChildIndex(this.btnAnterior1, 0);
-            this.Controls.SetChildIndex(this.btnSiguiente1, 0);
+            this.Controls.SetChildIndex(this.btnVender, 0);
+            this.Controls.SetChildIndex(this.btnEditar, 0);
+            this.Controls.SetChildIndex(this.btnAniadir, 0);
+            this.Controls.SetChildIndex(this.btnAnterior, 0);
+            this.Controls.SetChildIndex(this.btnSiguiente, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,10 +152,10 @@ namespace Principal
 
         #endregion
 
-        private System.Windows.Forms.Button btnVender1;
-        private System.Windows.Forms.Button btnEditar1;
-        private System.Windows.Forms.Button btnAniadir1;
-        private System.Windows.Forms.Button btnAnterior1;
-        private System.Windows.Forms.Button btnSiguiente1;
+        private System.Windows.Forms.Button btnVender;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnAniadir;
+        private System.Windows.Forms.Button btnAnterior;
+        private System.Windows.Forms.Button btnSiguiente;
     }
 }

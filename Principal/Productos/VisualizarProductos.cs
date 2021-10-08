@@ -36,18 +36,18 @@ namespace Principal
             frmEditarProducto editar = new frmEditarProducto();
             editar.ShowDialog();
             if (editar.DialogResult == DialogResult.OK)
-            { 
-                
+            {
+                CargarDatosDeProducto(IndiceActual);
             }
         }
 
         private void btnAniadir1_Click(object sender, EventArgs e)
         {
-            frmEditarProducto editar = new frmEditarProducto();
+            frmAniadirProducto editar = new frmAniadirProducto();
             editar.ShowDialog();
             if (editar.DialogResult == DialogResult.OK)
             {
-                
+                CargarDatosDeProducto(IndiceActual);
             }
         }
 

@@ -33,24 +33,100 @@ namespace Principal
             this.btnCancelarEdicion = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(799, 253);
+            // 
+            // btnVolver
+            // 
+            this.btnVolver.FlatAppearance.BorderSize = 0;
+            // 
+            // lblCantidadProductos
+            // 
+            this.lblCantidadProductos.Location = new System.Drawing.Point(1088, 242);
+            // 
+            // lblStock
+            // 
+            this.lblStock.Location = new System.Drawing.Point(798, 356);
+            // 
+            // txtStock
+            // 
+            this.txtStock.Location = new System.Drawing.Point(798, 385);
+            // 
+            // lblCategoriaProducto
+            // 
+            this.lblCategoriaProducto.Location = new System.Drawing.Point(994, 495);
+            // 
+            // lblCategoriaAnimal
+            // 
+            this.lblCategoriaAnimal.Location = new System.Drawing.Point(798, 494);
+            // 
+            // cmbCategoriaProducto
+            // 
+            this.cmbCategoriaProducto.Location = new System.Drawing.Point(994, 520);
+            // 
+            // cmbCategoriaAnimal
+            // 
+            this.cmbCategoriaAnimal.Location = new System.Drawing.Point(798, 522);
+            // 
+            // lblDescripcion
+            // 
+            this.lblDescripcion.Location = new System.Drawing.Point(203, 311);
+            // 
+            // lblMarca
+            // 
+            this.lblMarca.Location = new System.Drawing.Point(994, 356);
+            // 
+            // lblPrecio
+            // 
+            this.lblPrecio.Location = new System.Drawing.Point(798, 220);
+            // 
+            // lblNombre
+            // 
+            this.lblNombre.Location = new System.Drawing.Point(203, 190);
+            // 
+            // rtxtDescripcion
+            // 
+            this.rtxtDescripcion.Location = new System.Drawing.Point(203, 339);
+            // 
+            // txtMarca
+            // 
+            this.txtMarca.Location = new System.Drawing.Point(994, 385);
+            // 
+            // txtPrecio
+            // 
+            this.txtPrecio.Location = new System.Drawing.Point(820, 248);
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Location = new System.Drawing.Point(203, 232);
+            // 
             // btnAceptarEdicion
             // 
-            this.btnAceptarEdicion.Location = new System.Drawing.Point(1005, 578);
+            this.btnAceptarEdicion.BackColor = System.Drawing.Color.LightCyan;
+            this.btnAceptarEdicion.FlatAppearance.BorderSize = 0;
+            this.btnAceptarEdicion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAceptarEdicion.Font = new System.Drawing.Font("Calibri Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAceptarEdicion.Location = new System.Drawing.Point(476, 604);
             this.btnAceptarEdicion.Name = "btnAceptarEdicion";
             this.btnAceptarEdicion.Size = new System.Drawing.Size(174, 40);
             this.btnAceptarEdicion.TabIndex = 25;
             this.btnAceptarEdicion.Text = "Aceptar";
-            this.btnAceptarEdicion.UseVisualStyleBackColor = true;
+            this.btnAceptarEdicion.UseVisualStyleBackColor = false;
             this.btnAceptarEdicion.Click += new System.EventHandler(this.btnAceptarEdicion_Click);
             // 
             // btnCancelarEdicion
             // 
-            this.btnCancelarEdicion.Location = new System.Drawing.Point(1005, 639);
+            this.btnCancelarEdicion.BackColor = System.Drawing.Color.LightCyan;
+            this.btnCancelarEdicion.FlatAppearance.BorderSize = 0;
+            this.btnCancelarEdicion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelarEdicion.Font = new System.Drawing.Font("Calibri Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCancelarEdicion.Location = new System.Drawing.Point(709, 604);
             this.btnCancelarEdicion.Name = "btnCancelarEdicion";
             this.btnCancelarEdicion.Size = new System.Drawing.Size(174, 40);
             this.btnCancelarEdicion.TabIndex = 26;
             this.btnCancelarEdicion.Text = "Cancelar";
-            this.btnCancelarEdicion.UseVisualStyleBackColor = true;
+            this.btnCancelarEdicion.UseVisualStyleBackColor = false;
             this.btnCancelarEdicion.Click += new System.EventHandler(this.btnCancelarEdicion_Click);
             // 
             // frmEditarProducto
@@ -63,6 +139,23 @@ namespace Principal
             this.Name = "frmEditarProducto";
             this.Text = "EditarProducto";
             this.Load += new System.EventHandler(this.frmEditarProducto_Load);
+            this.Controls.SetChildIndex(this.txtNombre, 0);
+            this.Controls.SetChildIndex(this.txtPrecio, 0);
+            this.Controls.SetChildIndex(this.txtMarca, 0);
+            this.Controls.SetChildIndex(this.rtxtDescripcion, 0);
+            this.Controls.SetChildIndex(this.lblNombre, 0);
+            this.Controls.SetChildIndex(this.lblPrecio, 0);
+            this.Controls.SetChildIndex(this.lblMarca, 0);
+            this.Controls.SetChildIndex(this.lblDescripcion, 0);
+            this.Controls.SetChildIndex(this.cmbCategoriaAnimal, 0);
+            this.Controls.SetChildIndex(this.cmbCategoriaProducto, 0);
+            this.Controls.SetChildIndex(this.lblCategoriaAnimal, 0);
+            this.Controls.SetChildIndex(this.lblCategoriaProducto, 0);
+            this.Controls.SetChildIndex(this.txtStock, 0);
+            this.Controls.SetChildIndex(this.lblStock, 0);
+            this.Controls.SetChildIndex(this.lblCantidadProductos, 0);
+            this.Controls.SetChildIndex(this.btnVolver, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.btnAceptarEdicion, 0);
             this.Controls.SetChildIndex(this.btnCancelarEdicion, 0);
             this.ResumeLayout(false);

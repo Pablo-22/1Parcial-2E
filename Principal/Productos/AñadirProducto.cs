@@ -20,6 +20,7 @@ namespace Principal
 
         private void frmAniadirProducto_Load(object sender, EventArgs e)
         {
+            CargarCategorias();
             LimpiarForm();
             ActivarModoEdicion();
         }

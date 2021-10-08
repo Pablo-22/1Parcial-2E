@@ -29,8 +29,8 @@ namespace Principal
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnAceptar1 = new System.Windows.Forms.Button();
-            this.btnCancelar1 = new System.Windows.Forms.Button();
+            this.btnAceptar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAutocompletar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -38,28 +38,40 @@ namespace Principal
             // 
             this.btnVolver.FlatAppearance.BorderSize = 0;
             // 
-            // btnAceptar1
+            // btnAceptar
             // 
-            this.btnAceptar1.Location = new System.Drawing.Point(484, 623);
-            this.btnAceptar1.Name = "btnAceptar1";
-            this.btnAceptar1.Size = new System.Drawing.Size(167, 47);
-            this.btnAceptar1.TabIndex = 25;
-            this.btnAceptar1.Text = "Aceptar";
-            this.btnAceptar1.UseVisualStyleBackColor = true;
-            this.btnAceptar1.Click += new System.EventHandler(this.btnAceptar1_Click);
+            this.btnAceptar.BackColor = System.Drawing.Color.LightCyan;
+            this.btnAceptar.FlatAppearance.BorderSize = 0;
+            this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAceptar.Font = new System.Drawing.Font("Calibri Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAceptar.Location = new System.Drawing.Point(484, 623);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(167, 47);
+            this.btnAceptar.TabIndex = 25;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar1_Click);
             // 
-            // btnCancelar1
+            // btnCancelar
             // 
-            this.btnCancelar1.Location = new System.Drawing.Point(729, 623);
-            this.btnCancelar1.Name = "btnCancelar1";
-            this.btnCancelar1.Size = new System.Drawing.Size(167, 47);
-            this.btnCancelar1.TabIndex = 26;
-            this.btnCancelar1.Text = "Cancelar";
-            this.btnCancelar1.UseVisualStyleBackColor = true;
-            this.btnCancelar1.Click += new System.EventHandler(this.btnCancelar1_Click);
+            this.btnCancelar.BackColor = System.Drawing.Color.LightCyan;
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Calibri Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCancelar.Location = new System.Drawing.Point(729, 623);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(167, 47);
+            this.btnCancelar.TabIndex = 26;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar1_Click);
             // 
             // btnAutocompletar
             // 
+            this.btnAutocompletar.FlatAppearance.BorderSize = 0;
+            this.btnAutocompletar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAutocompletar.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAutocompletar.ForeColor = System.Drawing.Color.DarkCyan;
             this.btnAutocompletar.Location = new System.Drawing.Point(211, 563);
             this.btnAutocompletar.Name = "btnAutocompletar";
             this.btnAutocompletar.Size = new System.Drawing.Size(118, 29);
@@ -74,8 +86,8 @@ namespace Principal
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1360, 768);
             this.Controls.Add(this.btnAutocompletar);
-            this.Controls.Add(this.btnCancelar1);
-            this.Controls.Add(this.btnAceptar1);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnAceptar);
             this.Name = "frmAniadirProducto";
             this.Text = "AñadirProducto";
             this.Load += new System.EventHandler(this.frmAniadirProducto_Load);
@@ -96,8 +108,8 @@ namespace Principal
             this.Controls.SetChildIndex(this.lblCantidadProductos, 0);
             this.Controls.SetChildIndex(this.btnVolver, 0);
             this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.btnAceptar1, 0);
-            this.Controls.SetChildIndex(this.btnCancelar1, 0);
+            this.Controls.SetChildIndex(this.btnAceptar, 0);
+            this.Controls.SetChildIndex(this.btnCancelar, 0);
             this.Controls.SetChildIndex(this.btnAutocompletar, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -106,8 +118,8 @@ namespace Principal
 
         #endregion
 
-        private System.Windows.Forms.Button btnAceptar1;
-        private System.Windows.Forms.Button btnCancelar1;
+        private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAutocompletar;
     }
 }
