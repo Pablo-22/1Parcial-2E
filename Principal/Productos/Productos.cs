@@ -13,18 +13,18 @@ namespace Principal
 {
     public partial class frmProductosBase : Form
     {
-        static int indiceActual = 0;
+        static int indiceActualProducto = 0;
         
         
-        public int IndiceActual
+        public int IndiceActualProducto
         {
             get
             {
-                return indiceActual;
+                return indiceActualProducto;
             }
             set
             {
-                indiceActual = value;
+                indiceActualProducto = value;
             }
         }
 
@@ -55,23 +55,24 @@ namespace Principal
                 txtPrecio.Text = Almacen.Productos[index].Precio.ToString();
                 txtMarca.Text = Almacen.Productos[index].Marca;
                 rtxtDescripcion.Text = Almacen.Productos[index].Descripcion;
-                txtStock.Text = Almacen.Productos[index].Stock.ToString();
+                txtcantidad.Text = Almacen.Productos[index].Cantidad.ToString();
                 cmbCategoriaAnimal.SelectedIndex = (int)Almacen.Productos[index].TipoDeAnimal;
                 cmbCategoriaProducto.SelectedIndex = (int)Almacen.Productos[index].TipoDeProducto;
+                txtPeso.Text = Almacen.Productos[index].Peso.ToString();
                 lblCantidadProductos.Text = (index + 1) + "/" + Almacen.Productos.Count.ToString();
             }
             else
             {
-                if (IndiceActual > -1)
+                if (IndiceActualProducto > -1)
                 {
-                    IndiceActual = 0;
+                    IndiceActualProducto = 0;
                 }
                 else
                 {
-                    IndiceActual = Almacen.Productos.Count - 1;
+                    IndiceActualProducto = Almacen.Productos.Count - 1;
                 }
 
-                CargarDatosDeProducto(IndiceActual);
+                CargarDatosDeProducto(IndiceActualProducto);
             }
         }
 
@@ -95,9 +96,10 @@ namespace Principal
         {
             txtNombre.Text = "";
             txtPrecio.Text = "";
+            txtPeso.Text = "";
             txtMarca.Text = "";
             rtxtDescripcion.Text = "";
-            txtStock.Text = "";
+            txtcantidad.Text = "";
             cmbCategoriaAnimal.Text = "Animal";
             cmbCategoriaProducto.Text = "Tipo de producto";
             lblCantidadProductos.Text = "";
@@ -106,10 +108,11 @@ namespace Principal
         protected void ActivarModoEdicion()
         {
             txtNombre.ReadOnly = false;
+            txtPeso.ReadOnly = false;
             txtPrecio.ReadOnly = false;
             txtMarca.ReadOnly = false;
             rtxtDescripcion.ReadOnly = false;
-            txtStock.ReadOnly = false;
+            txtcantidad.ReadOnly = false;
             cmbCategoriaAnimal.Enabled = true;
             cmbCategoriaProducto.Enabled = true;
         }
@@ -117,13 +120,20 @@ namespace Principal
         protected void DesactivarModoEdicion()
         {
             txtNombre.ReadOnly = true;
+            txtPeso.ReadOnly = true;
             txtPrecio.ReadOnly = true;
             txtMarca.ReadOnly = true;
             rtxtDescripcion.ReadOnly = true;
-            txtStock.ReadOnly = true;
+            txtcantidad.ReadOnly = true;
             cmbCategoriaAnimal.Enabled = false;
             cmbCategoriaProducto.Enabled = false;
         }
 
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmMenuPrincipal menu = new frmMenuPrincipal();
+            menu.Show();
+        }
     }
 }

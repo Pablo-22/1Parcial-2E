@@ -11,7 +11,7 @@ namespace Entidades
         private string nombreDeUsuario;
         private string password;
         public string celular;
-        public int legajo;
+        public int idUsuario;
         private ePermisos nivelDeAcceso;
 
         #region Constructor
@@ -19,15 +19,15 @@ namespace Entidades
         {
             this.nombreDeUsuario = nombreDeUsuario;
             this.password = password;
-            this.legajo = CoreDelSistema.AsignarId();
+            this.idUsuario = CoreDelSistema.AsignarId();
             this.celular = celular;
             this.nivelDeAcceso = nivelDeAcceso;
         }
 
-        protected Usuario(string nombreDeUsuario, string password, string celular, int legajo, ePermisos nivelDeAcceso)
+        protected Usuario(string nombreDeUsuario, string password, string celular, int id, ePermisos nivelDeAcceso)
             :this(nombreDeUsuario, password, celular, nivelDeAcceso)
         {
-            this.legajo = legajo;
+            this.idUsuario = id;
         }
         #endregion Constructor
 

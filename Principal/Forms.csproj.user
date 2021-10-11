@@ -1,13 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="Clientes\AñadirCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Clientes\Clientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Clientes\EditarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Clientes\VisualizarClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Productos\AñadirProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Productos\Productos.cs">
+    <Compile Update="Productos\EditarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Productos\EditarProducto.cs">
+    <Compile Update="Productos\Productos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="General\Login.cs">
@@ -17,6 +29,15 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Productos\VisualizarProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Ventas\AñadirVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Ventas\Ventas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Ventas\VisualizarVentas.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

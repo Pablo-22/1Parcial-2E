@@ -20,7 +20,7 @@ namespace Principal
 
         private void frmMenuPrincipal_Load(object sender, EventArgs e)
         {
-            if (CoreDelSistema.UsuarioLogueado.legajo == -1)
+            if (CoreDelSistema.UsuarioLogueado.idUsuario == -1)
             {
                 sesionCerrada();
             }
@@ -50,7 +50,9 @@ namespace Principal
 
         private void btnVentas_Click(object sender, EventArgs e)
         {
-            
+            frmVentasBase verVentas = new frmVentasBase();
+            this.Hide();
+            verVentas.Show();
         }
 
         private void btnAcceder_Click(object sender, EventArgs e)
@@ -68,6 +70,13 @@ namespace Principal
             frmVisualizarProductos main = new frmVisualizarProductos();
             this.Hide();
             main.Show();
+        }
+
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            frmVisualizarClientes verClientes = new frmVisualizarClientes();
+            this.Hide();
+            verClientes.Show();
         }
     }
 }

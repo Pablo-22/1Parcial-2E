@@ -59,7 +59,7 @@ namespace Entidades
             CoreDelSistema.Clientes.Add(new Cliente("Julio", "julioribera@gmail.com", 2400));
             CoreDelSistema.Clientes.Add(new Cliente("Pedro", "pedro@gmail.com", 3605));
             CoreDelSistema.Clientes.Add(new Cliente("Domingo", "domingofaustino@gmail.com", 2400));
-            CoreDelSistema.Clientes.Add(new Cliente("Diego", "diegoarmando@gmail.com", 3893));
+            CoreDelSistema.Clientes.Add(new Cliente("Domingo", "diegoarmando@gmail.com", 3893));
         }
 
 
@@ -108,5 +108,53 @@ namespace Entidades
             }
             return exit;
         }
-    }
+
+        public static int BuscarClienteporId(int id)
+        {
+            int exit = -1;
+            for (int i = 0; i < CoreDelSistema.Clientes.Count; i++)
+            {
+                if (CoreDelSistema.Clientes[i].IdCliente == id)
+                {
+                    exit = i;
+                    break;
+                }
+            }
+            return exit;
+        }
+
+
+        public static bool BuscarIndiceCliente(int index)
+        {
+            bool exit = false;
+
+            if (CoreDelSistema.Clientes.ElementAtOrDefault(index) != default)
+            {
+                exit = true;
+            }
+            return exit;
+        }
+
+
+        public static List<int> BuscarClientesPorNombre(string nombre)
+        {
+            List<int> indiceDeNombresEncontrados = new List<int>();
+
+            for (int i = 0; i < CoreDelSistema.Clientes.Count; i++)
+            {
+                if (CoreDelSistema.Clientes[i].Nombre == nombre)
+                {
+                    indiceDeNombresEncontrados.Add(i);
+                }
+            }
+            return indiceDeNombresEncontrados;
+        }
+
+        public static int AniadirCliente(Cliente cliente)
+        {
+            Clientes.Add(cliente);
+            return Clientes.IndexOf(cliente);
+        }
+
+    } 
 }

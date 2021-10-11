@@ -35,71 +35,80 @@ namespace Principal
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(799, 253);
+            this.label1.Location = new System.Drawing.Point(799, 250);
             // 
             // btnVolver
             // 
             this.btnVolver.FlatAppearance.BorderSize = 0;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // lblCantidadProductos
             // 
-            this.lblCantidadProductos.Location = new System.Drawing.Point(1088, 242);
+            this.lblCantidadProductos.Location = new System.Drawing.Point(639, 290);
             // 
-            // lblStock
+            // lblcantidad
             // 
-            this.lblStock.Location = new System.Drawing.Point(798, 356);
+            this.lblcantidad.Location = new System.Drawing.Point(798, 353);
             // 
-            // txtStock
+            // txtcantidad
             // 
-            this.txtStock.Location = new System.Drawing.Point(798, 385);
+            this.txtcantidad.Location = new System.Drawing.Point(798, 382);
             // 
             // lblCategoriaProducto
             // 
-            this.lblCategoriaProducto.Location = new System.Drawing.Point(994, 495);
+            this.lblCategoriaProducto.Location = new System.Drawing.Point(994, 492);
             // 
             // lblCategoriaAnimal
             // 
-            this.lblCategoriaAnimal.Location = new System.Drawing.Point(798, 494);
+            this.lblCategoriaAnimal.Location = new System.Drawing.Point(798, 491);
             // 
             // cmbCategoriaProducto
             // 
-            this.cmbCategoriaProducto.Location = new System.Drawing.Point(994, 520);
+            this.cmbCategoriaProducto.Location = new System.Drawing.Point(994, 517);
             // 
             // cmbCategoriaAnimal
             // 
-            this.cmbCategoriaAnimal.Location = new System.Drawing.Point(798, 522);
+            this.cmbCategoriaAnimal.Location = new System.Drawing.Point(798, 519);
             // 
             // lblDescripcion
             // 
-            this.lblDescripcion.Location = new System.Drawing.Point(203, 311);
+            this.lblDescripcion.Location = new System.Drawing.Point(203, 308);
             // 
             // lblMarca
             // 
-            this.lblMarca.Location = new System.Drawing.Point(994, 356);
+            this.lblMarca.Location = new System.Drawing.Point(994, 353);
             // 
             // lblPrecio
             // 
-            this.lblPrecio.Location = new System.Drawing.Point(798, 220);
+            this.lblPrecio.Location = new System.Drawing.Point(798, 217);
             // 
             // lblNombre
             // 
-            this.lblNombre.Location = new System.Drawing.Point(203, 190);
+            this.lblNombre.Location = new System.Drawing.Point(203, 187);
             // 
             // rtxtDescripcion
             // 
-            this.rtxtDescripcion.Location = new System.Drawing.Point(203, 339);
+            this.rtxtDescripcion.Location = new System.Drawing.Point(203, 336);
             // 
             // txtMarca
             // 
-            this.txtMarca.Location = new System.Drawing.Point(994, 385);
+            this.txtMarca.Location = new System.Drawing.Point(994, 382);
             // 
             // txtPrecio
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(820, 248);
+            this.txtPrecio.Location = new System.Drawing.Point(820, 245);
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(203, 232);
+            this.txtNombre.Location = new System.Drawing.Point(203, 229);
+            // 
+            // lblPeso
+            // 
+            this.lblPeso.Location = new System.Drawing.Point(1002, 234);
+            // 
+            // txtPeso
+            // 
+            this.txtPeso.Location = new System.Drawing.Point(1002, 262);
             // 
             // btnAceptarEdicion
             // 
@@ -139,6 +148,8 @@ namespace Principal
             this.Name = "frmEditarProducto";
             this.Text = "EditarProducto";
             this.Load += new System.EventHandler(this.frmEditarProducto_Load);
+            this.Controls.SetChildIndex(this.lblPeso, 0);
+            this.Controls.SetChildIndex(this.txtPeso, 0);
             this.Controls.SetChildIndex(this.txtNombre, 0);
             this.Controls.SetChildIndex(this.txtPrecio, 0);
             this.Controls.SetChildIndex(this.txtMarca, 0);
@@ -151,8 +162,8 @@ namespace Principal
             this.Controls.SetChildIndex(this.cmbCategoriaProducto, 0);
             this.Controls.SetChildIndex(this.lblCategoriaAnimal, 0);
             this.Controls.SetChildIndex(this.lblCategoriaProducto, 0);
-            this.Controls.SetChildIndex(this.txtStock, 0);
-            this.Controls.SetChildIndex(this.lblStock, 0);
+            this.Controls.SetChildIndex(this.txtcantidad, 0);
+            this.Controls.SetChildIndex(this.lblcantidad, 0);
             this.Controls.SetChildIndex(this.lblCantidadProductos, 0);
             this.Controls.SetChildIndex(this.btnVolver, 0);
             this.Controls.SetChildIndex(this.label1, 0);

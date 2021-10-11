@@ -91,6 +91,8 @@ namespace Principal
             this.Name = "frmAniadirProducto";
             this.Text = "AñadirProducto";
             this.Load += new System.EventHandler(this.frmAniadirProducto_Load);
+            this.Controls.SetChildIndex(this.lblPeso, 0);
+            this.Controls.SetChildIndex(this.txtPeso, 0);
             this.Controls.SetChildIndex(this.txtNombre, 0);
             this.Controls.SetChildIndex(this.txtPrecio, 0);
             this.Controls.SetChildIndex(this.txtMarca, 0);
@@ -103,8 +105,8 @@ namespace Principal
             this.Controls.SetChildIndex(this.cmbCategoriaProducto, 0);
             this.Controls.SetChildIndex(this.lblCategoriaAnimal, 0);
             this.Controls.SetChildIndex(this.lblCategoriaProducto, 0);
-            this.Controls.SetChildIndex(this.txtStock, 0);
-            this.Controls.SetChildIndex(this.lblStock, 0);
+            this.Controls.SetChildIndex(this.txtcantidad, 0);
+            this.Controls.SetChildIndex(this.lblcantidad, 0);
             this.Controls.SetChildIndex(this.lblCantidadProductos, 0);
             this.Controls.SetChildIndex(this.btnVolver, 0);
             this.Controls.SetChildIndex(this.label1, 0);

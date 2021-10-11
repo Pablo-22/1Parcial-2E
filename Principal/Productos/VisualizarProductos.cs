@@ -23,13 +23,11 @@ namespace Principal
             DesactivarModoEdicion();
             lblCantidadProductos.Text = "/" + Almacen.Productos.Count.ToString();
             CargarCategorias();
-            CargarDatosDeProducto(IndiceActual);
+            CargarDatosDeProducto(IndiceActualProducto);
         }
 
         private void btnVender1_Click(object sender, EventArgs e)
-        {
-
-        }
+        { }
 
         private void btnEditar1_Click(object sender, EventArgs e)
         {
@@ -37,7 +35,7 @@ namespace Principal
             editar.ShowDialog();
             if (editar.DialogResult == DialogResult.OK)
             {
-                CargarDatosDeProducto(IndiceActual);
+                CargarDatosDeProducto(IndiceActualProducto);
             }
         }
 
@@ -47,20 +45,28 @@ namespace Principal
             editar.ShowDialog();
             if (editar.DialogResult == DialogResult.OK)
             {
-                CargarDatosDeProducto(IndiceActual);
+                CargarDatosDeProducto(IndiceActualProducto);
             }
         }
 
         private void btnSiguiente1_Click(object sender, EventArgs e)
         {
-            IndiceActual++;
-            CargarDatosDeProducto(IndiceActual);
+            IndiceActualProducto++;
+            CargarDatosDeProducto(IndiceActualProducto);
         }
 
         private void btnAnterior1_Click(object sender, EventArgs e)
         {
-            IndiceActual--;
-            CargarDatosDeProducto(IndiceActual);
+            IndiceActualProducto--;
+            CargarDatosDeProducto(IndiceActualProducto);
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {  }
+
+        private void txtcantidad_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

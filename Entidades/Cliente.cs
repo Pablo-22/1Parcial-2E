@@ -8,11 +8,12 @@ namespace Entidades
 {
     public class Cliente
     {
+        private int idCliente;
         private float saldo;
         private List<Venta> historialDeCompras;
         private string email;
         private string nombre;
-        private int idCliente;
+        private float distancia;
 
 
         #region Propiedades
@@ -88,6 +89,8 @@ namespace Entidades
                 }
             }
         }
+
+        public float Distancia { get => distancia; }
         #endregion Propiedades
 
 
@@ -104,7 +107,6 @@ namespace Entidades
                         exit = false;
                         break;
                     }
-                    
                 }
             }
             return exit;
@@ -112,11 +114,27 @@ namespace Entidades
 
         public Cliente(string nombre, string email, float saldo)
         {
+            var random = new Random();
+
             this.nombre = nombre;
             this.historialDeCompras = new List<Venta>();
             this.saldo = saldo;
             this.idCliente = CoreDelSistema.AsignarId();
             this.email = email;
+            this.distancia = (float)(random.NextDouble() + 1) * 10 ;
+        }
+
+
+        public Cliente(string nombre, string email, float saldo, float distancia)
+        {
+            var random = new Random();
+
+            this.nombre = nombre;
+            this.historialDeCompras = new List<Venta>();
+            this.saldo = saldo;
+            this.idCliente = CoreDelSistema.AsignarId();
+            this.email = email;
+            this.distancia = distancia;
         }
     }
 }

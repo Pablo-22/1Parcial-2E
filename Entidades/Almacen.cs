@@ -9,6 +9,14 @@ namespace Entidades
     public static class Almacen
     {
         private static List<Producto> productos;
+        private static List<Venta> ventas;
+
+        public static List<Venta> Ventas
+        {
+            get { return ventas; }
+            set { ventas = value; }
+        }
+
 
         public static List<Producto> Productos 
         { 
@@ -21,7 +29,18 @@ namespace Entidades
         static Almacen()
         {
             productos = new List<Producto>();
+            ventas = new List<Venta>();
             CargarProductos();
+            CargarVentas();
+        }
+
+        private static void CargarVentas()
+        {
+            Ventas.Add(new Venta(CoreDelSistema.Clientes[0].IdCliente, Venta.MetodoDePago.Efectivo,
+                Almacen.Productos[0]) );
+
+            Ventas.Add(new Venta(CoreDelSistema.Clientes[1].IdCliente, Venta.MetodoDePago.Efectivo,
+                Almacen.Productos[2]));
         }
 
         private static void CargarProductos()
@@ -34,24 +53,26 @@ namespace Entidades
                 CategoriaAnimal tipoDeAnimal;
                 CategoriaProducto tipoDeProducto;
                 string descripción;
-                int stock;
+                int cantidad;
             */
 
             productos.Add(new Producto("Collar", 375, "petClothes",
                 Producto.CategoriaAnimal.Perros, Producto.CategoriaProducto.Indumentaria,
                 "Un excelente collar para tu perro",
-                9));
+                9, (float)0.3));
 
             productos.Add(new Producto("A. Balanceado", 480, "Pedigree",
                 Producto.CategoriaAnimal.Perros, Producto.CategoriaProducto.Alimento,
                 "Pedigree® Adulto Etapa 2 es alimento completo y balanceado, elaborado con fibras naturales y proteínas de alta calidad para acompañar a tu perro en su etapa adulta, cubriendo las 4 necesidades universales.",
-                36));
+                36, (float)2.5));
 
             productos.Add(new Producto("Rascador", 3410, "Puppis",
                 Producto.CategoriaAnimal.Gatos, Producto.CategoriaProducto.Juguetes,
                 "Los gatos tienen un impulso natural de rascarse: la acción les ayuda a eliminar material viejo de sus garras y marcar el territorio con las glándulas olorosas de sus patas.",
-                3));
+                3, 12));
         }
+
+
 
         public static bool BuscarIndiceProducto(int index)
         {
@@ -69,5 +90,6 @@ namespace Entidades
             Productos.Add(producto);
             return Productos.IndexOf(producto);
         }
+        
     }
 }

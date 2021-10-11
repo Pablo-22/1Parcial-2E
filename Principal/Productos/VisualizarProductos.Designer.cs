@@ -36,9 +36,83 @@ namespace Principal
             this.btnSiguiente = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(777, 270);
+            // 
             // btnVolver
             // 
             this.btnVolver.FlatAppearance.BorderSize = 0;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            // 
+            // lblCantidadProductos
+            // 
+            this.lblCantidadProductos.Location = new System.Drawing.Point(647, 310);
+            // 
+            // lblcantidad
+            // 
+            this.lblcantidad.Location = new System.Drawing.Point(776, 373);
+            // 
+            // txtcantidad
+            // 
+            this.txtcantidad.Location = new System.Drawing.Point(776, 402);
+            this.txtcantidad.TextChanged += new System.EventHandler(this.txtcantidad_TextChanged);
+            // 
+            // lblCategoriaProducto
+            // 
+            this.lblCategoriaProducto.Location = new System.Drawing.Point(1002, 511);
+            // 
+            // lblCategoriaAnimal
+            // 
+            this.lblCategoriaAnimal.Location = new System.Drawing.Point(776, 511);
+            // 
+            // cmbCategoriaProducto
+            // 
+            this.cmbCategoriaProducto.Location = new System.Drawing.Point(1002, 539);
+            // 
+            // cmbCategoriaAnimal
+            // 
+            this.cmbCategoriaAnimal.Location = new System.Drawing.Point(777, 539);
+            // 
+            // lblDescripcion
+            // 
+            this.lblDescripcion.Location = new System.Drawing.Point(211, 328);
+            // 
+            // lblMarca
+            // 
+            this.lblMarca.Location = new System.Drawing.Point(1002, 373);
+            // 
+            // lblPrecio
+            // 
+            this.lblPrecio.Location = new System.Drawing.Point(776, 237);
+            // 
+            // lblNombre
+            // 
+            this.lblNombre.Location = new System.Drawing.Point(211, 207);
+            // 
+            // rtxtDescripcion
+            // 
+            this.rtxtDescripcion.Location = new System.Drawing.Point(211, 356);
+            // 
+            // txtMarca
+            // 
+            this.txtMarca.Location = new System.Drawing.Point(1002, 402);
+            // 
+            // txtPrecio
+            // 
+            this.txtPrecio.Location = new System.Drawing.Point(798, 265);
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Location = new System.Drawing.Point(211, 249);
+            // 
+            // lblPeso
+            // 
+            this.lblPeso.Location = new System.Drawing.Point(1002, 237);
+            // 
+            // txtPeso
+            // 
+            this.txtPeso.Location = new System.Drawing.Point(1002, 265);
             // 
             // btnVender
             // 
@@ -123,6 +197,8 @@ namespace Principal
             this.Name = "frmVisualizarProductos";
             this.Text = "VisualizarProductos";
             this.Load += new System.EventHandler(this.VisualizarProductos_Load);
+            this.Controls.SetChildIndex(this.lblPeso, 0);
+            this.Controls.SetChildIndex(this.txtPeso, 0);
             this.Controls.SetChildIndex(this.txtNombre, 0);
             this.Controls.SetChildIndex(this.txtPrecio, 0);
             this.Controls.SetChildIndex(this.txtMarca, 0);
@@ -135,8 +211,8 @@ namespace Principal
             this.Controls.SetChildIndex(this.cmbCategoriaProducto, 0);
             this.Controls.SetChildIndex(this.lblCategoriaAnimal, 0);
             this.Controls.SetChildIndex(this.lblCategoriaProducto, 0);
-            this.Controls.SetChildIndex(this.txtStock, 0);
-            this.Controls.SetChildIndex(this.lblStock, 0);
+            this.Controls.SetChildIndex(this.txtcantidad, 0);
+            this.Controls.SetChildIndex(this.lblcantidad, 0);
             this.Controls.SetChildIndex(this.lblCantidadProductos, 0);
             this.Controls.SetChildIndex(this.btnVolver, 0);
             this.Controls.SetChildIndex(this.label1, 0);

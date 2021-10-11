@@ -14,12 +14,13 @@ namespace Entidades
         private CategoriaAnimal tipoDeAnimal;
         private CategoriaProducto tipoDeProducto;
         private string descripcion;
-        private int stock;
+        private int cantidad;
+        private float peso;
         private int idProducto;
 
         public Producto(string nombre, float precio, string marca, 
             CategoriaAnimal tipoDeAnimal, CategoriaProducto tipoDeProducto, 
-            string descripcion, int stock)
+            string descripcion, int cantidad, float peso)
         {
             this.nombre = nombre;
             this.precio = precio;
@@ -27,8 +28,9 @@ namespace Entidades
             this.tipoDeAnimal = tipoDeAnimal;
             this.tipoDeProducto = tipoDeProducto;
             this.descripcion = descripcion;
-            this.stock = stock;
+            this.cantidad = cantidad;
             this.idProducto = CoreDelSistema.AsignarId();
+            this.peso = peso;
         }
 
         #region Propiedades
@@ -50,9 +52,10 @@ namespace Entidades
         public float Precio { get => precio; set => precio = value; }
         public string Marca { get => marca; set => marca = value; }
         public string Descripcion { get => descripcion; set => descripcion = value; }
-        public int Stock { get => stock; set => stock = value; }
+        public int Cantidad { get => cantidad; set => cantidad = value; }
         public CategoriaAnimal TipoDeAnimal { get => tipoDeAnimal; set => tipoDeAnimal = value; }
         public CategoriaProducto TipoDeProducto { get => tipoDeProducto; set => tipoDeProducto = value; }
+        public float Peso { get => peso; set => peso = value; }
         #endregion Propiedades
 
 

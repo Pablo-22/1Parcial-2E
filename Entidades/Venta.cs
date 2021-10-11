@@ -8,37 +8,86 @@ namespace Entidades
 {
     public class Venta
     {
-        float impuestos;
-        float descuentos;
-        float precioFinal;
+        int idVenta;
+        int idCliente;
+        float precioTotal;
+        float precioEnvio;
         MetodoDePago metodo;
-        List<Producto> productos;
-        DateTime FechaDeVenta;
+        Producto producto;
+        DateTime fechaDeVenta;
+        FormaDeEnvio formaDeEnvio;
 
         #region Constructor y sobrecargas
-        public Venta(float impuestos, float descuentos, float precioFinal, 
-            MetodoDePago metodo, List<Producto> productos, DateTime fechaDeVenta)
+        public Venta(int idCliente, MetodoDePago metodoPago,
+            Producto producto, DateTime fechaDeVenta)
         {
-            this.impuestos = impuestos;
-            this.descuentos = descuentos;
-            this.precioFinal = precioFinal;
-            this.metodo = metodo;
-            this.productos = productos;
-            FechaDeVenta = fechaDeVenta;
+            this.producto = producto;
+            this.metodo = metodoPago;
+            this.fechaDeVenta = fechaDeVenta;
+            idVenta = CoreDelSistema.AsignarId();
+            this.formaDeEnvio = CalcularFormaDeEnvio();
+            this.precioEnvio = ObtenerPrecioEnvio();
+            this.precioTotal = ObtenerPrecioTotal();
+            this.idCliente = idCliente;
         }
 
-        public Venta(float impuestos, float descuentos, float precioFinal, MetodoDePago metodo, List<Producto> productos) 
-            : this(impuestos, descuentos, precioFinal, metodo, productos, DateTime.Now)
+        public Venta(int idCliente, MetodoDePago metodoPago, Producto producto) 
+            : this(idCliente, metodoPago, producto, DateTime.Now)
         {  }
         #endregion Constructor y sobrecargas
 
         public enum MetodoDePago
         {
+            Efectivo,
             Debito,
             Credito,
-            Efectivo,
             MercadoPago
         }
 
+        public enum FormaDeEnvio
+        {
+            Moto = 23,
+            Miniflete = 35
+        }
+
+        private FormaDeEnvio CalcularFormaDeEnvio()
+        {
+            if (this.producto.Peso > 20 || this.producto.Cantidad > 5)
+            {
+                return FormaDeEnvio.Miniflete;
+            }
+            else
+            {
+                return FormaDeEnvio.Moto;
+            }
+        }
+
+        private float ObtenerPrecioEnvio()
+        {
+            int cliente;
+            float precioEnvio;
+
+            cliente = CoreDelSistema.BuscarClienteporId(this.idCliente);
+            precioEnvio = (float)CoreDelSistema.Clientes[cliente].Distancia * (int)this.formaDeEnvio;
+            return precioEnvio;
+        }
+
+        private float ObtenerPrecioTotal()
+        {
+            float precioTotal = this.producto.Precio * this.producto.Cantidad + ObtenerPrecioEnvio();
+            return precioTotal;
+        }
+
+
+        public override string ToString()
+        {
+            StringBuilder ticket = new StringBuilder();
+            ticket.Append("Producto: " + this.producto.Nombre);
+            ticket.Append(" - Método de pago: " + this.metodo);
+            ticket.Append(" - Fecha de venta: " + this.fechaDeVenta);
+            ticket.Append(" - Precio Total: " + this.precioTotal);
+
+            return ticket.ToString();
+        }
     }
 }

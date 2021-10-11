@@ -31,7 +31,7 @@ namespace Entidades
                 exit = true;
                 CoreDelSistema.Usuarios[index].NombreDeUsuario = nombreDeUsuario;
                 CoreDelSistema.Usuarios[index].Password = password;
-                CoreDelSistema.Usuarios[index].legajo = legajo;
+                CoreDelSistema.Usuarios[index].idUsuario = legajo;
                 CoreDelSistema.Usuarios[index].NivelDeAcceso = nivelDeAcceso;
                 CoreDelSistema.Usuarios[index].celular = celular;
             }

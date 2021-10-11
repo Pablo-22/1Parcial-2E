@@ -22,7 +22,7 @@ namespace Principal
         private void frmEditarProducto_Load(object sender, EventArgs e)
         {
             CargarCategorias();
-            CargarDatosDeProducto(IndiceActual);
+            CargarDatosDeProducto(IndiceActualProducto);
             ActivarModoEdicion();
         }
 
@@ -30,9 +30,9 @@ namespace Principal
         {
             Producto nuevoProducto = new Producto(txtNombre.Text, float.Parse(txtPrecio.Text),
                     txtMarca.Text, (Producto.CategoriaAnimal)cmbCategoriaAnimal.SelectedItem, (Producto.CategoriaProducto)cmbCategoriaProducto.SelectedItem,
-                    rtxtDescripcion.Text, int.Parse(txtStock.Text));
+                    rtxtDescripcion.Text, int.Parse(txtcantidad.Text), float.Parse(txtPeso.Text));
 
-            Almacen.Productos[IndiceActual] = nuevoProducto;
+            Almacen.Productos[IndiceActualProducto] = nuevoProducto;
 
             //Cambios visuales
             DesactivarModoEdicion();
@@ -44,8 +44,13 @@ namespace Principal
             //Cambios visuales
             DesactivarModoEdicion();
 
-            CargarDatosDeProducto(IndiceActual);
+            CargarDatosDeProducto(IndiceActualProducto);
             this.DialogResult = DialogResult.Cancel;
+        }
+
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
