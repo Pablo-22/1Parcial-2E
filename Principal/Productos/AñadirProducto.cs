@@ -27,14 +27,17 @@ namespace Principal
 
         private void btnAceptar1_Click(object sender, EventArgs e)
         {
-            //Construyo un nuevo producto a partir de los datos cargados en los campos del form.
-            Producto nuevoProducto = new Producto(txtNombre.Text, float.Parse(txtPrecio.Text),
+            if (CamposValidos() == true)
+            {
+                //Construyo un nuevo producto a partir de los datos cargados en los campos del form.
+                Producto nuevoProducto = new Producto(txtNombre.Text, float.Parse(txtPrecio.Text),
                 txtMarca.Text, (Producto.CategoriaAnimal)cmbCategoriaAnimal.SelectedItem, (Producto.CategoriaProducto)cmbCategoriaProducto.SelectedItem,
                 rtxtDescripcion.Text, int.Parse(txtcantidad.Text), float.Parse(txtPeso.Text));
 
-            //Aniadir producto devuelve el índice del producto añadido.
-            IndiceActualProducto = Almacen.AniadirProducto(nuevoProducto);
-            this.DialogResult = DialogResult.OK;
+                //Aniadir producto devuelve el índice del producto añadido.
+                IndiceActualProducto = Almacen.AniadirProducto(nuevoProducto);
+                this.DialogResult = DialogResult.OK;
+            }
 
         }
 

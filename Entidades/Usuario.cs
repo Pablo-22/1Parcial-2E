@@ -10,8 +10,8 @@ namespace Entidades
     {
         private string nombreDeUsuario;
         private string password;
-        public string celular;
-        public int idUsuario;
+        private string celular;
+        private int idUsuario;
         private ePermisos nivelDeAcceso;
 
         #region Constructor
@@ -32,6 +32,30 @@ namespace Entidades
         #endregion Constructor
 
         #region Propiedades
+        public int IdUsuario
+        {
+            get
+            {
+                return this.idUsuario;
+            }
+        }
+
+        public string Celular
+        {
+            get
+            {
+                return this.celular;
+            }
+            set
+            {
+                if (string.IsNullOrEmpty(value) == false && value.Length < 15 )
+                {
+                    this.celular = value;
+                }
+            }
+        }
+
+
         public string NombreDeUsuario
         {
             get
@@ -40,7 +64,7 @@ namespace Entidades
             }
             set
             {
-                if(CoreDelSistema.UsuarioLogueado.NivelDeAcceso == ePermisos.Administrador)
+                if(CoreDelSistema.ValidarNombre(value) == true && value != "admin")
                 {
                     this.nombreDeUsuario = value;
                 }
@@ -55,11 +79,14 @@ namespace Entidades
                 {
                     return this.password;
                 }
-                return "";
+                else
+                {
+                    return "Permisos insuficientes";
+                }
             }
             set
             {
-                if (CoreDelSistema.UsuarioLogueado.NivelDeAcceso == ePermisos.Administrador)
+                if (CoreDelSistema.ValidarContrasenia(value) == false)
                 {
                     this.password = value;
                 }

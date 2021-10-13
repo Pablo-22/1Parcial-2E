@@ -39,6 +39,16 @@ namespace Principal
         {
         }
 
+        protected bool CamposValidos()
+        {
+            if ( txtNombre.Text == "" || txtPrecio.Text == "" || txtMarca.Text == "" 
+                 || rtxtDescripcion.Text == "" ||txtcantidad.Text == "" || cmbCategoriaAnimal.Text == ""
+                 || cmbCategoriaProducto.Text == "" ||txtPeso.Text == "" )
+            {
+                return false;
+            }
+            return true;
+        }
 
 
 

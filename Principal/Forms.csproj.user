@@ -37,8 +37,5 @@
     <Compile Update="Ventas\Ventas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Ventas\VisualizarVentas.cs">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
 </Project>

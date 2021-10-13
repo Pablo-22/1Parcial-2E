@@ -33,13 +33,16 @@ namespace Principal
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            ModoEdicion(false);
-            Cliente nuevaVenta = new Cliente(txtNombre.Text, txtEmail.Text, 
-                                             float.Parse(txtSaldo.Text), float.Parse(txtDistancia.Text));
+            if (CamposValidos() == true)
+            {
+                ModoEdicion(false);
+                Cliente nuevaVenta = new Cliente(txtNombre.Text, txtEmail.Text, 
+                                                 float.Parse(txtSaldo.Text), float.Parse(txtDistancia.Text));
 
-            CoreDelSistema.Clientes[IndiceActualCliente] = nuevaVenta;
+                CoreDelSistema.Clientes[IndiceActualCliente] = nuevaVenta;
 
-            this.DialogResult = DialogResult.OK;
+                this.DialogResult = DialogResult.OK;
+            }
         }
     }
 }

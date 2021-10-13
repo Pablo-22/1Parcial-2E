@@ -56,7 +56,7 @@ namespace Entidades
             set
             {
                 if (CoreDelSistema.UsuarioLogueado.NivelDeAcceso == Usuario.ePermisos.Administrador 
-                    && ValidarNombre(value) == true)
+                    && CoreDelSistema.ValidarNombre(value) == true)
                 {
                     this.nombre = value;
                 }
@@ -94,24 +94,6 @@ namespace Entidades
         #endregion Propiedades
 
 
-        private bool ValidarNombre(string nombre)
-        {
-            bool exit = false;
-            if (string.IsNullOrEmpty(nombre) == false)
-            {
-                for (int i = 0; i < nombre.Length; i++)
-                {
-                    exit = true;
-                    if (char.IsDigit(nombre[i]) == true)
-                    {
-                        exit = false;
-                        break;
-                    }
-                }
-            }
-            return exit;
-        }
-
         public Cliente(string nombre, string email, float saldo)
         {
             var random = new Random();
@@ -135,6 +117,17 @@ namespace Entidades
             this.idCliente = CoreDelSistema.AsignarId();
             this.email = email;
             this.distancia = distancia;
+        }
+
+
+        public override string ToString()
+        {
+            StringBuilder cliente = new StringBuilder();
+            cliente.Append("Nombre: " + this.Nombre);
+            cliente.Append("    ||    Saldo: $" + this.Saldo);
+            cliente.Append("    ||    Email: " + this.Email);
+
+            return cliente.ToString();
         }
     }
 }

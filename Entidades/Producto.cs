@@ -99,5 +99,15 @@ namespace Entidades
         }
 
 
+        public override string ToString()
+        {
+            StringBuilder producto = new StringBuilder();
+            producto.Append("Nombre: " + this.Nombre);
+            producto.Append("    ||    Marca: " + this.Marca);
+            producto.Append("    ||    Precio: " + this.Precio);
+            producto.Append("    ||    Stock: " + this.Cantidad);
+
+            return producto.ToString();
+        }
     }
 }

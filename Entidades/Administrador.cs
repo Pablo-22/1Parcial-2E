@@ -12,10 +12,6 @@ namespace Entidades
             : base(nombreDeUsuario, password, celular, ePermisos.Administrador)
         { }
 
-        public Administrador(string nombreDeUsuario, string password, string celular, int id)
-            : base(nombreDeUsuario, password, celular, ePermisos.Administrador, id)
-        { }
-
         private bool AltaUsuario()
         {
 
@@ -31,9 +27,8 @@ namespace Entidades
                 exit = true;
                 CoreDelSistema.Usuarios[index].NombreDeUsuario = nombreDeUsuario;
                 CoreDelSistema.Usuarios[index].Password = password;
-                CoreDelSistema.Usuarios[index].idUsuario = legajo;
                 CoreDelSistema.Usuarios[index].NivelDeAcceso = nivelDeAcceso;
-                CoreDelSistema.Usuarios[index].celular = celular;
+                CoreDelSistema.Usuarios[index].Celular = celular;
             }
             return exit;
         }

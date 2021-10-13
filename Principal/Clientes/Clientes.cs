@@ -85,6 +85,15 @@ namespace Principal
             txtDistancia.ReadOnly = soloLectura;
         }
 
+        protected bool CamposValidos()
+        {
+            if (txtNombre.Text == "" || txtEmail.Text == "" || txtSaldo.Text == "" || txtDistancia.Text == "")
+            {
+                return false;
+            }
+            return true;
+        }
+
 
         /// <summary>
         /// Si encuentra producto en el índice pasado, carga todos los datos del producto en el form

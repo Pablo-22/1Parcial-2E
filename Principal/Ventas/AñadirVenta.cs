@@ -7,19 +7,105 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Entidades;
 
 namespace Principal
 {
-    public partial class frmAñadirVenta : Form
+    public partial class frmAniadirVenta : Form
     {
-        public frmAñadirVenta()
+        public frmAniadirVenta()
         {
             InitializeComponent();
         }
 
+        private void CargarListas()
+        {
+            lstClientes.DataSource = CoreDelSistema.Clientes;
+            lstProductos.DataSource = Almacen.Productos;
+
+            lstClientes.Refresh();
+            lstProductos.Refresh();
+        }
+
+        private bool CamposValidos()
+        {
+            if (cmbMetodoDePago.Text == "" || dateFechaDeVenta.Value > DateTime.Now)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private void CargarMetodosDePago()
+        {
+            var metodosDePago = Enum.GetNames(typeof(Venta.MetodoDePago)).Length;
+
+            for (int i = 0; i < metodosDePago; i++)
+            {
+                cmbMetodoDePago.Items.Add((Venta.MetodoDePago)i);
+            }
+        }
+
+        private void AjustarCantidad()
+        {
+            int nuevoValor = 1;
+            Producto productoExtraido = (Producto)lstProductos.SelectedItem;
+
+            if (productoExtraido.Cantidad < numCantidadDeUnidades.Value)
+            {
+                nuevoValor = productoExtraido.Cantidad;
+            }
+            else
+            {
+                if (numCantidadDeUnidades.Value < 1)
+                {
+                    numCantidadDeUnidades.Value = nuevoValor;
+                }
+            }
+        }
+
         private void frmAñadirVenta_Load(object sender, EventArgs e)
         {
+            CargarListas();
+            CargarMetodosDePago();
+        }
 
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void numCantidadDeUnidades_ValueChanged(object sender, EventArgs e)
+        {
+            AjustarCantidad();
+        }
+
+        private void lstProductos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AjustarCantidad();
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            if (CamposValidos() == true)
+            {
+                Cliente clienteExtraido = (Cliente)lstClientes.SelectedItem;
+
+                Producto productoExtraido = (Producto)lstProductos.SelectedItem;
+                productoExtraido.Cantidad = (int)numCantidadDeUnidades.Value;
+
+                Venta venta = new Venta(clienteExtraido.IdCliente, (Venta.MetodoDePago)cmbMetodoDePago.SelectedItem, productoExtraido, dateFechaDeVenta.Value);
+                clienteExtraido.Saldo -= venta.PrecioTotal;
+
+                CoreDelSistema.Clientes[CoreDelSistema.BuscarClienteporId(clienteExtraido.IdCliente)] = clienteExtraido;
+            
+                Almacen.Ventas.Add(venta);
+                this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("Dato/s inválido/s - Por favor, intente nuevamente", "Error", MessageBoxButtons.OK , MessageBoxIcon.Error);
+            }
         }
     }
 }

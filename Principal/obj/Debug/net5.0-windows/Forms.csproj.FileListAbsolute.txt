@@ -28,6 +28,5 @@ D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Principal\obj\Debug
 D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Principal\obj\Debug\net5.0-windows\Principal.frmVisualizarClientes.resources
 D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Principal\obj\Debug\net5.0-windows\Principal.frmAniadirCliente.resources
 D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Principal\obj\Debug\net5.0-windows\Principal.frmEditarCliente.resources
-D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Principal\obj\Debug\net5.0-windows\Principal.frmAñadirVenta.resources
 D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Principal\obj\Debug\net5.0-windows\Principal.frmVentasBase.resources
-D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Principal\obj\Debug\net5.0-windows\Principal.frmVisualizarVentas.resources
+D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Principal\obj\Debug\net5.0-windows\Principal.frmAniadirVenta.resources

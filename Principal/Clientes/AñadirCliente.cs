@@ -25,10 +25,13 @@ namespace Principal
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Cliente nuevaVenta = new Cliente(txtNombre.Text, txtEmail.Text, float.Parse(txtSaldo.Text));
+            if (CamposValidos() == true)
+            {
+                Cliente nuevaVenta = new Cliente(txtNombre.Text, txtEmail.Text, float.Parse(txtSaldo.Text));
 
-            IndiceActualCliente = CoreDelSistema.AniadirCliente(nuevaVenta);
-            this.DialogResult = DialogResult.OK;
+                IndiceActualCliente = CoreDelSistema.AniadirCliente(nuevaVenta);
+                this.DialogResult = DialogResult.OK;
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

@@ -21,6 +21,37 @@ namespace Principal
         private void frmVentas_Load(object sender, EventArgs e)
         {
             lstVentas.DataSource = Almacen.Ventas;
+            lstVentas.Refresh();
+        }
+
+        private void btnNuevaVenta_Click(object sender, EventArgs e)
+        {
+            frmAniadirVenta editar = new frmAniadirVenta();
+            editar.ShowDialog();
+            if (editar.DialogResult == DialogResult.OK)
+            {
+                lstVentas.DataSource = null;
+                lstVentas.DataSource = Almacen.Ventas;
+                lstVentas.Refresh();
+            }
+        }
+
+        private void btnEliminarVenta_Click(object sender, EventArgs e)
+        {
+            int indiceDeLaVentaAExtraer;
+            Venta ventaExtraida = (Venta)lstVentas.SelectedItem;
+            indiceDeLaVentaAExtraer = Almacen.BuscarVentaporId(ventaExtraida.IdVenta);
+            Almacen.Ventas.RemoveAt(indiceDeLaVentaAExtraer);
+            lstVentas.DataSource = null;
+            lstVentas.DataSource = Almacen.Ventas;
+            lstVentas.Refresh();
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmMenuPrincipal menu = new frmMenuPrincipal();
+            menu.Show();
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Principal
 
         private void frmMenuPrincipal_Load(object sender, EventArgs e)
         {
-            if (CoreDelSistema.UsuarioLogueado.idUsuario == -1)
+            if (CoreDelSistema.UsuarioLogueado.NombreDeUsuario == "admin")
             {
                 sesionCerrada();
             }

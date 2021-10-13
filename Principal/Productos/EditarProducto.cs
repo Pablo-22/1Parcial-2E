@@ -28,15 +28,18 @@ namespace Principal
 
         private void btnAceptarEdicion_Click(object sender, EventArgs e)
         {
-            Producto nuevoProducto = new Producto(txtNombre.Text, float.Parse(txtPrecio.Text),
-                    txtMarca.Text, (Producto.CategoriaAnimal)cmbCategoriaAnimal.SelectedItem, (Producto.CategoriaProducto)cmbCategoriaProducto.SelectedItem,
-                    rtxtDescripcion.Text, int.Parse(txtcantidad.Text), float.Parse(txtPeso.Text));
+            if (CamposValidos() == true)
+            {
+                Producto nuevoProducto = new Producto(txtNombre.Text, float.Parse(txtPrecio.Text),
+                        txtMarca.Text, (Producto.CategoriaAnimal)cmbCategoriaAnimal.SelectedItem, (Producto.CategoriaProducto)cmbCategoriaProducto.SelectedItem,
+                        rtxtDescripcion.Text, int.Parse(txtcantidad.Text), float.Parse(txtPeso.Text));
 
-            Almacen.Productos[IndiceActualProducto] = nuevoProducto;
+                Almacen.Productos[IndiceActualProducto] = nuevoProducto;
 
-            //Cambios visuales
-            DesactivarModoEdicion();
-            this.DialogResult = DialogResult.OK;
+                //Cambios visuales
+                DesactivarModoEdicion();
+                this.DialogResult = DialogResult.OK;
+            }
         }
 
         private void btnCancelarEdicion_Click(object sender, EventArgs e)

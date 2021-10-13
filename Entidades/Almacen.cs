@@ -14,7 +14,6 @@ namespace Entidades
         public static List<Venta> Ventas
         {
             get { return ventas; }
-            set { ventas = value; }
         }
 
 
@@ -39,8 +38,11 @@ namespace Entidades
             Ventas.Add(new Venta(CoreDelSistema.Clientes[0].IdCliente, Venta.MetodoDePago.Efectivo,
                 Almacen.Productos[0]) );
 
-            Ventas.Add(new Venta(CoreDelSistema.Clientes[1].IdCliente, Venta.MetodoDePago.Efectivo,
+            Ventas.Add(new Venta(CoreDelSistema.Clientes[1].IdCliente, Venta.MetodoDePago.Credito,
                 Almacen.Productos[2]));
+
+            Ventas.Add(new Venta(CoreDelSistema.Clientes[2].IdCliente, Venta.MetodoDePago.Debito,
+                Almacen.Productos[1]));
         }
 
         private static void CargarProductos()
@@ -90,6 +92,20 @@ namespace Entidades
             Productos.Add(producto);
             return Productos.IndexOf(producto);
         }
-        
+
+        public static int BuscarVentaporId(int id)
+        {
+            int exit = -1;
+            for (int i = 0; i < Almacen.Ventas.Count; i++)
+            {
+                if (Almacen.Ventas[i].IdVenta == id)
+                {
+                    exit = i;
+                    break;
+                }
+            }
+            return exit;
+        }
+
     }
 }

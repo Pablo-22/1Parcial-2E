@@ -31,6 +31,8 @@ namespace Principal
         {
             this.btnAceptarEdicion = new System.Windows.Forms.Button();
             this.btnCancelarEdicion = new System.Windows.Forms.Button();
+            this.lblSubTitulo = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -138,11 +140,35 @@ namespace Principal
             this.btnCancelarEdicion.UseVisualStyleBackColor = false;
             this.btnCancelarEdicion.Click += new System.EventHandler(this.btnCancelarEdicion_Click);
             // 
+            // lblSubTitulo
+            // 
+            this.lblSubTitulo.AutoSize = true;
+            this.lblSubTitulo.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblSubTitulo.ForeColor = System.Drawing.Color.DarkCyan;
+            this.lblSubTitulo.Location = new System.Drawing.Point(212, 121);
+            this.lblSubTitulo.Name = "lblSubTitulo";
+            this.lblSubTitulo.Size = new System.Drawing.Size(598, 23);
+            this.lblSubTitulo.TabIndex = 71;
+            this.lblSubTitulo.Text = "Modifique los datos que desee y presione aceptar para modificar el producto.";
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Calibri", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTitulo.ForeColor = System.Drawing.Color.DarkCyan;
+            this.lblTitulo.Location = new System.Drawing.Point(203, 43);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(443, 78);
+            this.lblTitulo.TabIndex = 70;
+            this.lblTitulo.Text = "Editar producto";
+            // 
             // frmEditarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1344, 729);
+            this.Controls.Add(this.lblSubTitulo);
+            this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.btnCancelarEdicion);
             this.Controls.Add(this.btnAceptarEdicion);
             this.Name = "frmEditarProducto";
@@ -169,6 +195,8 @@ namespace Principal
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.btnAceptarEdicion, 0);
             this.Controls.SetChildIndex(this.btnCancelarEdicion, 0);
+            this.Controls.SetChildIndex(this.lblTitulo, 0);
+            this.Controls.SetChildIndex(this.lblSubTitulo, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,5 +206,7 @@ namespace Principal
 
         private System.Windows.Forms.Button btnAceptarEdicion;
         private System.Windows.Forms.Button btnCancelarEdicion;
+        private System.Windows.Forms.Label lblSubTitulo;
+        private System.Windows.Forms.Label lblTitulo;
     }
 }

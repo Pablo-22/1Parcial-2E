@@ -32,6 +32,8 @@ namespace Principal
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAutocompletar = new System.Windows.Forms.Button();
+            this.lblSubTitulo = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnVolver
@@ -80,11 +82,35 @@ namespace Principal
             this.btnAutocompletar.UseVisualStyleBackColor = true;
             this.btnAutocompletar.Click += new System.EventHandler(this.btnAutocompletar_Click);
             // 
+            // lblSubTitulo
+            // 
+            this.lblSubTitulo.AutoSize = true;
+            this.lblSubTitulo.Font = new System.Drawing.Font("Calibri Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblSubTitulo.ForeColor = System.Drawing.Color.DarkCyan;
+            this.lblSubTitulo.Location = new System.Drawing.Point(220, 142);
+            this.lblSubTitulo.Name = "lblSubTitulo";
+            this.lblSubTitulo.Size = new System.Drawing.Size(465, 23);
+            this.lblSubTitulo.TabIndex = 71;
+            this.lblSubTitulo.Text = "Complete los datos para añadir un nuevo producto a la lista.";
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Calibri", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTitulo.ForeColor = System.Drawing.Color.DarkCyan;
+            this.lblTitulo.Location = new System.Drawing.Point(211, 64);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(547, 78);
+            this.lblTitulo.TabIndex = 70;
+            this.lblTitulo.Text = "Añadir un producto";
+            // 
             // frmAniadirProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1360, 768);
+            this.Controls.Add(this.lblSubTitulo);
+            this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.btnAutocompletar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
@@ -113,6 +139,8 @@ namespace Principal
             this.Controls.SetChildIndex(this.btnAceptar, 0);
             this.Controls.SetChildIndex(this.btnCancelar, 0);
             this.Controls.SetChildIndex(this.btnAutocompletar, 0);
+            this.Controls.SetChildIndex(this.lblTitulo, 0);
+            this.Controls.SetChildIndex(this.lblSubTitulo, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -123,5 +151,7 @@ namespace Principal
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAutocompletar;
+        private System.Windows.Forms.Label lblSubTitulo;
+        private System.Windows.Forms.Label lblTitulo;
     }
 }
