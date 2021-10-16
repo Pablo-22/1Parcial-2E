@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public static class CoreDelSistema
+    public static class Core
     {
         //static List<Usuario> usuarios;
         static int ultimoIdGenerado;
@@ -20,11 +20,11 @@ namespace Entidades
         { 
             get
             {
-                return CoreDelSistema.usuarioLogueado;
+                return Core.usuarioLogueado;
             }
             set
             {
-                CoreDelSistema.usuarioLogueado = value;
+                Core.usuarioLogueado = value;
             }
         }
 
@@ -32,12 +32,12 @@ namespace Entidades
         { 
             get
             {
-                return CoreDelSistema.clientes;
+                return Core.clientes;
             }
         }
 
 
-        static CoreDelSistema()
+        static Core()
         {
             Usuarios = new List<Usuario>();
             clientes = new List<Cliente>();
@@ -51,39 +51,44 @@ namespace Entidades
         #region Hardcodeo
         private static void CargarUsuarios()
         {
-            CoreDelSistema.Usuarios.Add(new Empleado("Pablo", "pass123"));
+            Core.Usuarios.Add(new Administrador("Pablo", "pass123"));
+            Core.Usuarios.Add(new Empleado("Juan", "password"));
+            Core.Usuarios.Add(new Administrador("Daniela", "contra"));
+            Core.Usuarios.Add(new Administrador("Sofía", "pass000"));
+            Core.Usuarios.Add(new Empleado("Ramiro", "pass999"));
         }
 
         private static void CargarClientes()
         {
-            CoreDelSistema.Clientes.Add(new Cliente("Julio", "julioribera@gmail.com", 2400));
-            CoreDelSistema.Clientes.Add(new Cliente("Pedro", "pedro@gmail.com", 3605));
-            CoreDelSistema.Clientes.Add(new Cliente("Domingo", "domingofaustino@gmail.com", 2400));
-            CoreDelSistema.Clientes.Add(new Cliente("Domingo", "diegoarmando@gmail.com", 3893));
+            Core.Clientes.Add(new Cliente("Julio", "julioribera@gmail.com", 2400));
+            Core.Clientes.Add(new Cliente("Pedro", "pedro@gmail.com", 3605));
+            Core.Clientes.Add(new Cliente("Domingo", "domingofaustino@gmail.com", 2400));
+            Core.Clientes.Add(new Cliente("Domingo", "diegoarmando@gmail.com", 3893));
         }
         #endregion Hardcodeo
 
         public static int AsignarId()
         {
-            return CoreDelSistema.ultimoIdGenerado++;
+            return Core.ultimoIdGenerado++;
         }
 
         public static bool LoguearUsuario(string nombreDeUsuario, string password)
         {
             bool exit = false;
 
-            if (string.IsNullOrEmpty(nombreDeUsuario) == false
-                && string.IsNullOrEmpty(password) == false)
+            foreach (Usuario item in Core.Usuarios)
             {
-                foreach (Usuario item in CoreDelSistema.Usuarios)
+                if (item.NombreDeUsuario == nombreDeUsuario && item.Password == password)
                 {
-                    if (item.NombreDeUsuario == nombreDeUsuario && item.Password == password)
-                    {
-                        usuarioLogueado = item;
-                        exit = true;
-                    }
+                    usuarioLogueado = item;
+                    exit = true;
                 }
             }
+            if (exit == false)
+            {
+                throw new UsuarioInvalidoExcepcion();
+            }
+
             return exit;
         }
 
@@ -94,9 +99,9 @@ namespace Entidades
             newUser.NombreDeUsuario = nombreDeUsuario;
             newUser.Password = password;
 
-            if (TienePropiedadesNulas(newUser) == false && !CoreDelSistema.Usuarios.Contains(newUser))
+            if (TienePropiedadesNulas(newUser) == false && !Core.Usuarios.Contains(newUser))
             {
-                CoreDelSistema.GuardarUsuario(newUser);
+                Core.GuardarUsuario(newUser);
                 exit = true;
             }
             return exit;
@@ -107,9 +112,9 @@ namespace Entidades
         public static int BuscarClienteporId(int id)
         {
             int exit = -1;
-            for (int i = 0; i < CoreDelSistema.Clientes.Count; i++)
+            for (int i = 0; i < Core.Clientes.Count; i++)
             {
-                if (CoreDelSistema.Clientes[i].IdCliente == id)
+                if (Core.Clientes[i].IdCliente == id)
                 {
                     exit = i;
                     break;
@@ -123,7 +128,7 @@ namespace Entidades
         {
             bool exit = false;
 
-            if (CoreDelSistema.Clientes.ElementAtOrDefault(index) != default)
+            if (Core.Clientes.ElementAtOrDefault(index) != default)
             {
                 exit = true;
             }
@@ -135,9 +140,9 @@ namespace Entidades
         {
             List<int> indiceDeNombresEncontrados = new List<int>();
 
-            for (int i = 0; i < CoreDelSistema.Clientes.Count; i++)
+            for (int i = 0; i < Core.Clientes.Count; i++)
             {
-                if (CoreDelSistema.Clientes[i].Nombre == nombre)
+                if (Core.Clientes[i].Nombre == nombre)
                 {
                     indiceDeNombresEncontrados.Add(i);
                 }
@@ -148,14 +153,14 @@ namespace Entidades
 
         public static int GuardarCliente(Cliente cliente)
         {
-            CoreDelSistema.Clientes.Add(cliente);
-            return CoreDelSistema.Clientes.IndexOf(cliente);
+            Core.Clientes.Add(cliente);
+            return Core.Clientes.IndexOf(cliente);
         }
 
         public static int GuardarUsuario(Usuario usuario)
         {
-            CoreDelSistema.Usuarios.Add(usuario);
-            return CoreDelSistema.Usuarios.IndexOf(usuario);
+            Core.Usuarios.Add(usuario);
+            return Core.Usuarios.IndexOf(usuario);
         }
 
 

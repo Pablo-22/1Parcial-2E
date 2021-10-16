@@ -8,15 +8,15 @@ namespace Tests
         static void Main(string[] args)
         {
 
-            if(CoreDelSistema.UsuarioLogueado is Administrador)
+            if(Core.UsuarioLogueado is Administrador)
             {
-                Administrador newUser = (Administrador)CoreDelSistema.UsuarioLogueado;
-                newUser.NuevoCliente();
+                Administrador newUser = (Administrador)Core.UsuarioLogueado;
+                newUser.ExportarVenta(Almacen.Ventas[0]);
             }
-            else if(CoreDelSistema.UsuarioLogueado is Empleado)
+            else if(Core.UsuarioLogueado is Empleado)
             {
-                Empleado newUser = (Empleado)CoreDelSistema.UsuarioLogueado;
-                newUser.NuevoCliente();
+                Empleado newUser = (Empleado)Core.UsuarioLogueado;
+                newUser.ExportarVenta(Almacen.Ventas[0]);
             }
         }
     }

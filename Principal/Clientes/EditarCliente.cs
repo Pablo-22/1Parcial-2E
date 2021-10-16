@@ -35,13 +35,15 @@ namespace Principal
         {
             if (CamposRellenos() == true)
             {
-                ModoEdicion(false);
-                Cliente nuevaVenta = new Cliente(txtNombre.Text, txtEmail.Text, 
-                                                 float.Parse(txtSaldo.Text), float.Parse(txtDistancia.Text));
+                Cliente nuevoCliente = new Cliente(float.Parse(txtDistancia.Text));
+                if (nuevoCliente.ValidarTodoCliente(txtNombre.Text, txtEmail.Text, txtSaldo.Text) == true)
+                {
+                    nuevoCliente.SetearTodoCliente(txtNombre.Text, txtEmail.Text, float.Parse(txtSaldo.Text));
 
-                CoreDelSistema.Clientes[IndiceActualCliente] = nuevaVenta;
-
-                this.DialogResult = DialogResult.OK;
+                    Core.Clientes[IndiceActualCliente] = nuevoCliente;
+                    ModoEdicion(false);
+                    this.DialogResult = DialogResult.OK;
+                }
             }
         }
     }

@@ -28,11 +28,12 @@ namespace Principal
             if (CamposRellenos() == true)
             {
                 Cliente nuevoCliente = new Cliente();
-                if (nuevoCliente.ValidarTodoCliente(txtNombre.Text, txtEmail.Text, txtSaldo.Text) )
+                if (nuevoCliente.ValidarTodoCliente(txtNombre.Text, txtEmail.Text, txtSaldo.Text) == true )
                 {
                     nuevoCliente.SetearTodoCliente(txtNombre.Text, txtEmail.Text, float.Parse(txtSaldo.Text));
 
-                    IndiceActualCliente = CoreDelSistema.GuardarCliente(nuevoCliente);
+                    IndiceActualCliente = Core.GuardarCliente(nuevoCliente);
+                    ModoEdicion(false);
                     this.DialogResult = DialogResult.OK;
                 }
             }

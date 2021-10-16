@@ -1,8 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Entidades
 {
@@ -12,7 +14,7 @@ namespace Entidades
             : base(nombreDeUsuario, password)
         { }
 
-        public Empleado() :base()
+        public Empleado() : base()
         { }
 
         public string EditarProducto()
@@ -37,5 +39,45 @@ namespace Entidades
             Console.WriteLine("Desde Empleado");
         }
 
+        protected virtual string UsuarioAFormatoCsv(Usuario usuarioAConvertir)
+        {
+            string permisos = "Empleado";
+            StringBuilder usuario = new StringBuilder();
+            usuario.Append(usuarioAConvertir.IdUsuario + ",");
+            usuario.Append(usuarioAConvertir.NombreDeUsuario + ",");
+            if (usuarioAConvertir is Administrador)
+            {
+                permisos = "Administrador";
+            }
+            usuario.Append(permisos);
+
+            return usuario.ToString();
+        }
+
+        protected virtual string UsuariosAFormatoCsv()
+        {
+            StringBuilder usuarios = new StringBuilder();
+            usuarios.AppendLine("Id,Nombre,Permisos");
+            foreach (Usuario item in Core.Usuarios)
+            {
+                usuarios.AppendLine(UsuarioAFormatoCsv(item));
+            }
+            return usuarios.ToString();
+        }
+
+
+        public virtual void ExportarUsuarios()
+        {
+            string rutaCompleta = @"datos-de-usuarios.csv";
+            string texto = this.UsuariosAFormatoCsv();
+            File.WriteAllText(rutaCompleta, texto);
+        }
+
+        public virtual void ExportarVenta(Venta venta)
+        {
+            string rutaCompleta = @"ticket-de-compra.txt";
+            string texto = venta.TicketDeCompra();
+            File.WriteAllText(rutaCompleta, texto);
+        }
     }
 }

@@ -35,13 +35,13 @@ namespace Entidades
 
         private static void CargarVentas()
         {
-            Ventas.Add(new Venta(CoreDelSistema.Clientes[0].IdCliente, Venta.MetodoDePago.Efectivo,
+            Ventas.Add(new Venta(Core.Clientes[0].IdCliente, Venta.MetodoDePago.Efectivo,
                 Almacen.Productos[0]) );
 
-            Ventas.Add(new Venta(CoreDelSistema.Clientes[1].IdCliente, Venta.MetodoDePago.Credito,
+            Ventas.Add(new Venta(Core.Clientes[1].IdCliente, Venta.MetodoDePago.Credito,
                 Almacen.Productos[2]));
 
-            Ventas.Add(new Venta(CoreDelSistema.Clientes[2].IdCliente, Venta.MetodoDePago.Debito,
+            Ventas.Add(new Venta(Core.Clientes[2].IdCliente, Venta.MetodoDePago.Debito,
                 Almacen.Productos[1]));
         }
 
@@ -102,7 +102,7 @@ namespace Entidades
 
 
 
-        public static int BuscarVentaporId(int id)
+        public static int BuscarVentaPorId(int id)
         {
             int exit = -1;
             for (int i = 0; i < Almacen.Ventas.Count; i++)
@@ -114,6 +114,31 @@ namespace Entidades
                 }
             }
             return exit;
+        }
+
+        public static int BuscarProductoPorId(int id)
+        {
+            int exit = -1;
+            for (int i = 0; i < Almacen.Productos.Count; i++)
+            {
+                if (Almacen.Productos[i].IdProducto == id)
+                {
+                    exit = i;
+                    break;
+                }
+            }
+            return exit;
+        }
+
+
+
+        public static void ConfirmarCondicionesDeVenta(int idCliente, Venta venta)
+        {
+            if (Core.Clientes[Core.BuscarClienteporId(idCliente)].Saldo 
+                - venta.PrecioTotal < 0 )
+            {
+                throw new Exception("Dinero insuficiente");
+            }
         }
 
     }

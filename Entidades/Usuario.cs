@@ -17,18 +17,18 @@ namespace Entidades
         {
             this.nombreDeUsuario = null;
             this.password = null;
-            this.idUsuario = CoreDelSistema.AsignarId();
+            this.idUsuario = Core.AsignarId();
         }
 
         public Usuario(string nombreDeUsuario, string password)
         {
             this.nombreDeUsuario = nombreDeUsuario;
             this.password = password;
-            this.idUsuario = CoreDelSistema.AsignarId();
+            this.idUsuario = Core.AsignarId();
         }
 
         public Usuario(string nombreDeUsuario, string password, string celular, int id)
-            :this(nombreDeUsuario, password)
+            : this(nombreDeUsuario, password)
         {
             this.idUsuario = id;
         }
@@ -53,7 +53,7 @@ namespace Entidades
             }
             set
             {
-                if(this.ValidarNombre(value) == true)
+                if (this.ValidarNombre(value) == true)
                 {
                     this.nombreDeUsuario = value;
                 }
@@ -64,14 +64,7 @@ namespace Entidades
         {
             get
             {
-                if (CoreDelSistema.UsuarioLogueado is Administrador)
-                {
-                    return this.password;
-                }
-                else
-                {
-                    return "Permisos insuficientes";
-                }
+                return this.password;
             }
             set
             {
@@ -86,7 +79,7 @@ namespace Entidades
 
         private bool ValidarNombre(string nombre)
         {
-            if (CoreDelSistema.ValidarLetras(password) == true && nombre != "admin" && nombre.Length < 20)
+            if (Core.ValidarLetras(password) == true && nombre != "admin" && nombre.Length < 20)
             {
                 return true;
             }
@@ -102,6 +95,6 @@ namespace Entidades
             }
             return false;
         }
-
     }
 }
+

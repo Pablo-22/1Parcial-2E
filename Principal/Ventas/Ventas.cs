@@ -40,7 +40,7 @@ namespace Principal
         {
             int indiceDeLaVentaAExtraer;
             Venta ventaExtraida = (Venta)lstVentas.SelectedItem;
-            indiceDeLaVentaAExtraer = Almacen.BuscarVentaporId(ventaExtraida.IdVenta);
+            indiceDeLaVentaAExtraer = Almacen.BuscarVentaPorId(ventaExtraida.IdVenta);
             Almacen.Ventas.RemoveAt(indiceDeLaVentaAExtraer);
             lstVentas.DataSource = null;
             lstVentas.DataSource = Almacen.Ventas;

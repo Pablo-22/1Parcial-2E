@@ -97,9 +97,9 @@ namespace Principal
             this.lblSubTitulo.ForeColor = System.Drawing.Color.DarkCyan;
             this.lblSubTitulo.Location = new System.Drawing.Point(47, 182);
             this.lblSubTitulo.Name = "lblSubTitulo";
-            this.lblSubTitulo.Size = new System.Drawing.Size(592, 23);
+            this.lblSubTitulo.Size = new System.Drawing.Size(553, 23);
             this.lblSubTitulo.TabIndex = 71;
-            this.lblSubTitulo.Text = "Aquí puede visualizar todas las ventas realizadas, eliminarlas o añadir nuevas.";
+            this.lblSubTitulo.Text = "Puede visualizar todas las ventas realizadas, eliminarlas o añadir nuevas.";
             // 
             // lblTitulo
             // 

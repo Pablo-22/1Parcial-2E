@@ -51,6 +51,7 @@ namespace Entidades
         public MetodoDePago FormaDePago { get => metodo; set => metodo = value; }
         public DateTime FechaDeVenta { get => fechaDeVenta; set => fechaDeVenta = value; }
         public FormaDeEnvio MetodoDeEnvio { get => formaDeEnvio; set => formaDeEnvio = value; }
+        public float PrecioEnvio { get => precioEnvio; set => precioEnvio = value; }
 
         #region Constructor y sobrecargas
         public Venta(int idCliente, MetodoDePago metodoPago,
@@ -59,7 +60,7 @@ namespace Entidades
             this.producto = producto;
             this.metodo = metodoPago;
             this.fechaDeVenta = fechaDeVenta;
-            idVenta = CoreDelSistema.AsignarId();
+            idVenta = Core.AsignarId();
             this.formaDeEnvio = CalcularFormaDeEnvio();
             this.idCliente = idCliente;
             this.precioEnvio = ObtenerPrecioEnvio();
@@ -102,8 +103,8 @@ namespace Entidades
             int cliente;
             float precioEnvio = 0;
 
-            cliente = CoreDelSistema.BuscarClienteporId(this.idCliente);
-            precioEnvio = (float)CoreDelSistema.Clientes[cliente].Distancia * (int)this.formaDeEnvio;
+            cliente = Core.BuscarClienteporId(this.idCliente);
+            precioEnvio = (float)Core.Clientes[cliente].Distancia * (int)this.formaDeEnvio;
             return precioEnvio;
         }
 
@@ -116,12 +117,15 @@ namespace Entidades
 
         public override string ToString()
         {
+
             StringBuilder ticket = new StringBuilder();
             ticket.Append("Producto: " + this.producto.Nombre);
+            ticket.Append("    ||    Cantidad: " + this.producto.Cantidad);
             ticket.Append("    ||    Precio Total: $" + this.precioTotal);
             ticket.Append("    ||    Método de pago: " + this.metodo);
-            ticket.Append("    ||    Fecha de venta: " + this.fechaDeVenta);
-            ticket.Append("    ||    Cliente: " + this.idCliente);
+            ticket.Append("    ||    Fecha de venta: " + this.fechaDeVenta.ToShortDateString() );
+            ticket.Append("    ||    Cliente: " + Core.Clientes[Core.BuscarClienteporId
+                                                                    (this.IdCliente)].Nombre);
             ticket.Append("    ||    Forma de envío: " + this.formaDeEnvio);
 
             return ticket.ToString();
@@ -136,6 +140,24 @@ namespace Entidades
                 return true;
             }
             return false;
+        }
+
+
+        public string TicketDeCompra()
+        {
+            StringBuilder venta = new StringBuilder();
+            venta.AppendLine("--------- Petshop - Ticket de Compra ---------");
+            venta.AppendLine("Producto comprado: " + this.ProductoVendido.Nombre);
+            venta.AppendLine("Precio unitario: " + this.ProductoVendido.Precio);
+            venta.AppendLine("Cantidad: " + this.ProductoVendido.Cantidad);
+            venta.AppendLine("Precio de envío: " + this.PrecioEnvio);
+            venta.AppendLine("----------------------------------------------");
+            venta.AppendLine("Precio total: " + this.PrecioTotal);
+            venta.AppendLine("----------------------------------------------");
+            venta.AppendLine("Fecha: " + this.FechaDeVenta.ToLongDateString() );
+            venta.AppendLine("Cliente: " + Core.Clientes[Core.BuscarClienteporId(this.IdCliente)].Nombre);
+
+            return venta.ToString();
         }
     }
 }

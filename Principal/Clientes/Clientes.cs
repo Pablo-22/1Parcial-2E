@@ -73,15 +73,9 @@ namespace Principal
 
         protected void ModoEdicion(bool toggle)
         {
-            bool soloLectura = true;
-            if (toggle == true)
-            {
-                soloLectura = false;
-            }
-
-            txtNombre.ReadOnly = soloLectura;
-            txtEmail.ReadOnly = soloLectura;
-            txtSaldo.ReadOnly = soloLectura;
+            txtNombre.ReadOnly = !toggle;
+            txtEmail.ReadOnly = !toggle;
+            txtSaldo.ReadOnly = !toggle;
         }
 
         protected bool CamposRellenos()
@@ -101,13 +95,13 @@ namespace Principal
         /// <param name="index"></param>
         protected void CargarDatosDeCliente(int index)
         {
-            if (CoreDelSistema.BuscarIndiceCliente(index) == true)
+            if (Core.BuscarIndiceCliente(index) == true)
             {
-                txtNombre.Text = CoreDelSistema.Clientes[index].Nombre;
-                txtEmail.Text = CoreDelSistema.Clientes[index].Email;
-                txtSaldo.Text = CoreDelSistema.Clientes[index].Saldo.ToString();
-                txtDistancia.Text = CoreDelSistema.Clientes[index].Distancia.ToString();
-                txtNumeroCliente.Text = CoreDelSistema.Clientes[index].IdCliente.ToString();
+                txtNombre.Text = Core.Clientes[index].Nombre;
+                txtEmail.Text = Core.Clientes[index].Email;
+                txtSaldo.Text = Core.Clientes[index].Saldo.ToString();
+                txtDistancia.Text = Core.Clientes[index].Distancia.ToString();
+                txtNumeroCliente.Text = Core.Clientes[index].IdCliente.ToString();
                 //lstHistorial.DataSource = CoreDelSistema.Clientes[index];
             }
             else
@@ -118,7 +112,7 @@ namespace Principal
                 }
                 else
                 {
-                    IndiceActualCliente = CoreDelSistema.Clientes.Count - 1;
+                    IndiceActualCliente = Core.Clientes.Count - 1;
                 }
 
                 CargarDatosDeCliente(IndiceActualCliente);

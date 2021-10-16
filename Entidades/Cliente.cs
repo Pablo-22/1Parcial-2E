@@ -25,7 +25,7 @@ namespace Entidades
             }
             set
             {
-                if (CoreDelSistema.UsuarioLogueado is Administrador && this.ValidarSaldo(value) == true)
+                if (Core.UsuarioLogueado is Administrador && this.ValidarSaldo(value) == true)
                 {
                     saldo = value;
                 }
@@ -40,9 +40,13 @@ namespace Entidades
             }
             set
             {
-                if (CoreDelSistema.UsuarioLogueado is Administrador && this.ValidarEmail(value) == true)
+                if (Core.UsuarioLogueado is Administrador && this.ValidarEmail(value) == true)
                 {
-                    email = value;
+                    this.email = value;
+                }
+                else
+                {
+                    this.email = "Email inválido";
                 }
             }
         }
@@ -55,13 +59,13 @@ namespace Entidades
             }
             set
             {
-                if (CoreDelSistema.UsuarioLogueado is Administrador && this.ValidarNombre(value) == true)
+                if (Core.UsuarioLogueado is Administrador && this.ValidarNombre(value) == true)
                 {
                     this.nombre = value;
                 }
                 else
                 {
-                    this.nombre = null;
+                    this.nombre = "Nombre inválido";
                 }
             }
         }
@@ -96,8 +100,16 @@ namespace Entidades
         {
             var random = new Random();
             this.historialDeCompras = new List<Venta>();
-            this.idCliente = CoreDelSistema.AsignarId();
+            this.idCliente = Core.AsignarId();
             this.distancia = (float)(random.NextDouble() + 1) * 10;
+        }
+
+        public Cliente(float distancia)
+        {
+            var random = new Random();
+            this.historialDeCompras = new List<Venta>();
+            this.idCliente = Core.AsignarId();
+            this.distancia = distancia;
         }
 
         public Cliente(string nombre, string email, float saldo)
@@ -107,7 +119,7 @@ namespace Entidades
             this.nombre = nombre;
             this.historialDeCompras = new List<Venta>();
             this.saldo = saldo;
-            this.idCliente = CoreDelSistema.AsignarId();
+            this.idCliente = Core.AsignarId();
             this.email = email;
             this.distancia = (float)(random.NextDouble() + 1) * 10 ;
         }
@@ -120,7 +132,7 @@ namespace Entidades
             this.nombre = nombre;
             this.historialDeCompras = new List<Venta>();
             this.saldo = saldo;
-            this.idCliente = CoreDelSistema.AsignarId();
+            this.idCliente = Core.AsignarId();
             this.email = email;
             this.distancia = distancia;
         }
@@ -159,7 +171,7 @@ namespace Entidades
 
         private bool ValidarEmail(string email)
         {
-            if (email.Contains('@') == true && email.Contains("email.com") == true)
+            if (email.Contains('@') == true && email.Contains("mail.com") == true)
             {
                 return true;
             }
@@ -168,7 +180,7 @@ namespace Entidades
 
         private bool ValidarNombre(string nombre)
         {
-            if (CoreDelSistema.ValidarLetras(nombre) == true && nombre != "admin" && nombre.Length < 20)
+            if (Core.ValidarLetras(nombre) == true && nombre != "admin" && nombre.Length < 20)
             {
                 return true;
             }
@@ -177,8 +189,8 @@ namespace Entidades
 
         public bool ValidarTodoCliente(string nombre, string email, string saldo)
         {
-            if (CoreDelSistema.ValidarLetras(nombre) && CoreDelSistema.ValidarLetras(email)
-                &&  CoreDelSistema.ValidarFlotante(saldo) )
+            if (Core.ValidarLetras(nombre) && Core.ValidarLetras(email)
+                &&  Core.ValidarFlotante(saldo) )
             {
                 return true;
             }

@@ -45,6 +45,7 @@ namespace Principal
             // txtDistancia
             // 
             this.txtDistancia.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtDistancia.PlaceholderText = "(Automático)";
             // 
             // lstHistorial
             // 
@@ -54,6 +55,7 @@ namespace Principal
             // txtNumeroCliente
             // 
             this.txtNumeroCliente.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtNumeroCliente.PlaceholderText = "(Automático)";
             // 
             // btnVolver
             // 

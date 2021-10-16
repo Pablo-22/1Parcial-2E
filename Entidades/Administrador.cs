@@ -22,11 +22,11 @@ namespace Entidades
         {
             bool exit = false;
            
-            if (CoreDelSistema.Usuarios[index] != null)
+            if (Core.Usuarios[index] != null)
             {
                 exit = true;
-                CoreDelSistema.Usuarios[index].NombreDeUsuario = nombreDeUsuario;
-                CoreDelSistema.Usuarios[index].Password = password;
+                Core.Usuarios[index].NombreDeUsuario = nombreDeUsuario;
+                Core.Usuarios[index].Password = password;
             }
             return exit;
         }
@@ -36,6 +36,26 @@ namespace Entidades
         public override void NuevoCliente()
         {
             Console.WriteLine("Desde Admin");
+        }
+
+        protected override string UsuarioAFormatoCsv(Usuario usuarioAConvertir)
+        {
+            StringBuilder usuario = new StringBuilder();
+            usuario.Append(base.UsuarioAFormatoCsv(usuarioAConvertir));
+            usuario.Append("," + usuarioAConvertir.Password);
+
+            return usuario.ToString();
+        }
+
+        protected override string UsuariosAFormatoCsv()
+        {
+            StringBuilder usuarios = new StringBuilder();
+            usuarios.AppendLine("Id,Nombre, Permisos, Password");
+            foreach (Usuario item in Core.Usuarios)
+            {
+                usuarios.AppendLine(UsuarioAFormatoCsv(item));
+            }
+            return usuarios.ToString();
         }
     }
 }

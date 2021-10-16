@@ -20,7 +20,7 @@ namespace Principal
 
         private void CargarListas()
         {
-            lstClientes.DataSource = CoreDelSistema.Clientes;
+            lstClientes.DataSource = Core.Clientes;
             lstProductos.DataSource = Almacen.Productos;
 
             lstClientes.Refresh();
@@ -38,7 +38,7 @@ namespace Principal
 
         private void CargarMetodosDePago()
         {
-            var metodosDePago = Enum.GetNames(typeof(Venta.MetodoDePago)).Length;
+            int metodosDePago = Enum.GetNames(typeof(Venta.MetodoDePago)).Length;
 
             for (int i = 0; i < metodosDePago; i++)
             {
@@ -48,18 +48,17 @@ namespace Principal
 
         private void AjustarCantidad()
         {
-            int nuevoValor = 1;
             Producto productoExtraido = (Producto)lstProductos.SelectedItem;
 
             if (productoExtraido.Cantidad < numCantidadDeUnidades.Value)
             {
-                nuevoValor = productoExtraido.Cantidad;
+                numCantidadDeUnidades.Value = productoExtraido.Cantidad;
             }
             else
             {
                 if (numCantidadDeUnidades.Value < 1)
                 {
-                    numCantidadDeUnidades.Value = nuevoValor;
+                    numCantidadDeUnidades.Value = 1;
                 }
             }
         }
@@ -94,13 +93,23 @@ namespace Principal
                 Producto productoExtraido = (Producto)lstProductos.SelectedItem;
                 productoExtraido.Cantidad = (int)numCantidadDeUnidades.Value;
 
-                Venta venta = new Venta(clienteExtraido.IdCliente, (Venta.MetodoDePago)cmbMetodoDePago.SelectedItem, productoExtraido, dateFechaDeVenta.Value);
-                clienteExtraido.Saldo -= venta.PrecioTotal;
+                try
+                {
+                    
+                    Venta venta = new Venta(clienteExtraido.IdCliente, (Venta.MetodoDePago)cmbMetodoDePago.SelectedItem, productoExtraido, dateFechaDeVenta.Value);
+                    Almacen.ConfirmarCondicionesDeVenta(clienteExtraido.IdCliente, venta);
+                    clienteExtraido.Saldo -= venta.PrecioTotal;
 
-                CoreDelSistema.Clientes[CoreDelSistema.BuscarClienteporId(clienteExtraido.IdCliente)] = clienteExtraido;
+                    Core.Clientes[Core.BuscarClienteporId(clienteExtraido.IdCliente)] = clienteExtraido;
             
-                Almacen.Ventas.Add(venta);
-                this.DialogResult = DialogResult.OK;
+                    Almacen.Ventas.Add(venta);
+                    this.DialogResult = DialogResult.OK;
+                }
+                catch
+                {
+                    MessageBox.Show("No se ha completado la venta. - Por favor, intente nuevamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
             else
             {

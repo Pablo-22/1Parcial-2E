@@ -21,7 +21,7 @@ namespace Entidades
 
         public Producto()
         {
-            this.idProducto = CoreDelSistema.AsignarId();
+            this.idProducto = Core.AsignarId();
         }
 
         public Producto(string nombre, float precio, string marca, 
@@ -35,7 +35,7 @@ namespace Entidades
             this.tipoDeProducto = tipoDeProducto;
             this.descripcion = descripcion;
             this.cantidad = cantidad;
-            this.idProducto = CoreDelSistema.AsignarId();
+            this.idProducto = Core.AsignarId();
             this.peso = peso;
         }
 
@@ -198,7 +198,7 @@ namespace Entidades
 
         private bool ValidarNombre(string nombre)
         {
-            if (CoreDelSistema.ValidarLetras(nombre) == true && nombre.Length < 20)
+            if (Core.ValidarLetras(nombre) == true && nombre.Length < 20)
             {
                 return true;
             }
@@ -207,7 +207,7 @@ namespace Entidades
 
         private bool ValidarMarca(string marca)
         {
-            if (CoreDelSistema.ValidarLetras(marca) == true && marca.Length < 15)
+            if (Core.ValidarLetras(marca) == true && marca.Length < 15)
             {
                 return true;
             }
@@ -235,7 +235,7 @@ namespace Entidades
 
         private bool ValidarDescripcion(string nombre)
         {
-            if (CoreDelSistema.ValidarLetras(nombre) == true && nombre.Length < 255)
+            if (Core.ValidarLetras(nombre) == true && nombre.Length < 255)
             {
                 return true;
             }
@@ -253,9 +253,9 @@ namespace Entidades
 
         public bool ValidarTodoProducto(string nombre, string precio, string marca, string descripcion, string cantidad, string peso)
         {
-            if (CoreDelSistema.ValidarLetras(nombre) && CoreDelSistema.ValidarLetras(marca) 
-                && CoreDelSistema.ValidarLetras(descripcion) && CoreDelSistema.ValidarFlotante(precio) 
-                && CoreDelSistema.ValidarFlotante(peso) && CoreDelSistema.ValidarEntero(cantidad) )
+            if (Core.ValidarLetras(nombre) && Core.ValidarLetras(marca) 
+                && Core.ValidarLetras(descripcion) && Core.ValidarFlotante(precio) 
+                && Core.ValidarFlotante(peso) && Core.ValidarEntero(cantidad) )
             {
                 return true;
             }

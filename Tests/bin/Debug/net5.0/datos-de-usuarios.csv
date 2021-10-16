@@ -1,0 +1,6 @@
+Id,Nombre, Permisos, Password
+0,Pablo,Administrador,pass123
+1,Juan,Empleado,password
+2,Daniela,Administrador,contra
+3,Sofía,Administrador,pass000
+4,Ramiro,Empleado,pass999

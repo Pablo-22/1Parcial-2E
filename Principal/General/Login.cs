@@ -20,13 +20,17 @@ namespace Principal
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(CoreDelSistema.LoguearUsuario(txtNombreDeUsuario.Text, txtContrasenia.Text) == true)
+            if (txtNombreDeUsuario.Text != "" && txtContrasenia.Text != "")
             {
-                this.DialogResult = DialogResult.OK;
-            }
-            else
-            {
-                lblMensajeDeError.Text = "*Usuario o contraseña incorrecto/s";
+                try
+                {
+                    Core.LoguearUsuario(txtNombreDeUsuario.Text, txtContrasenia.Text);
+                    this.DialogResult = DialogResult.OK;
+                }
+                catch
+                {
+                    lblMensajeDeError.Text = "*Usuario o contraseña incorrecto/s";
+                }
             }
         }
 

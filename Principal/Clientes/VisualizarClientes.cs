@@ -25,14 +25,16 @@ namespace Principal
 
         private void frmVisualizarClientes_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < CoreDelSistema.Clientes.Count; i++)
+            for (int i = 0; i < Core.Clientes.Count; i++)
             {
-                listaDeNombres.Add(CoreDelSistema.Clientes[i].Nombre);
+                listaDeNombres.Add(Core.Clientes[i].Nombre);
             }
 
             txtNombre.AutoCompleteCustomSource = listaDeNombres;
 
             CargarDatosDeCliente(IndiceActualCliente);
+
+            ModoEdicion(false);
         }
 
         private void cmbNombre_SelectedIndexChanged(object sender, EventArgs e)
