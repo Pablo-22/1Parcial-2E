@@ -28,17 +28,25 @@ namespace Principal
 
         private void btnAceptarEdicion_Click(object sender, EventArgs e)
         {
-            if (CamposValidos() == true)
+            if (CamposRellenos() == true)
             {
-                Producto nuevoProducto = new Producto(txtNombre.Text, float.Parse(txtPrecio.Text),
-                        txtMarca.Text, (Producto.CategoriaAnimal)cmbCategoriaAnimal.SelectedItem, (Producto.CategoriaProducto)cmbCategoriaProducto.SelectedItem,
-                        rtxtDescripcion.Text, int.Parse(txtcantidad.Text), float.Parse(txtPeso.Text));
+                Producto nuevoProducto = new Producto();
 
-                Almacen.Productos[IndiceActualProducto] = nuevoProducto;
+                if (nuevoProducto.ValidarTodoProducto(txtNombre.Text, txtPrecio.Text, txtMarca.Text,
+                    rtxtDescripcion.Text, txtcantidad.Text, txtPeso.Text))
+                {
+                    //Seteo el producto a partir de los datos cargados en los campos del form, previamente validados.
+                    nuevoProducto.SetearTodo(txtNombre.Text, float.Parse(txtPrecio.Text),
+                    txtMarca.Text, (Producto.CategoriaAnimal)cmbCategoriaAnimal.SelectedItem, (Producto.CategoriaProducto)cmbCategoriaProducto.SelectedItem,
+                    rtxtDescripcion.Text, int.Parse(txtcantidad.Text), float.Parse(txtPeso.Text));
 
-                //Cambios visuales
-                DesactivarModoEdicion();
-                this.DialogResult = DialogResult.OK;
+                    Almacen.Productos[IndiceActualProducto] = nuevoProducto;
+
+                    //Cambios visuales
+                    DesactivarModoEdicion();
+
+                    this.DialogResult = DialogResult.OK;
+                }
             }
         }
 

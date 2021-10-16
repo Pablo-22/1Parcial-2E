@@ -25,7 +25,7 @@ namespace Entidades
             }
             set
             {
-                if (CoreDelSistema.UsuarioLogueado.NivelDeAcceso == Usuario.ePermisos.Administrador)
+                if (CoreDelSistema.UsuarioLogueado is Administrador && this.ValidarSaldo(value) == true)
                 {
                     saldo = value;
                 }
@@ -40,7 +40,7 @@ namespace Entidades
             }
             set
             {
-                if (CoreDelSistema.UsuarioLogueado.NivelDeAcceso == Usuario.ePermisos.Administrador)
+                if (CoreDelSistema.UsuarioLogueado is Administrador && this.ValidarEmail(value) == true)
                 {
                     email = value;
                 }
@@ -55,8 +55,7 @@ namespace Entidades
             }
             set
             {
-                if (CoreDelSistema.UsuarioLogueado.NivelDeAcceso == Usuario.ePermisos.Administrador 
-                    && CoreDelSistema.ValidarNombre(value) == true)
+                if (CoreDelSistema.UsuarioLogueado is Administrador && this.ValidarNombre(value) == true)
                 {
                     this.nombre = value;
                 }
@@ -81,18 +80,25 @@ namespace Entidades
             {
                 return this.historialDeCompras;
             }
-            set
-            {
-                if (CoreDelSistema.UsuarioLogueado.NivelDeAcceso == Usuario.ePermisos.Administrador)
-                {
-                    this.historialDeCompras = value;
-                }
-            }
         }
 
-        public float Distancia { get => distancia; }
+        public float Distancia
+        {
+            get
+            {
+                return this.distancia;
+            }
+        }
         #endregion Propiedades
 
+        #region Constructor y sobrecargas
+        public Cliente()
+        {
+            var random = new Random();
+            this.historialDeCompras = new List<Venta>();
+            this.idCliente = CoreDelSistema.AsignarId();
+            this.distancia = (float)(random.NextDouble() + 1) * 10;
+        }
 
         public Cliente(string nombre, string email, float saldo)
         {
@@ -118,6 +124,7 @@ namespace Entidades
             this.email = email;
             this.distancia = distancia;
         }
+        #endregion Constructor y sobrecargas
 
 
         public override string ToString()
@@ -129,5 +136,62 @@ namespace Entidades
 
             return cliente.ToString();
         }
+
+
+        #region Validaciones
+        private bool ValidarSaldo(float saldo)
+        {
+            if(saldo > -1)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private bool ValidarVenta(Venta venta)
+        {
+            if (venta.ProductoVendido != null && (this.Saldo - venta.PrecioTotal) > -1)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private bool ValidarEmail(string email)
+        {
+            if (email.Contains('@') == true && email.Contains("email.com") == true)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private bool ValidarNombre(string nombre)
+        {
+            if (CoreDelSistema.ValidarLetras(nombre) == true && nombre != "admin" && nombre.Length < 20)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool ValidarTodoCliente(string nombre, string email, string saldo)
+        {
+            if (CoreDelSistema.ValidarLetras(nombre) && CoreDelSistema.ValidarLetras(email)
+                &&  CoreDelSistema.ValidarFlotante(saldo) )
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public void SetearTodoCliente(string nombre, string email, float saldo)
+        {
+            this.Nombre = nombre;
+            this.Email = email;
+            this.Saldo = saldo;
+        }
+        #endregion Validaciones
     }
 }
+

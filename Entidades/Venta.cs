@@ -33,10 +33,24 @@ namespace Entidades
             }
         }
 
-        public MetodoDePago Metodo { get => metodo; set => metodo = value; }
-        public Producto Producto { get => producto; set => producto = value; }
+        public Producto ProductoVendido
+        {
+            get
+            {
+                return this.producto;
+            }
+            set
+            {
+                if (ValidarProducto(value) == false)
+                {
+                    this.producto = value;
+                }
+            }
+        }
+
+        public MetodoDePago FormaDePago { get => metodo; set => metodo = value; }
         public DateTime FechaDeVenta { get => fechaDeVenta; set => fechaDeVenta = value; }
-        public FormaDeEnvio FormaDeEnvio1 { get => formaDeEnvio; set => formaDeEnvio = value; }
+        public FormaDeEnvio MetodoDeEnvio { get => formaDeEnvio; set => formaDeEnvio = value; }
 
         #region Constructor y sobrecargas
         public Venta(int idCliente, MetodoDePago metodoPago,
@@ -111,6 +125,17 @@ namespace Entidades
             ticket.Append("    ||    Forma de envío: " + this.formaDeEnvio);
 
             return ticket.ToString();
+        }
+
+        private bool ValidarProducto(Producto producto)
+        {
+            if(producto.Descripcion != null ||
+                producto.Marca != null ||
+                producto.Nombre != null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

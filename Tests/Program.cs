@@ -7,7 +7,17 @@ namespace Tests
     {
         static void Main(string[] args)
         {
-            Console.WriteLine();
+
+            if(CoreDelSistema.UsuarioLogueado is Administrador)
+            {
+                Administrador newUser = (Administrador)CoreDelSistema.UsuarioLogueado;
+                newUser.NuevoCliente();
+            }
+            else if(CoreDelSistema.UsuarioLogueado is Empleado)
+            {
+                Empleado newUser = (Empleado)CoreDelSistema.UsuarioLogueado;
+                newUser.NuevoCliente();
+            }
         }
     }
 }

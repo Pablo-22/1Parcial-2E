@@ -33,7 +33,7 @@ namespace Principal
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (CamposValidos() == true)
+            if (CamposRellenos() == true)
             {
                 ModoEdicion(false);
                 Cliente nuevaVenta = new Cliente(txtNombre.Text, txtEmail.Text, 

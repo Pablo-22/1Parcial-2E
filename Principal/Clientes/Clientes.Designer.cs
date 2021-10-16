@@ -134,6 +134,7 @@ namespace Principal
             this.txtDistancia.Location = new System.Drawing.Point(285, 543);
             this.txtDistancia.Name = "txtDistancia";
             this.txtDistancia.PlaceholderText = "Distancia";
+            this.txtDistancia.ReadOnly = true;
             this.txtDistancia.Size = new System.Drawing.Size(394, 40);
             this.txtDistancia.TabIndex = 9;
             // 
@@ -145,6 +146,7 @@ namespace Principal
             this.txtNumeroCliente.Location = new System.Drawing.Point(722, 203);
             this.txtNumeroCliente.Name = "txtNumeroCliente";
             this.txtNumeroCliente.PlaceholderText = "Número";
+            this.txtNumeroCliente.ReadOnly = true;
             this.txtNumeroCliente.Size = new System.Drawing.Size(353, 40);
             this.txtNumeroCliente.TabIndex = 10;
             // 

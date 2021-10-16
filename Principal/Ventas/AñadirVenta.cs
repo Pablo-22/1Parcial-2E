@@ -27,7 +27,7 @@ namespace Principal
             lstProductos.Refresh();
         }
 
-        private bool CamposValidos()
+        private bool CamposRellenos()
         {
             if (cmbMetodoDePago.Text == "" || dateFechaDeVenta.Value > DateTime.Now)
             {
@@ -87,7 +87,7 @@ namespace Principal
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (CamposValidos() == true)
+            if (CamposRellenos() == true)
             {
                 Cliente clienteExtraido = (Cliente)lstClientes.SelectedItem;
 

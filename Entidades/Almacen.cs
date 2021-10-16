@@ -87,11 +87,20 @@ namespace Entidades
             return exit;
         }
 
-        public static int AniadirProducto(Producto producto)
+
+        public static int GuardarProducto(Producto producto)
         {
             Productos.Add(producto);
             return Productos.IndexOf(producto);
         }
+
+        public static int GuardarVenta(Venta venta)
+        {
+            Almacen.Ventas.Add(venta);
+            return Almacen.Ventas.IndexOf(venta);
+        }
+
+
 
         public static int BuscarVentaporId(int id)
         {

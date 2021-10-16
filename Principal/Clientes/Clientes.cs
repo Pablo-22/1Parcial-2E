@@ -82,12 +82,11 @@ namespace Principal
             txtNombre.ReadOnly = soloLectura;
             txtEmail.ReadOnly = soloLectura;
             txtSaldo.ReadOnly = soloLectura;
-            txtDistancia.ReadOnly = soloLectura;
         }
 
-        protected bool CamposValidos()
+        protected bool CamposRellenos()
         {
-            if (txtNombre.Text == "" || txtEmail.Text == "" || txtSaldo.Text == "" || txtDistancia.Text == "")
+            if (txtNombre.Text == "" || txtEmail.Text == "" || txtSaldo.Text == "")
             {
                 return false;
             }

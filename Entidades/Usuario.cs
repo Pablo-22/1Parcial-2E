@@ -6,30 +6,34 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public abstract class Usuario
+    public class Usuario
     {
         private string nombreDeUsuario;
         private string password;
-        private string celular;
         private int idUsuario;
-        private ePermisos nivelDeAcceso;
 
         #region Constructor
-        protected Usuario(string nombreDeUsuario, string password, string celular, ePermisos nivelDeAcceso)
+        public Usuario()
+        {
+            this.nombreDeUsuario = null;
+            this.password = null;
+            this.idUsuario = CoreDelSistema.AsignarId();
+        }
+
+        public Usuario(string nombreDeUsuario, string password)
         {
             this.nombreDeUsuario = nombreDeUsuario;
             this.password = password;
             this.idUsuario = CoreDelSistema.AsignarId();
-            this.celular = celular;
-            this.nivelDeAcceso = nivelDeAcceso;
         }
 
-        protected Usuario(string nombreDeUsuario, string password, string celular, int id, ePermisos nivelDeAcceso)
-            :this(nombreDeUsuario, password, celular, nivelDeAcceso)
+        public Usuario(string nombreDeUsuario, string password, string celular, int id)
+            :this(nombreDeUsuario, password)
         {
             this.idUsuario = id;
         }
         #endregion Constructor
+
 
         #region Propiedades
         public int IdUsuario
@@ -37,21 +41,6 @@ namespace Entidades
             get
             {
                 return this.idUsuario;
-            }
-        }
-
-        public string Celular
-        {
-            get
-            {
-                return this.celular;
-            }
-            set
-            {
-                if (string.IsNullOrEmpty(value) == false && value.Length < 15 )
-                {
-                    this.celular = value;
-                }
             }
         }
 
@@ -64,7 +53,7 @@ namespace Entidades
             }
             set
             {
-                if(CoreDelSistema.ValidarNombre(value) == true && value != "admin")
+                if(this.ValidarNombre(value) == true)
                 {
                     this.nombreDeUsuario = value;
                 }
@@ -75,7 +64,7 @@ namespace Entidades
         {
             get
             {
-                if (CoreDelSistema.UsuarioLogueado.NivelDeAcceso == ePermisos.Administrador)
+                if (CoreDelSistema.UsuarioLogueado is Administrador)
                 {
                     return this.password;
                 }
@@ -86,29 +75,33 @@ namespace Entidades
             }
             set
             {
-                if (CoreDelSistema.ValidarContrasenia(value) == false)
+                if (this.ValidarContrasenia(value) == true)
                 {
                     this.password = value;
                 }
             }
         }
-
-        internal ePermisos NivelDeAcceso
-        {
-            get
-            {
-                return this.nivelDeAcceso;
-            }
-            set
-            {
-                if (CoreDelSistema.UsuarioLogueado.nivelDeAcceso == ePermisos.Administrador)
-                {
-                    this.nivelDeAcceso = value;
-                }
-            }
-        }
         #endregion Propiedades
 
-        public enum ePermisos { Administrador, Empleado }
+
+        private bool ValidarNombre(string nombre)
+        {
+            if (CoreDelSistema.ValidarLetras(password) == true && nombre != "admin" && nombre.Length < 20)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private bool ValidarContrasenia(string password)
+        {
+            if (!string.IsNullOrEmpty(password) && password.Length < 20
+                && password.Length > 6)
+            {
+                return true;
+            }
+            return false;
+        }
+
     }
 }

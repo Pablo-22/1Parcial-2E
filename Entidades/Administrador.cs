@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    class Administrador : Empleado
+    public class Administrador : Empleado
     {
-        public Administrador(string nombreDeUsuario, string password, string celular)
-            : base(nombreDeUsuario, password, celular, ePermisos.Administrador)
+        public Administrador(string nombreDeUsuario, string password)
+            : base(nombreDeUsuario, password)
         { }
 
         private bool AltaUsuario()
@@ -18,7 +18,7 @@ namespace Entidades
             return true;
         }
 
-        private bool EditarUsuario(int index, string nombreDeUsuario, string password, string celular, int legajo, ePermisos nivelDeAcceso)
+        private bool EditarUsuario(int index, string nombreDeUsuario, string password, int legajo)
         {
             bool exit = false;
            
@@ -27,10 +27,15 @@ namespace Entidades
                 exit = true;
                 CoreDelSistema.Usuarios[index].NombreDeUsuario = nombreDeUsuario;
                 CoreDelSistema.Usuarios[index].Password = password;
-                CoreDelSistema.Usuarios[index].NivelDeAcceso = nivelDeAcceso;
-                CoreDelSistema.Usuarios[index].Celular = celular;
             }
             return exit;
+        }
+
+
+
+        public override void NuevoCliente()
+        {
+            Console.WriteLine("Desde Admin");
         }
     }
 }

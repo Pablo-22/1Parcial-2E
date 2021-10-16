@@ -27,16 +27,23 @@ namespace Principal
 
         private void btnAceptar1_Click(object sender, EventArgs e)
         {
-            if (CamposValidos() == true)
+            if (CamposRellenos() == true)
             {
-                //Construyo un nuevo producto a partir de los datos cargados en los campos del form.
-                Producto nuevoProducto = new Producto(txtNombre.Text, float.Parse(txtPrecio.Text),
-                txtMarca.Text, (Producto.CategoriaAnimal)cmbCategoriaAnimal.SelectedItem, (Producto.CategoriaProducto)cmbCategoriaProducto.SelectedItem,
-                rtxtDescripcion.Text, int.Parse(txtcantidad.Text), float.Parse(txtPeso.Text));
+                Producto nuevoProducto = new Producto();
 
-                //Aniadir producto devuelve el índice del producto añadido.
-                IndiceActualProducto = Almacen.AniadirProducto(nuevoProducto);
-                this.DialogResult = DialogResult.OK;
+                if (nuevoProducto.ValidarTodoProducto(txtNombre.Text,txtPrecio.Text, txtMarca.Text, 
+                    rtxtDescripcion.Text, txtcantidad.Text, txtPeso.Text))
+                {
+                    //Seteo el producto a partir de los datos cargados en los campos del form, previamente validados.
+                    nuevoProducto.SetearTodo(txtNombre.Text, float.Parse(txtPrecio.Text),
+                    txtMarca.Text, (Producto.CategoriaAnimal)cmbCategoriaAnimal.SelectedItem, (Producto.CategoriaProducto)cmbCategoriaProducto.SelectedItem,
+                    rtxtDescripcion.Text, int.Parse(txtcantidad.Text), float.Parse(txtPeso.Text));
+
+                    //Aniadir producto devuelve el índice del producto añadido.
+                    IndiceActualProducto = Almacen.GuardarProducto(nuevoProducto);
+                    this.DialogResult = DialogResult.OK;
+                }
+
             }
 
         }

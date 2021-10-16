@@ -39,7 +39,7 @@ namespace Principal
         {
         }
 
-        protected bool CamposValidos()
+        protected bool CamposRellenos()
         {
             if ( txtNombre.Text == "" || txtPrecio.Text == "" || txtMarca.Text == "" 
                  || rtxtDescripcion.Text == "" ||txtcantidad.Text == "" || cmbCategoriaAnimal.Text == ""

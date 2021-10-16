@@ -41,7 +41,7 @@ namespace Entidades
         {
             Usuarios = new List<Usuario>();
             clientes = new List<Cliente>();
-            usuarioLogueado = new Administrador("admin", "admin", "00 0000-0000");
+            usuarioLogueado = new Administrador("admin", "admin");
             ultimoIdGenerado = 0;
 
             CargarUsuarios();
@@ -51,7 +51,7 @@ namespace Entidades
         #region Hardcodeo
         private static void CargarUsuarios()
         {
-            CoreDelSistema.Usuarios.Add(new Administrador("Pablo", "pass123", "11 3297-7202"));
+            CoreDelSistema.Usuarios.Add(new Empleado("Pablo", "pass123"));
         }
 
         private static void CargarClientes()
@@ -72,8 +72,8 @@ namespace Entidades
         {
             bool exit = false;
 
-            if (CoreDelSistema.ValidarNombre(nombreDeUsuario) == true
-                && CoreDelSistema.ValidarContrasenia(password) == true)
+            if (string.IsNullOrEmpty(nombreDeUsuario) == false
+                && string.IsNullOrEmpty(password) == false)
             {
                 foreach (Usuario item in CoreDelSistema.Usuarios)
                 {
@@ -90,18 +90,14 @@ namespace Entidades
         public static bool RegistrarUsuario(string nombreDeUsuario, string password)
         {
             bool exit = false;
+            Empleado newUser = new Empleado();
+            newUser.NombreDeUsuario = nombreDeUsuario;
+            newUser.Password = password;
 
-            if (CoreDelSistema.ValidarNombre(nombreDeUsuario) == true
-                && CoreDelSistema.ValidarContrasenia(password) == true)
+            if (TienePropiedadesNulas(newUser) == false && !CoreDelSistema.Usuarios.Contains(newUser))
             {
-                foreach (Usuario item in CoreDelSistema.Usuarios)
-                {
-                    if (item.NombreDeUsuario == nombreDeUsuario && item.Password == password)
-                    {
-                        usuarioLogueado = item;
-                        exit = true;
-                    }
-                }
+                CoreDelSistema.GuardarUsuario(newUser);
+                exit = true;
             }
             return exit;
         }
@@ -150,42 +146,46 @@ namespace Entidades
         }
         #endregion Búsquedas
 
-        public static int AniadirCliente(Cliente cliente)
+        public static int GuardarCliente(Cliente cliente)
         {
-            Clientes.Add(cliente);
-            return Clientes.IndexOf(cliente);
+            CoreDelSistema.Clientes.Add(cliente);
+            return CoreDelSistema.Clientes.IndexOf(cliente);
+        }
+
+        public static int GuardarUsuario(Usuario usuario)
+        {
+            CoreDelSistema.Usuarios.Add(usuario);
+            return CoreDelSistema.Usuarios.IndexOf(usuario);
         }
 
 
         #region Validaciones
-        public static int ValidarEntero(string strNumero)
+        public static bool ValidarEntero(string strNumero)
         {
-            int numeroFinal;
-            if (string.IsNullOrEmpty(strNumero) == false && int.TryParse(strNumero, out numeroFinal) == true && numeroFinal > 0)
+            if (string.IsNullOrEmpty(strNumero) == false && int.TryParse(strNumero, out _) == true)
             {
-                return numeroFinal;
+                return true;
             }
-            return -1;
+            return false;
         }
 
-        public static float ValidarFlotante(string strNumero)
+        public static bool ValidarFlotante(string strNumero)
         {
-            float numeroFinal;
-            if (string.IsNullOrEmpty(strNumero) == false && float.TryParse(strNumero, out numeroFinal) == true && numeroFinal > 0)
+            if (string.IsNullOrEmpty(strNumero) == false && float.TryParse(strNumero, out _) == true)
             {
-                return numeroFinal;
+                return true;
             }
-            return -1;
+            return false;
         }
 
-        public static bool ValidarNombre(string nombre)
+        public static bool ValidarLetras(string cadena)
         {
             bool exit = false;
-            if (string.IsNullOrEmpty(nombre) == false && nombre.Length < 18)
+            if (string.IsNullOrEmpty(cadena) == false)
             {
-                for (int i = 0; i < nombre.Length; i++)
+                for (int i = 0; i < cadena.Length; i++)
                 {
-                    if (char.IsLetter(nombre[i]) == true)
+                    if (char.IsLetter(cadena[i]) == true)
                     {
                         exit = true;
                     }
@@ -194,16 +194,6 @@ namespace Entidades
             return exit;
         }
 
-        public static bool ValidarContrasenia(string password)
-        {
-            bool exit = false;
-            if (!string.IsNullOrEmpty(password) && password.Length < 16
-                && password.Length > 6)
-            {
-                exit = true;
-            }
-            return exit;
-        }
 
         public static bool ValidarCelular(string celular)
         {
@@ -214,6 +204,15 @@ namespace Entidades
                 exit = true;
             }
             return exit;
+        }
+
+        public static bool TienePropiedadesNulas(Usuario user)
+        {
+            if (user.Password == null || user.NombreDeUsuario == null)
+            {
+                return true;
+            }
+            return false;
         }
         #endregion Validaciones
     }
