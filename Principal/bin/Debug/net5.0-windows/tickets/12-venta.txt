@@ -1,0 +1,10 @@
+--------- Petshop - Ticket de Compra ---------
+Producto comprado: Collar
+Precio unitario: $375
+Cantidad: 9
+Precio de envío: $569.69086
+----------------------------------------------
+Precio total: $3944.691
+----------------------------------------------
+Fecha: Sunday, October 17, 2021
+Cliente: Julio

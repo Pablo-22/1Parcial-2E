@@ -1,0 +1,10 @@
+--------- Petshop - Ticket de Compra ---------
+Producto comprado: A. Balanceado
+Precio unitario: $480
+Cantidad: 1
+Precio de envío: $374.3683
+----------------------------------------------
+Precio total: $854.3683
+----------------------------------------------
+Fecha: Monday, October 11, 2021
+Cliente: Julio

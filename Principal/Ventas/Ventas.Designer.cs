@@ -35,6 +35,7 @@ namespace Principal
             this.btnVolver = new System.Windows.Forms.Button();
             this.lblSubTitulo = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.btnExportarTicket = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lstVentas
@@ -69,7 +70,7 @@ namespace Principal
             this.btnEliminarVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarVenta.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnEliminarVenta.ForeColor = System.Drawing.Color.DarkCyan;
-            this.btnEliminarVenta.Location = new System.Drawing.Point(895, 164);
+            this.btnEliminarVenta.Location = new System.Drawing.Point(887, 164);
             this.btnEliminarVenta.Name = "btnEliminarVenta";
             this.btnEliminarVenta.Size = new System.Drawing.Size(210, 53);
             this.btnEliminarVenta.TabIndex = 2;
@@ -112,12 +113,27 @@ namespace Principal
             this.lblTitulo.TabIndex = 70;
             this.lblTitulo.Text = "Ventas";
             // 
+            // btnExportarTicket
+            // 
+            this.btnExportarTicket.FlatAppearance.BorderSize = 0;
+            this.btnExportarTicket.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportarTicket.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnExportarTicket.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btnExportarTicket.Location = new System.Drawing.Point(663, 164);
+            this.btnExportarTicket.Name = "btnExportarTicket";
+            this.btnExportarTicket.Size = new System.Drawing.Size(210, 51);
+            this.btnExportarTicket.TabIndex = 72;
+            this.btnExportarTicket.Text = "Exportar ticket";
+            this.btnExportarTicket.UseVisualStyleBackColor = true;
+            this.btnExportarTicket.Click += new System.EventHandler(this.btnExportarTicket_Click);
+            // 
             // frmVentasBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1360, 768);
+            this.Controls.Add(this.btnExportarTicket);
             this.Controls.Add(this.lblSubTitulo);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.btnVolver);
@@ -142,5 +158,6 @@ namespace Principal
         protected System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.Label lblSubTitulo;
         private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Button btnExportarTicket;
     }
 }

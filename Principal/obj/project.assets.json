@@ -26,42 +26,35 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\pablo\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\PabloCordoba\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Material UTN\\Programación 2E\\Parcial 2E\\repo\\1Parcial-2E\\Principal\\Forms.csproj",
+      "projectUniqueName": "C:\\Users\\PabloCordoba\\Desktop\\Developing\\Parcial\\RPPL-2E-Cordoba-Pablo\\Principal\\Forms.csproj",
       "projectName": "Forms",
-      "projectPath": "D:\\Material UTN\\Programación 2E\\Parcial 2E\\repo\\1Parcial-2E\\Principal\\Forms.csproj",
-      "packagesPath": "C:\\Users\\pablo\\.nuget\\packages\\",
-      "outputPath": "D:\\Material UTN\\Programación 2E\\Parcial 2E\\repo\\1Parcial-2E\\Principal\\obj\\",
+      "projectPath": "C:\\Users\\PabloCordoba\\Desktop\\Developing\\Parcial\\RPPL-2E-Cordoba-Pablo\\Principal\\Forms.csproj",
+      "packagesPath": "C:\\Users\\PabloCordoba\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\PabloCordoba\\Desktop\\Developing\\Parcial\\RPPL-2E-Cordoba-Pablo\\Principal\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\pablo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\PabloCordoba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0-windows7.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://pkgs.dev.azure.com/bromus-software/_packaging/bromus-webserver/nuget/v3/index.json": {}
       },
       "frameworks": {
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "D:\\Material UTN\\Programación 2E\\Parcial 2E\\repo\\1Parcial-2E\\Entidades\\Entidades.csproj": {
-              "projectPath": "D:\\Material UTN\\Programación 2E\\Parcial 2E\\repo\\1Parcial-2E\\Entidades\\Entidades.csproj"
+            "C:\\Users\\PabloCordoba\\Desktop\\Developing\\Parcial\\RPPL-2E-Cordoba-Pablo\\Entidades\\Entidades.csproj": {
+              "projectPath": "C:\\Users\\PabloCordoba\\Desktop\\Developing\\Parcial\\RPPL-2E-Cordoba-Pablo\\Entidades\\Entidades.csproj"
             }
           }
         }

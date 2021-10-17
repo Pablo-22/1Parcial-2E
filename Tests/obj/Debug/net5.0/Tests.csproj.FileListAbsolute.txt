@@ -17,3 +17,22 @@ D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Tests\obj\Debug\net
 D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Tests\obj\Debug\net5.0\ref\Tests.dll
 D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Tests\obj\Debug\net5.0\Tests.pdb
 D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Tests\obj\Debug\net5.0\Tests.genruntimeconfig.cache
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Tests\bin\Debug\net5.0\Tests.exe
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Tests\bin\Debug\net5.0\Tests.deps.json
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Tests\bin\Debug\net5.0\Tests.runtimeconfig.json
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Tests\bin\Debug\net5.0\Tests.runtimeconfig.dev.json
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Tests\bin\Debug\net5.0\Tests.dll
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Tests\bin\Debug\net5.0\ref\Tests.dll
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Tests\bin\Debug\net5.0\Tests.pdb
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Tests\bin\Debug\net5.0\Entidades.dll
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Tests\bin\Debug\net5.0\Entidades.pdb
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Tests\obj\Debug\net5.0\Tests.csproj.AssemblyReference.cache
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Tests\obj\Debug\net5.0\Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Tests\obj\Debug\net5.0\Tests.AssemblyInfoInputs.cache
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Tests\obj\Debug\net5.0\Tests.AssemblyInfo.cs
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Tests\obj\Debug\net5.0\Tests.csproj.CoreCompileInputs.cache
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Tests\obj\Debug\net5.0\Tests.csproj.CopyComplete
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Tests\obj\Debug\net5.0\Tests.dll
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Tests\obj\Debug\net5.0\ref\Tests.dll
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Tests\obj\Debug\net5.0\Tests.pdb
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Tests\obj\Debug\net5.0\Tests.genruntimeconfig.cache

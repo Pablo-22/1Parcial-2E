@@ -4,3 +4,9 @@ D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Entidades\obj\Debug
 D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
 D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Entidades\obj\Debug\Entidades.dll
 D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Entidades\obj\Debug\Entidades.pdb
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Entidades\bin\Debug\Entidades.dll
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Entidades\bin\Debug\Entidades.pdb
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Entidades\obj\Debug\Entidades.csproj.AssemblyReference.cache
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Entidades\obj\Debug\Entidades.dll
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Entidades\obj\Debug\Entidades.pdb

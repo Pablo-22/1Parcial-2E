@@ -53,5 +53,13 @@ namespace Principal
             frmMenuPrincipal menu = new frmMenuPrincipal();
             menu.Show();
         }
+
+        private void btnExportarTicket_Click(object sender, EventArgs e)
+        {
+            Empleado usuarioLogueado = (Empleado)Core.UsuarioLogueado;
+            Venta ventaExtraida = (Venta)lstVentas.SelectedItem;
+
+            usuarioLogueado.ExportarVenta( ventaExtraida );
+        }
     }
 }

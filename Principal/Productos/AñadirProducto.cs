@@ -39,8 +39,13 @@ namespace Principal
                     txtMarca.Text, (Producto.CategoriaAnimal)cmbCategoriaAnimal.SelectedItem, (Producto.CategoriaProducto)cmbCategoriaProducto.SelectedItem,
                     rtxtDescripcion.Text, int.Parse(txtcantidad.Text), float.Parse(txtPeso.Text));
 
-                    //Aniadir producto devuelve el índice del producto añadido.
+                    //Guardar producto devuelve el índice del producto añadido.
                     IndiceActualProducto = Almacen.GuardarProducto(nuevoProducto);
+
+                    //Reproducir sonido
+                    System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"notification-sound.wav");
+                    player.Play();
+
                     this.DialogResult = DialogResult.OK;
                 }
 
@@ -60,8 +65,9 @@ namespace Principal
             txtMarca.Text = "Fishi";
             rtxtDescripcion.Text = "Pecera de acrílico transparente, esférica y con capacidad de 10 litros.";
             txtcantidad.Text = "12";
-            cmbCategoriaAnimal.SelectedItem = "Peces";
-            cmbCategoriaProducto.SelectedItem = "Otro";
+            cmbCategoriaAnimal.SelectedIndex = 3;
+            cmbCategoriaProducto.SelectedIndex = 5;
+            txtPeso.Text = "2";
         }
     }
 }

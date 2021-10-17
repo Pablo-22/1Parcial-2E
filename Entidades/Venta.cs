@@ -148,11 +148,11 @@ namespace Entidades
             StringBuilder venta = new StringBuilder();
             venta.AppendLine("--------- Petshop - Ticket de Compra ---------");
             venta.AppendLine("Producto comprado: " + this.ProductoVendido.Nombre);
-            venta.AppendLine("Precio unitario: " + this.ProductoVendido.Precio);
+            venta.AppendLine("Precio unitario: $" + this.ProductoVendido.Precio);
             venta.AppendLine("Cantidad: " + this.ProductoVendido.Cantidad);
-            venta.AppendLine("Precio de envío: " + this.PrecioEnvio);
+            venta.AppendLine("Precio de envío: $" + this.PrecioEnvio);
             venta.AppendLine("----------------------------------------------");
-            venta.AppendLine("Precio total: " + this.PrecioTotal);
+            venta.AppendLine("Precio total: $" + this.PrecioTotal);
             venta.AppendLine("----------------------------------------------");
             venta.AppendLine("Fecha: " + this.FechaDeVenta.ToLongDateString() );
             venta.AppendLine("Cliente: " + Core.Clientes[Core.BuscarClienteporId(this.IdCliente)].Nombre);

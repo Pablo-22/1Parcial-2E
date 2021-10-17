@@ -30,3 +30,34 @@ D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Principal\obj\Debug
 D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Principal\obj\Debug\net5.0-windows\Principal.frmEditarCliente.resources
 D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Principal\obj\Debug\net5.0-windows\Principal.frmVentasBase.resources
 D:\Material UTN\Programación 2E\Parcial 2E\repo\1Parcial-2E\Principal\obj\Debug\net5.0-windows\Principal.frmAniadirVenta.resources
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\bin\Debug\net5.0-windows\Forms.exe
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\bin\Debug\net5.0-windows\Forms.deps.json
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\bin\Debug\net5.0-windows\Forms.runtimeconfig.json
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\bin\Debug\net5.0-windows\Forms.runtimeconfig.dev.json
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\bin\Debug\net5.0-windows\Forms.dll
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\bin\Debug\net5.0-windows\ref\Forms.dll
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\bin\Debug\net5.0-windows\Forms.pdb
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\bin\Debug\net5.0-windows\Entidades.dll
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\bin\Debug\net5.0-windows\Entidades.pdb
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\obj\Debug\net5.0-windows\Forms.csproj.AssemblyReference.cache
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\obj\Debug\net5.0-windows\Principal.frmAniadirCliente.resources
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\obj\Debug\net5.0-windows\Principal.frmClientesBase.resources
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\obj\Debug\net5.0-windows\Principal.frmEditarCliente.resources
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\obj\Debug\net5.0-windows\Principal.frmVisualizarClientes.resources
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\obj\Debug\net5.0-windows\Principal.frmLogin.resources
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\obj\Debug\net5.0-windows\Principal.frmMenuPrincipal.resources
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\obj\Debug\net5.0-windows\Principal.frmAniadirProducto.resources
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\obj\Debug\net5.0-windows\Principal.frmEditarProducto.resources
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\obj\Debug\net5.0-windows\Principal.frmProductosBase.resources
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\obj\Debug\net5.0-windows\Principal.frmVisualizarProductos.resources
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\obj\Debug\net5.0-windows\Principal.frmAniadirVenta.resources
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\obj\Debug\net5.0-windows\Principal.frmVentasBase.resources
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\obj\Debug\net5.0-windows\Forms.csproj.GenerateResource.cache
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\obj\Debug\net5.0-windows\Forms.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\obj\Debug\net5.0-windows\Forms.AssemblyInfoInputs.cache
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\obj\Debug\net5.0-windows\Forms.AssemblyInfo.cs
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\obj\Debug\net5.0-windows\Forms.csproj.CoreCompileInputs.cache
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\obj\Debug\net5.0-windows\Forms.dll
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\obj\Debug\net5.0-windows\ref\Forms.dll
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\obj\Debug\net5.0-windows\Forms.pdb
+C:\Users\PabloCordoba\Desktop\Developing\Parcial\RPPL-2E-Cordoba-Pablo\Principal\obj\Debug\net5.0-windows\Forms.genruntimeconfig.cache

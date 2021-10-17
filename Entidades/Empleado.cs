@@ -75,9 +75,16 @@ namespace Entidades
 
         public virtual void ExportarVenta(Venta venta)
         {
-            string rutaCompleta = @"ticket-de-compra.txt";
+            string carpetaTickets = "tickets";
+            string rutaTickets = "tickets\\" + venta.IdVenta.ToString() + "-venta.txt";
+
+            if (!Directory.Exists(carpetaTickets))
+            {
+                Directory.CreateDirectory(carpetaTickets);
+            }
+
             string texto = venta.TicketDeCompra();
-            File.WriteAllText(rutaCompleta, texto);
+            File.WriteAllText(@rutaTickets, texto);
         }
     }
 }

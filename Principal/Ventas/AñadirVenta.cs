@@ -103,6 +103,11 @@ namespace Principal
                     Core.Clientes[Core.BuscarClienteporId(clienteExtraido.IdCliente)] = clienteExtraido;
             
                     Almacen.Ventas.Add(venta);
+
+                    //Reproducir sonido
+                    System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"notification-sound.wav");
+                    player.Play();
+
                     this.DialogResult = DialogResult.OK;
                 }
                 catch
