@@ -34,6 +34,8 @@ namespace Principal
             this.btnProducto = new System.Windows.Forms.Button();
             this.lblAutor = new System.Windows.Forms.Label();
             this.btnAcceder = new System.Windows.Forms.Button();
+            this.btnUsuarios = new System.Windows.Forms.Button();
+            this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnVentas
@@ -42,7 +44,7 @@ namespace Principal
             this.btnVentas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.btnVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVentas.Font = new System.Drawing.Font("Calibri Light", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnVentas.Location = new System.Drawing.Point(542, 274);
+            this.btnVentas.Location = new System.Drawing.Point(548, 198);
             this.btnVentas.Name = "btnVentas";
             this.btnVentas.Size = new System.Drawing.Size(249, 60);
             this.btnVentas.TabIndex = 0;
@@ -57,7 +59,7 @@ namespace Principal
             this.btnClientes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.btnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClientes.Font = new System.Drawing.Font("Calibri Light", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnClientes.Location = new System.Drawing.Point(542, 364);
+            this.btnClientes.Location = new System.Drawing.Point(548, 289);
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.Size = new System.Drawing.Size(249, 60);
             this.btnClientes.TabIndex = 1;
@@ -72,7 +74,7 @@ namespace Principal
             this.btnProducto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.btnProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProducto.Font = new System.Drawing.Font("Calibri Light", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnProducto.Location = new System.Drawing.Point(542, 454);
+            this.btnProducto.Location = new System.Drawing.Point(548, 380);
             this.btnProducto.Name = "btnProducto";
             this.btnProducto.Size = new System.Drawing.Size(249, 60);
             this.btnProducto.TabIndex = 2;
@@ -84,7 +86,7 @@ namespace Principal
             // lblAutor
             // 
             this.lblAutor.AutoSize = true;
-            this.lblAutor.Location = new System.Drawing.Point(1046, 691);
+            this.lblAutor.Location = new System.Drawing.Point(1060, 735);
             this.lblAutor.Name = "lblAutor";
             this.lblAutor.Size = new System.Drawing.Size(276, 15);
             this.lblAutor.TabIndex = 3;
@@ -104,22 +106,57 @@ namespace Principal
             this.btnAcceder.UseVisualStyleBackColor = true;
             this.btnAcceder.Click += new System.EventHandler(this.btnAcceder_Click);
             // 
+            // btnUsuarios
+            // 
+            this.btnUsuarios.FlatAppearance.BorderSize = 0;
+            this.btnUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUsuarios.Font = new System.Drawing.Font("Calibri Light", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnUsuarios.Location = new System.Drawing.Point(548, 471);
+            this.btnUsuarios.Name = "btnUsuarios";
+            this.btnUsuarios.Size = new System.Drawing.Size(249, 60);
+            this.btnUsuarios.TabIndex = 5;
+            this.btnUsuarios.Text = "Usuarios";
+            this.btnUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUsuarios.UseVisualStyleBackColor = true;
+            this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
+            // 
+            // btnCerrarSesion
+            // 
+            this.btnCerrarSesion.FlatAppearance.BorderSize = 0;
+            this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrarSesion.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(12, 720);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Size = new System.Drawing.Size(189, 36);
+            this.btnCerrarSesion.TabIndex = 6;
+            this.btnCerrarSesion.Text = "Cerrar sesión";
+            this.btnCerrarSesion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCerrarSesion.UseVisualStyleBackColor = true;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
+            // 
             // frmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1344, 729);
+            this.ClientSize = new System.Drawing.Size(1360, 768);
+            this.Controls.Add(this.btnCerrarSesion);
+            this.Controls.Add(this.btnUsuarios);
             this.Controls.Add(this.btnAcceder);
             this.Controls.Add(this.lblAutor);
             this.Controls.Add(this.btnProducto);
             this.Controls.Add(this.btnClientes);
             this.Controls.Add(this.btnVentas);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmMenuPrincipal";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MenuPrincipal";
             this.Load += new System.EventHandler(this.frmMenuPrincipal_Load);
+            this.Controls.SetChildIndex(this.btnVentas, 0);
+            this.Controls.SetChildIndex(this.btnClientes, 0);
+            this.Controls.SetChildIndex(this.btnProducto, 0);
+            this.Controls.SetChildIndex(this.lblAutor, 0);
+            this.Controls.SetChildIndex(this.btnAcceder, 0);
+            this.Controls.SetChildIndex(this.btnUsuarios, 0);
+            this.Controls.SetChildIndex(this.btnCerrarSesion, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -132,5 +169,7 @@ namespace Principal
         private System.Windows.Forms.Button btnProducto;
         private System.Windows.Forms.Label lblAutor;
         private System.Windows.Forms.Button btnAcceder;
+        private System.Windows.Forms.Button btnUsuarios;
+        private System.Windows.Forms.Button btnCerrarSesion;
     }
 }

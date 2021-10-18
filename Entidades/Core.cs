@@ -8,12 +8,12 @@ namespace Entidades
 {
     public static class Core
     {
-        //static List<Usuario> usuarios;
-        static int ultimoIdGenerado;
+        private static List<Usuario> usuarios;
+        private static int ultimoIdGenerado;
         private static List<Cliente> clientes;
-        static Usuario usuarioLogueado;
+        private static Usuario usuarioLogueado;
 
-        public static List<Usuario> Usuarios { get; set; }
+        public static List<Usuario> Usuarios { get => Core.usuarios; }
         public static int UltimoIdGenerado { get; set; }
 
         public static Usuario UsuarioLogueado 
@@ -39,10 +39,10 @@ namespace Entidades
 
         static Core()
         {
-            Usuarios = new List<Usuario>();
-            clientes = new List<Cliente>();
-            usuarioLogueado = new Administrador("admin", "admin");
-            ultimoIdGenerado = 0;
+            Core.usuarios = new List<Usuario>();
+            Core.clientes = new List<Cliente>();
+            Core.usuarioLogueado = null;
+            Core.ultimoIdGenerado = 0;
 
             CargarUsuarios();
             CargarClientes();
@@ -53,8 +53,8 @@ namespace Entidades
         {
             Core.Usuarios.Add(new Administrador("Pablo", "pass123"));
             Core.Usuarios.Add(new Empleado("Juan", "password"));
-            Core.Usuarios.Add(new Administrador("Daniela", "contra"));
-            Core.Usuarios.Add(new Administrador("Sofía", "pass000"));
+            Core.Usuarios.Add(new Administrador("Daniela", "contrasenia"));
+            Core.Usuarios.Add(new Administrador("Sofia", "pass000"));
             Core.Usuarios.Add(new Empleado("Ramiro", "pass999"));
         }
 
@@ -67,11 +67,26 @@ namespace Entidades
         }
         #endregion Hardcodeo
 
+        /// <summary>
+        /// Le suma 1 al atributo estático UltimoIdGenerado.
+        /// esta función se utiliza en todo lugar, para asignar un ID.
+        /// De esta forma se logra que no exista ningún número identificador repetido
+        /// en toda la aplicación, sin importar la entidad.
+        /// </summary>
+        /// <returns> el ID generado (ultimoId + 1) </returns>
         public static int AsignarId()
         {
             return Core.ultimoIdGenerado++;
         }
 
+        /// <summary>
+        /// Recibe los datos de un usuario y los busca en la lista.
+        /// 
+        /// </summary>
+        /// <param name="nombreDeUsuario"></param>
+        /// <param name="password"></param>
+        /// <returns>Devuelve true si lo encuentra y false si no lo encuentra.
+        /// Si puede loguear, cambia el estado del atributo UsuarioLogueado, por el usuario encontrado.</returns>
         public static bool LoguearUsuario(string nombreDeUsuario, string password)
         {
             bool exit = false;
@@ -80,7 +95,7 @@ namespace Entidades
             {
                 if (item.NombreDeUsuario == nombreDeUsuario && item.Password == password)
                 {
-                    usuarioLogueado = item;
+                    Core.UsuarioLogueado = item;
                     exit = true;
                 }
             }
@@ -92,6 +107,13 @@ namespace Entidades
             return exit;
         }
 
+        /// <summary>
+        /// Comprueba que no exista un usuario con el mismo nombre recibido por parámetro,
+        /// y si no lo encuentra, lo crea y lo añade a la lista.
+        /// </summary>
+        /// <param name="nombreDeUsuario"></param>
+        /// <param name="password"></param>
+        /// <returns>devuelve true si puede registrar, y false si no puede.</returns>
         public static bool RegistrarUsuario(string nombreDeUsuario, string password)
         {
             bool exit = false;
@@ -99,7 +121,7 @@ namespace Entidades
             newUser.NombreDeUsuario = nombreDeUsuario;
             newUser.Password = password;
 
-            if (TienePropiedadesNulas(newUser) == false && !Core.Usuarios.Contains(newUser))
+            if (TienePropiedadesNulas(newUser) == false && !Core.UsuarioRepetido(newUser))
             {
                 Core.GuardarUsuario(newUser);
                 exit = true;
@@ -109,6 +131,20 @@ namespace Entidades
 
 
         #region Búsquedas
+        public static int BuscarUsuarioPorId(int id)
+        {
+            int exit = -1;
+            for (int i = 0; i < Core.Usuarios.Count; i++)
+            {
+                if ((int)Core.Usuarios[i] == id)
+                {
+                    exit = i;
+                    break;
+                }
+            }
+            return exit;
+        }
+
         public static int BuscarClienteporId(int id)
         {
             int exit = -1;
@@ -150,13 +186,22 @@ namespace Entidades
             return indiceDeNombresEncontrados;
         }
         #endregion Búsquedas
-
+        /// <summary>
+        /// Guarda un cliente en la lista.
+        /// </summary>
+        /// <param name="cliente"></param>
+        /// <returns>Retorna el índice donde se guardó.</returns>
         public static int GuardarCliente(Cliente cliente)
         {
             Core.Clientes.Add(cliente);
             return Core.Clientes.IndexOf(cliente);
         }
 
+        /// <summary>
+        /// Guarda un usuario en la lista.
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns>Retorna el índice donde se guardó.</returns>
         public static int GuardarUsuario(Usuario usuario)
         {
             Core.Usuarios.Add(usuario);
@@ -165,6 +210,11 @@ namespace Entidades
 
 
         #region Validaciones
+        /// <summary>
+        /// Verifica que la cadena recibida como parámetro sea un entero.
+        /// </summary>
+        /// <param name="strNumero"></param>
+        /// <returns>Devuelve true si es un entero, false si no lo es.</returns>
         public static bool ValidarEntero(string strNumero)
         {
             if (string.IsNullOrEmpty(strNumero) == false && int.TryParse(strNumero, out _) == true)
@@ -174,6 +224,11 @@ namespace Entidades
             return false;
         }
 
+        /// <summary>
+        /// Verifica que la cadena recibida como parámetro sea un flotante.
+        /// </summary>
+        /// <param name="strNumero"></param>
+        /// <returns>Devuelve true si es un flotante, false si no lo es.</returns>
         public static bool ValidarFlotante(string strNumero)
         {
             if (string.IsNullOrEmpty(strNumero) == false && float.TryParse(strNumero, out _) == true)
@@ -183,34 +238,35 @@ namespace Entidades
             return false;
         }
 
+        /// <summary>
+        /// Verifica que la cadena recibida como parámetro contenga solo letras.
+        /// </summary>
+        /// <param name="cadena"></param>
+        /// <returns>Devuelve true si la cadena contiene solo letras, false si no lo es.</returns>
         public static bool ValidarLetras(string cadena)
         {
-            bool exit = false;
             if (string.IsNullOrEmpty(cadena) == false)
             {
                 for (int i = 0; i < cadena.Length; i++)
                 {
-                    if (char.IsLetter(cadena[i]) == true)
+                    if (char.IsLetter(cadena[i]) == false)
                     {
-                        exit = true;
+                        return false;
                     }
                 }
             }
-            return exit;
-        }
-
-
-        public static bool ValidarCelular(string celular)
-        {
-            bool exit = false;
-            if (!string.IsNullOrEmpty(celular) && celular.Length < 16
-                && celular.Length > 6)
+            else
             {
-                exit = true;
+                return false;
             }
-            return exit;
+            return true;
         }
 
+        /// <summary>
+        /// Comprueba que un usuario no contenga propiedades nulas
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns> Devuelve true si tiene nombre o password nula, false si no. </returns>
         public static bool TienePropiedadesNulas(Usuario user)
         {
             if (user.Password == null || user.NombreDeUsuario == null)
@@ -219,6 +275,24 @@ namespace Entidades
             }
             return false;
         }
+
+        /// <summary>
+        /// Comprueba si ya existe un usuario con el mismo nombre y diferente id
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns> Retorna true si el usuario está repetido, false si no. </returns>
+        public static bool UsuarioRepetido(Usuario usuario)
+        {
+            foreach (Usuario item in Core.Usuarios)
+            {
+                if (item.NombreDeUsuario == usuario.NombreDeUsuario && item.IdUsuario != usuario.IdUsuario)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         #endregion Validaciones
     }
 }

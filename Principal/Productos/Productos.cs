@@ -11,7 +11,7 @@ using Entidades;
 
 namespace Principal
 {
-    public partial class frmProductosBase : Form
+    public partial class frmProductosBase : frmBase
     {
         static int indiceActualProducto = 0;
         

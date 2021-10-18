@@ -10,7 +10,7 @@ namespace Entidades
     {
         private int idCliente;
         private float saldo;
-        private List<Venta> historialDeCompras;
+        private Dictionary<int, Venta> historialDeCompras;
         private string email;
         private string nombre;
         private float distancia;
@@ -78,7 +78,7 @@ namespace Entidades
             }
         }
 
-        public List<Venta> HistorialDeCompras 
+        public Dictionary<int, Venta> HistorialDeCompras 
         {
             get
             {
@@ -99,17 +99,17 @@ namespace Entidades
         public Cliente()
         {
             var random = new Random();
-            this.historialDeCompras = new List<Venta>();
+            this.historialDeCompras = new Dictionary<int, Venta>();
             this.idCliente = Core.AsignarId();
             this.distancia = (float)(random.NextDouble() + 1) * 10;
         }
 
-        public Cliente(float distancia)
+        public Cliente(float distancia, int id)
         {
             var random = new Random();
-            this.historialDeCompras = new List<Venta>();
-            this.idCliente = Core.AsignarId();
+            this.historialDeCompras = new Dictionary<int, Venta>();
             this.distancia = distancia;
+            this.idCliente = id;
         }
 
         public Cliente(string nombre, string email, float saldo)
@@ -117,7 +117,7 @@ namespace Entidades
             var random = new Random();
 
             this.nombre = nombre;
-            this.historialDeCompras = new List<Venta>();
+            this.historialDeCompras = new Dictionary<int, Venta>();
             this.saldo = saldo;
             this.idCliente = Core.AsignarId();
             this.email = email;
@@ -130,7 +130,7 @@ namespace Entidades
             var random = new Random();
 
             this.nombre = nombre;
-            this.historialDeCompras = new List<Venta>();
+            this.historialDeCompras = new Dictionary<int, Venta>();
             this.saldo = saldo;
             this.idCliente = Core.AsignarId();
             this.email = email;
@@ -138,7 +138,10 @@ namespace Entidades
         }
         #endregion Constructor y sobrecargas
 
-
+        /// <summary>
+        /// Muestra los datos de un cliente.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             StringBuilder cliente = new StringBuilder();
@@ -151,6 +154,12 @@ namespace Entidades
 
 
         #region Validaciones
+        /// <summary>
+        /// Validación para el saldo,
+        /// En esta capa van las validaciones referidas a las reglas de negocio.
+        /// </summary>
+        /// <param name="saldo"></param>
+        /// <returns></returns>
         private bool ValidarSaldo(float saldo)
         {
             if(saldo > -1)
@@ -160,15 +169,12 @@ namespace Entidades
             return false;
         }
 
-        private bool ValidarVenta(Venta venta)
-        {
-            if (venta.ProductoVendido != null && (this.Saldo - venta.PrecioTotal) > -1)
-            {
-                return true;
-            }
-            return false;
-        }
-
+        /// <summary>
+        /// Validación para el email.
+        /// En esta capa van las validaciones referidas a las reglas de negocio.
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
         private bool ValidarEmail(string email)
         {
             if (email.Contains('@') == true && email.Contains("mail.com") == true)
@@ -178,6 +184,12 @@ namespace Entidades
             return false;
         }
 
+        /// <summary>
+        /// Validación para el nombre.
+        /// En esta capa van las validaciones referidas a las reglas de negocio.
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns></returns>
         private bool ValidarNombre(string nombre)
         {
             if (Core.ValidarLetras(nombre) == true && nombre != "admin" && nombre.Length < 20)
@@ -187,16 +199,28 @@ namespace Entidades
             return false;
         }
 
+        /// <summary>
+        /// Llama a todas las validaciones de la capa de reglas de negocio.
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="email"></param>
+        /// <param name="saldo"></param>
+        /// <returns></returns>
         public bool ValidarTodoCliente(string nombre, string email, string saldo)
         {
-            if (Core.ValidarLetras(nombre) && Core.ValidarLetras(email)
-                &&  Core.ValidarFlotante(saldo) )
+            if (Core.ValidarLetras(nombre)  &&  Core.ValidarFlotante(saldo) )
             {
                 return true;
             }
             return false;
         }
 
+        /// <summary>
+        /// Utiliza las propiedades para escribir todos los datos de un cliente.
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="email"></param>
+        /// <param name="saldo"></param>
         public void SetearTodoCliente(string nombre, string email, float saldo)
         {
             this.Nombre = nombre;

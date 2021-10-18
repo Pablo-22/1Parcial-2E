@@ -27,7 +27,14 @@ namespace Principal
         }
 
         private void btnVender1_Click(object sender, EventArgs e)
-        { }
+        {
+            frmAniadirVenta editar = new frmAniadirVenta(IndiceActualProducto);
+            editar.ShowDialog();
+            if (editar.DialogResult == DialogResult.OK)
+            {
+                CargarDatosDeProducto(IndiceActualProducto);
+            }
+        }
 
         private void btnEditar1_Click(object sender, EventArgs e)
         {

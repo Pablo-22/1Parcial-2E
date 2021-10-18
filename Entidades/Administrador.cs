@@ -12,32 +12,51 @@ namespace Entidades
             : base(nombreDeUsuario, password)
         { }
 
-        private bool AltaUsuario()
-        {
+        public Administrador()
+            : base()
+        { }
 
-            return true;
-        }
+        public Administrador(int id)
+            : base(id)
+        { }
 
-        private bool EditarUsuario(int index, string nombreDeUsuario, string password, int legajo)
+
+        /// <summary>
+        /// Recibe los datos para crear un usuario nuevo, y lo 
+        /// crea utilizando los setters para las validaciones necesarias, 
+        /// que no se ejecutarían al utilizar directamente el constructor.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="nombre"></param>
+        /// <param name="password"></param>
+        /// <param name="nivelDeAcceso"></param>
+        /// <returns></returns>
+        public Usuario crearUsuario(int id, string nombre, string password, string nivelDeAcceso)
         {
-            bool exit = false;
-           
-            if (Core.Usuarios[index] != null)
+            if (nivelDeAcceso == "Administrador")
             {
-                exit = true;
-                Core.Usuarios[index].NombreDeUsuario = nombreDeUsuario;
-                Core.Usuarios[index].Password = password;
+                Administrador usuarioEditado = new Administrador(id);
+                usuarioEditado.NombreDeUsuario = nombre;
+                usuarioEditado.Password = password;
+                return usuarioEditado;
             }
-            return exit;
+            else
+            {
+                Empleado usuarioEditado = new Empleado(id);
+                usuarioEditado.NombreDeUsuario = nombre;
+                usuarioEditado.Password = password;
+                return usuarioEditado;
+            }
         }
 
 
 
-        public override void NuevoCliente()
-        {
-            Console.WriteLine("Desde Admin");
-        }
-
+        /// <summary>
+        /// Convierte el usuario que recibe como parámetro a un formato CSV.
+        /// A diferencia de la versión de la clase empleado, en esta se añade la password
+        /// </summary>
+        /// <param name="usuarioAConvertir"></param>
+        /// <returns></returns>
         protected override string UsuarioAFormatoCsv(Usuario usuarioAConvertir)
         {
             StringBuilder usuario = new StringBuilder();
@@ -47,6 +66,11 @@ namespace Entidades
             return usuario.ToString();
         }
 
+        /// <summary>
+        /// Utiliza la función que convierte un usuario a CSV, 
+        /// para convertir todos los usuarios registrados.
+        /// </summary>
+        /// <returns></returns>
         protected override string UsuariosAFormatoCsv()
         {
             StringBuilder usuarios = new StringBuilder();
@@ -56,6 +80,20 @@ namespace Entidades
                 usuarios.AppendLine(UsuarioAFormatoCsv(item));
             }
             return usuarios.ToString();
+        }
+
+        /// <summary>
+        /// Muestra los datos de un usuario (sin contraseña)
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns>Devuelte los datos en una cadena</returns>
+        public override string MostrarUsuario(Usuario usuario)
+        {
+            StringBuilder user = new StringBuilder();
+            user.Append(base.MostrarUsuario(usuario));
+            user.Append(" --- Contraseña: " + usuario.Password);
+
+            return user.ToString();
         }
     }
 }

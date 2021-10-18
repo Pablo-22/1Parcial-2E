@@ -36,8 +36,9 @@ namespace Principal
             this.lblNombreDeUsuario = new System.Windows.Forms.Label();
             this.lblContrasenia = new System.Windows.Forms.Label();
             this.lblMensajeDeError = new System.Windows.Forms.Label();
-            this.btnAutocompletar = new System.Windows.Forms.Button();
+            this.btnAutocompletarAdmin = new System.Windows.Forms.Button();
             this.lblBienvenido = new System.Windows.Forms.Label();
+            this.btnAutocompletarEmpleado = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAcceder
@@ -48,7 +49,7 @@ namespace Principal
             this.btnAcceder.Location = new System.Drawing.Point(92, 420);
             this.btnAcceder.Name = "btnAcceder";
             this.btnAcceder.Size = new System.Drawing.Size(250, 49);
-            this.btnAcceder.TabIndex = 0;
+            this.btnAcceder.TabIndex = 2;
             this.btnAcceder.Text = "Acceder";
             this.btnAcceder.UseVisualStyleBackColor = false;
             this.btnAcceder.Click += new System.EventHandler(this.button1_Click);
@@ -61,9 +62,10 @@ namespace Principal
             this.btnRegistrarse.Location = new System.Drawing.Point(92, 475);
             this.btnRegistrarse.Name = "btnRegistrarse";
             this.btnRegistrarse.Size = new System.Drawing.Size(250, 49);
-            this.btnRegistrarse.TabIndex = 1;
+            this.btnRegistrarse.TabIndex = 3;
             this.btnRegistrarse.Text = "Registrarse";
             this.btnRegistrarse.UseVisualStyleBackColor = false;
+            this.btnRegistrarse.Click += new System.EventHandler(this.btnRegistrarse_Click);
             // 
             // txtContrasenia
             // 
@@ -71,7 +73,7 @@ namespace Principal
             this.txtContrasenia.Location = new System.Drawing.Point(92, 310);
             this.txtContrasenia.Name = "txtContrasenia";
             this.txtContrasenia.Size = new System.Drawing.Size(250, 39);
-            this.txtContrasenia.TabIndex = 2;
+            this.txtContrasenia.TabIndex = 1;
             this.txtContrasenia.UseSystemPasswordChar = true;
             // 
             // txtNombreDeUsuario
@@ -80,7 +82,7 @@ namespace Principal
             this.txtNombreDeUsuario.Location = new System.Drawing.Point(92, 230);
             this.txtNombreDeUsuario.Name = "txtNombreDeUsuario";
             this.txtNombreDeUsuario.Size = new System.Drawing.Size(250, 39);
-            this.txtNombreDeUsuario.TabIndex = 3;
+            this.txtNombreDeUsuario.TabIndex = 0;
             // 
             // lblNombreDeUsuario
             // 
@@ -112,18 +114,18 @@ namespace Principal
             this.lblMensajeDeError.Size = new System.Drawing.Size(0, 15);
             this.lblMensajeDeError.TabIndex = 6;
             // 
-            // btnAutocompletar
+            // btnAutocompletarAdmin
             // 
-            this.btnAutocompletar.FlatAppearance.BorderSize = 0;
-            this.btnAutocompletar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAutocompletar.ForeColor = System.Drawing.Color.DarkCyan;
-            this.btnAutocompletar.Location = new System.Drawing.Point(159, 555);
-            this.btnAutocompletar.Name = "btnAutocompletar";
-            this.btnAutocompletar.Size = new System.Drawing.Size(116, 23);
-            this.btnAutocompletar.TabIndex = 7;
-            this.btnAutocompletar.Text = "Rellenar campos";
-            this.btnAutocompletar.UseVisualStyleBackColor = true;
-            this.btnAutocompletar.Click += new System.EventHandler(this.btnAutocompletar_Click);
+            this.btnAutocompletarAdmin.FlatAppearance.BorderSize = 0;
+            this.btnAutocompletarAdmin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAutocompletarAdmin.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btnAutocompletarAdmin.Location = new System.Drawing.Point(92, 555);
+            this.btnAutocompletarAdmin.Name = "btnAutocompletarAdmin";
+            this.btnAutocompletarAdmin.Size = new System.Drawing.Size(250, 23);
+            this.btnAutocompletarAdmin.TabIndex = 4;
+            this.btnAutocompletarAdmin.Text = "Rellenar campos (Admin)";
+            this.btnAutocompletarAdmin.UseVisualStyleBackColor = true;
+            this.btnAutocompletarAdmin.Click += new System.EventHandler(this.btnAutocompletar_Click);
             // 
             // lblBienvenido
             // 
@@ -135,14 +137,28 @@ namespace Principal
             this.lblBienvenido.TabIndex = 8;
             this.lblBienvenido.Text = "Bienvenido";
             // 
+            // btnAutocompletarEmpleado
+            // 
+            this.btnAutocompletarEmpleado.FlatAppearance.BorderSize = 0;
+            this.btnAutocompletarEmpleado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAutocompletarEmpleado.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btnAutocompletarEmpleado.Location = new System.Drawing.Point(92, 600);
+            this.btnAutocompletarEmpleado.Name = "btnAutocompletarEmpleado";
+            this.btnAutocompletarEmpleado.Size = new System.Drawing.Size(250, 23);
+            this.btnAutocompletarEmpleado.TabIndex = 5;
+            this.btnAutocompletarEmpleado.Text = "Rellenar campos (Empleado)";
+            this.btnAutocompletarEmpleado.UseVisualStyleBackColor = true;
+            this.btnAutocompletarEmpleado.Click += new System.EventHandler(this.btnAutocompletarEmpleado_Click);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(434, 729);
+            this.Controls.Add(this.btnAutocompletarEmpleado);
             this.Controls.Add(this.lblBienvenido);
-            this.Controls.Add(this.btnAutocompletar);
+            this.Controls.Add(this.btnAutocompletarAdmin);
             this.Controls.Add(this.lblMensajeDeError);
             this.Controls.Add(this.lblContrasenia);
             this.Controls.Add(this.lblNombreDeUsuario);
@@ -169,7 +185,8 @@ namespace Principal
         private System.Windows.Forms.Label lblNombreDeUsuario;
         private System.Windows.Forms.Label lblContrasenia;
         private System.Windows.Forms.Label lblMensajeDeError;
-        private System.Windows.Forms.Button btnAutocompletar;
+        private System.Windows.Forms.Button btnAutocompletarAdmin;
         private System.Windows.Forms.Label lblBienvenido;
+        private System.Windows.Forms.Button btnAutocompletarEmpleado;
     }
 }

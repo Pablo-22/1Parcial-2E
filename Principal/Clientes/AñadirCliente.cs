@@ -23,6 +23,11 @@ namespace Principal
             ModoEdicion(true);
         }
 
+        /// <summary>
+        /// Añade un cliente nuevo a la lista, en base al valor de los campos del form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             if (CamposRellenos() == true)

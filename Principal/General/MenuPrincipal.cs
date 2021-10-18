@@ -11,7 +11,7 @@ using Entidades;
 
 namespace Principal
 {
-    public partial class frmMenuPrincipal : Form
+    public partial class frmMenuPrincipal : frmBase
     {
         public frmMenuPrincipal()
         {
@@ -20,32 +20,25 @@ namespace Principal
 
         private void frmMenuPrincipal_Load(object sender, EventArgs e)
         {
-            if (Core.UsuarioLogueado.NombreDeUsuario == "admin")
+            if (Core.UsuarioLogueado != null)
             {
-                sesionCerrada();
+                SesionAbierta(true);
             }
             else
             {
-                sesionAbierta();
+                SesionAbierta(false);
             }
         }
 
-        private void sesionCerrada()
+        private void SesionAbierta(bool toggle)
         {
-            btnAcceder.Visible = true;
+            btnAcceder.Visible = !toggle;
+            btnCerrarSesion.Visible = toggle;
 
-            btnClientes.Enabled = false;
-            btnProducto.Enabled = false;
-            btnVentas.Enabled = false;
-        }
-
-        private void sesionAbierta()
-        {
-            btnAcceder.Visible = false;
-
-            btnClientes.Enabled = true;
-            btnProducto.Enabled = true;
-            btnVentas.Enabled = true;
+            btnClientes.Enabled = toggle;
+            btnProducto.Enabled = toggle;
+            btnVentas.Enabled = toggle;
+            btnUsuarios.Enabled = toggle;
         }
 
         private void btnVentas_Click(object sender, EventArgs e)
@@ -61,7 +54,7 @@ namespace Principal
             login.ShowDialog();
             if (login.DialogResult == DialogResult.OK)
             {
-                sesionAbierta();
+                SesionAbierta(true);
             }
         }
 
@@ -77,6 +70,28 @@ namespace Principal
             frmVisualizarClientes verClientes = new frmVisualizarClientes();
             this.Hide();
             verClientes.Show();
+        }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Core.UsuarioLogueado = null;
+            SesionAbierta(false);
+        }
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            if (Core.UsuarioLogueado is Administrador)
+            {
+                frmUsuarios_VistaDeAdmin verUsuarios = new frmUsuarios_VistaDeAdmin();
+                this.Hide();
+                verUsuarios.Show();
+            }
+            else
+            {
+                frmUsuarios_VistaDeEmpleado verUsuarios = new frmUsuarios_VistaDeEmpleado();
+                this.Hide();
+                verUsuarios.Show();
+            }
         }
     }
 }

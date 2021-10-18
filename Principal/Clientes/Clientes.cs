@@ -71,6 +71,10 @@ namespace Principal
             txtDistancia.Text = "";
         }
 
+        /// <summary>
+        /// Utiliza una lógica "toggle" para setear si los campos se pueden editar o no.
+        /// </summary>
+        /// <param name="toggle"></param>
         protected void ModoEdicion(bool toggle)
         {
             txtNombre.ReadOnly = !toggle;
@@ -78,6 +82,10 @@ namespace Principal
             txtSaldo.ReadOnly = !toggle;
         }
 
+        /// <summary>
+        /// Comprueba que los campos no estén vacíos
+        /// </summary>
+        /// <returns>false si álguno está vacío, true si ninguno está vacío.</returns>
         protected bool CamposRellenos()
         {
             if (txtNombre.Text == "" || txtEmail.Text == "" || txtSaldo.Text == "")
@@ -89,7 +97,7 @@ namespace Principal
 
 
         /// <summary>
-        /// Si encuentra producto en el índice pasado, carga todos los datos del producto en el form
+        /// Si encuentra cliente en el índice pasado, carga todos los datos del cliente en el form
         /// Si no lo encuentra, vuelve al último elemento, o al primero, según el valor del index.
         /// </summary>
         /// <param name="index"></param>
@@ -102,7 +110,8 @@ namespace Principal
                 txtSaldo.Text = Core.Clientes[index].Saldo.ToString();
                 txtDistancia.Text = Core.Clientes[index].Distancia.ToString();
                 txtNumeroCliente.Text = Core.Clientes[index].IdCliente.ToString();
-                //lstHistorial.DataSource = CoreDelSistema.Clientes[index];
+
+                //lstHistorial.DataSource = Core.Clientes[index].HistorialDeCompras.Values;
             }
             else
             {
@@ -119,6 +128,7 @@ namespace Principal
             }
         }
 
+        /*
         protected void CargarDatosDeClienteConMismoNombre(int index)
         {
             if (index > -1)
@@ -139,6 +149,7 @@ namespace Principal
                 CargarDatosDeCliente(ListaDeIndicesConElNombreBuscado[IndiceActualDeNombresRepetidos]);
             }
         }
+        */
 
         private void frmClientesBase_Load(object sender, EventArgs e)
         {

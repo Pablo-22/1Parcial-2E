@@ -33,31 +33,35 @@ namespace Entidades
             CargarVentas();
         }
 
+        /// <summary>
+        /// Hardcodeo de ventas para la lista.
+        /// </summary>
         private static void CargarVentas()
         {
             Ventas.Add(new Venta(Core.Clientes[0].IdCliente, Venta.MetodoDePago.Efectivo,
                 Almacen.Productos[0]) );
 
+            Core.Clientes[0].HistorialDeCompras.Add(0,new Venta(Core.Clientes[0].IdCliente, Venta.MetodoDePago.Efectivo,
+                Almacen.Productos[0]));
+
             Ventas.Add(new Venta(Core.Clientes[1].IdCliente, Venta.MetodoDePago.Credito,
+                Almacen.Productos[2]));
+
+            Core.Clientes[2].HistorialDeCompras.Add(1, new Venta(Core.Clientes[1].IdCliente, Venta.MetodoDePago.Credito,
                 Almacen.Productos[2]));
 
             Ventas.Add(new Venta(Core.Clientes[2].IdCliente, Venta.MetodoDePago.Debito,
                 Almacen.Productos[1]));
+
+            Core.Clientes[0].HistorialDeCompras.Add(2, new Venta(Core.Clientes[2].IdCliente, Venta.MetodoDePago.Debito,
+                Almacen.Productos[1]));
         }
 
+        /// <summary>
+        /// Hardcodeo de productos para la lista
+        /// </summary>
         private static void CargarProductos()
         {
-
-            /*
-                string nombre;
-                float precio;
-                string marca;
-                CategoriaAnimal tipoDeAnimal;
-                CategoriaProducto tipoDeProducto;
-                string descripción;
-                int cantidad;
-            */
-
             productos.Add(new Producto("Collar", 375, "petClothes",
                 Producto.CategoriaAnimal.Perros, Producto.CategoriaProducto.Indumentaria,
                 "Un excelente collar para tu perro",
@@ -75,7 +79,11 @@ namespace Entidades
         }
 
 
-
+        /// <summary>
+        /// Comprueba que el índice recibido como parámetro exista en la lista de productos
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public static bool BuscarIndiceProducto(int index)
         {
             bool exit = false;
@@ -87,13 +95,22 @@ namespace Entidades
             return exit;
         }
 
-
+        /// <summary>
+        /// Guarda un producto en la lista
+        /// </summary>
+        /// <param name="producto"></param>
+        /// <returns></returns>
         public static int GuardarProducto(Producto producto)
         {
             Productos.Add(producto);
             return Productos.IndexOf(producto);
         }
 
+        /// <summary>
+        /// Guarda una venta en la lista
+        /// </summary>
+        /// <param name="venta"></param>
+        /// <returns></returns>
         public static int GuardarVenta(Venta venta)
         {
             Almacen.Ventas.Add(venta);
@@ -101,7 +118,11 @@ namespace Entidades
         }
 
 
-
+        /// <summary>
+        /// Recibe un id, y lo busca en la lista de ventas.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static int BuscarVentaPorId(int id)
         {
             int exit = -1;
@@ -116,6 +137,11 @@ namespace Entidades
             return exit;
         }
 
+        /// <summary>
+        /// Recibe un id y lo busca en la lista de productos.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static int BuscarProductoPorId(int id)
         {
             int exit = -1;
@@ -131,13 +157,25 @@ namespace Entidades
         }
 
 
-
+        /// <summary>
+        /// Comprueba que se den las condiciones para realizar una venta
+        /// </summary>
+        /// <param name="idCliente"></param>
+        /// <param name="venta"></param>
         public static void ConfirmarCondicionesDeVenta(int idCliente, Venta venta)
         {
-            if (Core.Clientes[Core.BuscarClienteporId(idCliente)].Saldo 
-                - venta.PrecioTotal < 0 )
+            if (Almacen.Productos[Almacen.BuscarProductoPorId(venta.ProductoVendido.IdProducto)].Cantidad > 0 &&
+                Almacen.Productos[Almacen.BuscarProductoPorId(venta.ProductoVendido.IdProducto)].Cantidad - venta.ProductoVendido.Cantidad > -1)
             {
-                throw new Exception("Dinero insuficiente");
+                if (Core.Clientes[Core.BuscarClienteporId(idCliente)].Saldo 
+                    - venta.PrecioTotal < 0 )
+                {
+                    throw new ClienteSinDineroExcepcion();
+                }
+            }
+            else
+            {
+                throw new SinStockExcepcion();
             }
         }
 

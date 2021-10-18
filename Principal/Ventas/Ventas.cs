@@ -11,7 +11,7 @@ using Entidades;
 
 namespace Principal
 {
-    public partial class frmVentasBase : Form
+    public partial class frmVentasBase : frmBase
     {
         public frmVentasBase()
         {
@@ -24,6 +24,11 @@ namespace Principal
             lstVentas.Refresh();
         }
 
+        /// <summary>
+        /// Lleva al formulario para añadir una venta, y actualiza la lista.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnNuevaVenta_Click(object sender, EventArgs e)
         {
             frmAniadirVenta editar = new frmAniadirVenta();
@@ -36,15 +41,33 @@ namespace Principal
             }
         }
 
+        /// <summary>
+        /// Elimina la venta seleccionada en el listBox de la lista de ventas, y refresca el listBox
+        /// Si el usuario lo decide, puede devolverle el dinero al cliente (en su saldo)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEliminarVenta_Click(object sender, EventArgs e)
         {
-            int indiceDeLaVentaAExtraer;
-            Venta ventaExtraida = (Venta)lstVentas.SelectedItem;
-            indiceDeLaVentaAExtraer = Almacen.BuscarVentaPorId(ventaExtraida.IdVenta);
-            Almacen.Ventas.RemoveAt(indiceDeLaVentaAExtraer);
-            lstVentas.DataSource = null;
-            lstVentas.DataSource = Almacen.Ventas;
-            lstVentas.Refresh();
+            if (Core.UsuarioLogueado is Administrador)
+            {
+                int indiceDeLaVentaAExtraer;
+                Venta ventaExtraida = (Venta)lstVentas.SelectedItem;
+                indiceDeLaVentaAExtraer = Almacen.BuscarVentaPorId(ventaExtraida.IdVenta);
+                DialogResult result = MessageBox.Show("¿Desea devolver el dinero al cliente?", "Eliminar Venta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    Core.Clientes[Core.BuscarClienteporId(ventaExtraida.IdCliente)].Saldo += ventaExtraida.PrecioTotal;
+                }
+                Almacen.Ventas.RemoveAt(indiceDeLaVentaAExtraer);
+                lstVentas.DataSource = null;
+                lstVentas.DataSource = Almacen.Ventas;
+                lstVentas.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("Permisos insuficientes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -54,12 +77,19 @@ namespace Principal
             menu.Show();
         }
 
+        /// <summary>
+        /// Extrae la venta seleccionada del list box y la exporta a un txt.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnExportarTicket_Click(object sender, EventArgs e)
         {
             Empleado usuarioLogueado = (Empleado)Core.UsuarioLogueado;
             Venta ventaExtraida = (Venta)lstVentas.SelectedItem;
 
             usuarioLogueado.ExportarVenta( ventaExtraida );
+
+            MessageBox.Show("Ticket de venta exportado", "¡Genial!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

@@ -11,11 +11,17 @@ using Entidades;
 
 namespace Principal
 {
-    public partial class frmAniadirVenta : Form
+    public partial class frmAniadirVenta : frmBase
     {
+        private int indiceDeProductoAVender = 0;
         public frmAniadirVenta()
         {
             InitializeComponent();
+        }
+
+        public frmAniadirVenta(int indiceDeProducto) :this()
+        {
+            this.indiceDeProductoAVender = indiceDeProducto;
         }
 
         private void CargarListas()
@@ -23,13 +29,15 @@ namespace Principal
             lstClientes.DataSource = Core.Clientes;
             lstProductos.DataSource = Almacen.Productos;
 
+            lstProductos.SelectedItem = Almacen.Productos[indiceDeProductoAVender];
+
             lstClientes.Refresh();
             lstProductos.Refresh();
         }
 
         private bool CamposRellenos()
         {
-            if (cmbMetodoDePago.Text == "" || dateFechaDeVenta.Value > DateTime.Now)
+            if (cmbMetodoDePago.Text == "" || dateFechaDeVenta.Value > DateTime.Now || numCantidadDeUnidades.Value < 1)
             {
                 return false;
             }
@@ -58,7 +66,7 @@ namespace Principal
             {
                 if (numCantidadDeUnidades.Value < 1)
                 {
-                    numCantidadDeUnidades.Value = 1;
+                    numCantidadDeUnidades.Value = 0;
                 }
             }
         }
@@ -89,20 +97,26 @@ namespace Principal
             if (CamposRellenos() == true)
             {
                 Cliente clienteExtraido = (Cliente)lstClientes.SelectedItem;
+                Producto productoSeleccionado = (Producto)lstProductos.SelectedItem;
 
-                Producto productoExtraido = (Producto)lstProductos.SelectedItem;
-                productoExtraido.Cantidad = (int)numCantidadDeUnidades.Value;
+
+                Producto productoDeVenta = new Producto(productoSeleccionado.IdProducto);
+                 productoDeVenta.SetearTodo(productoSeleccionado.Nombre, productoSeleccionado.Precio, 
+                     productoSeleccionado.Marca, productoSeleccionado.TipoDeAnimal, productoSeleccionado.TipoDeProducto, 
+                     productoSeleccionado.Descripcion, productoSeleccionado.Cantidad, productoSeleccionado.Peso);
+
+                productoDeVenta.Cantidad = (int)numCantidadDeUnidades.Value;
 
                 try
                 {
                     
-                    Venta venta = new Venta(clienteExtraido.IdCliente, (Venta.MetodoDePago)cmbMetodoDePago.SelectedItem, productoExtraido, dateFechaDeVenta.Value);
+                    Venta venta = new Venta(clienteExtraido.IdCliente, (Venta.MetodoDePago)cmbMetodoDePago.SelectedItem, productoDeVenta, dateFechaDeVenta.Value);
                     Almacen.ConfirmarCondicionesDeVenta(clienteExtraido.IdCliente, venta);
-                    clienteExtraido.Saldo -= venta.PrecioTotal;
-
-                    Core.Clientes[Core.BuscarClienteporId(clienteExtraido.IdCliente)] = clienteExtraido;
+                    
+                    Empleado empleado = (Empleado)Core.UsuarioLogueado;
+                    empleado.RealizarVenta(venta);
             
-                    Almacen.Ventas.Add(venta);
+                    Almacen.GuardarVenta(venta);
 
                     //Reproducir sonido
                     System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"notification-sound.wav");

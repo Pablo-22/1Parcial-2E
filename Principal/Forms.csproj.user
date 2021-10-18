@@ -13,6 +13,9 @@
     <Compile Update="Clientes\VisualizarClientes.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="General\Base.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Productos\AñadirProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -29,6 +32,18 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Productos\VisualizarProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Usuarios\EditarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Usuarios\Usuarios-VistaDeAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Usuarios\Usuarios-VistaDeEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Usuarios\Usuarios.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Ventas\AñadirVenta.cs">

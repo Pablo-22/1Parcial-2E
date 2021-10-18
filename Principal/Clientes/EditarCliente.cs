@@ -35,7 +35,7 @@ namespace Principal
         {
             if (CamposRellenos() == true)
             {
-                Cliente nuevoCliente = new Cliente(float.Parse(txtDistancia.Text));
+                Cliente nuevoCliente = new Cliente(float.Parse(txtDistancia.Text), int.Parse(txtNumeroCliente.Text));
                 if (nuevoCliente.ValidarTodoCliente(txtNombre.Text, txtEmail.Text, txtSaldo.Text) == true)
                 {
                     nuevoCliente.SetearTodoCliente(txtNombre.Text, txtEmail.Text, float.Parse(txtSaldo.Text));

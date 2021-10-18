@@ -86,6 +86,10 @@ namespace Entidades
             Miniflete = 35
         }
 
+        /// <summary>
+        /// Calcula la forma de envío y la retorna.
+        /// </summary>
+        /// <returns>Si el producto pesa más de 20 kg, o la cantidad es mayor a 5, retorna Miniflete. Si no, Moto</returns>
         private FormaDeEnvio CalcularFormaDeEnvio()
         {
             if (this.producto.Peso > 20 || this.producto.Cantidad > 5)
@@ -98,6 +102,11 @@ namespace Entidades
             }
         }
 
+        /// <summary>
+        /// Obtiene el precio de envío en base a una multiplicación de la distancia del cliente de la sucursal,
+        /// y el valor el índice del enumerado perteneciente a la forma de envío.
+        /// </summary>
+        /// <returns>Retorna el precio del envío calculado.</returns>
         private float ObtenerPrecioEnvio()
         {
             int cliente;
@@ -108,13 +117,22 @@ namespace Entidades
             return precioEnvio;
         }
 
+        /// <summary>
+        /// Obtiene el precio total en base a una multiplicación del precio del producto por la cantidad, 
+        /// y le suma el precio del envío.
+        /// </summary>
+        /// <returns>Retorna el precio calculado.</returns>
         private float ObtenerPrecioTotal()
         {
             float precioTotal = this.producto.Precio * this.producto.Cantidad + this.precioEnvio;
             return precioTotal;
         }
 
-
+        /// <summary>
+        /// muestra los datos de una venta.
+        /// Sirve para los listBox.
+        /// </summary>
+        /// <returns>Retorna una cadena con los datos de la venta.</returns>
         public override string ToString()
         {
 
@@ -131,6 +149,11 @@ namespace Entidades
             return ticket.ToString();
         }
 
+        /// <summary>
+        /// Valida que un producto no tenga atributos nulos.
+        /// </summary>
+        /// <param name="producto"></param>
+        /// <returns></returns>
         private bool ValidarProducto(Producto producto)
         {
             if(producto.Descripcion != null ||
@@ -142,7 +165,11 @@ namespace Entidades
             return false;
         }
 
-
+        /// <summary>
+        /// Genera un ticket de compra en base a los datos de la venta
+        /// (los atributos del objeto)
+        /// </summary>
+        /// <returns>Retorna una cadena con el ticket de compra</returns>
         public string TicketDeCompra()
         {
             StringBuilder venta = new StringBuilder();

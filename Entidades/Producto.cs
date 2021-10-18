@@ -19,9 +19,12 @@ namespace Entidades
         private int idProducto;
 
 
-        public Producto()
+        public Producto(): this(Core.AsignarId())
+        { }
+
+        public Producto(int id)
         {
-            this.idProducto = Core.AsignarId();
+            this.idProducto = id;
         }
 
         public Producto(string nombre, float precio, string marca, 
@@ -183,7 +186,10 @@ namespace Entidades
             Otro
         }
 
-
+        /// <summary>
+        /// Muestra los datos de un producto
+        /// </summary>
+        /// <returns>Retorna una cadena con los datos de un producto.</returns>
         public override string ToString()
         {
             StringBuilder producto = new StringBuilder();
@@ -195,7 +201,11 @@ namespace Entidades
             return producto.ToString();
         }
 
-
+        /// <summary>
+        /// Valida el nombre. En esta capa se realizan las validaciones de reglas de negocio.
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns>true si es válido, false si no es válido</returns>
         private bool ValidarNombre(string nombre)
         {
             if (Core.ValidarLetras(nombre) == true && nombre.Length < 20)
@@ -205,6 +215,11 @@ namespace Entidades
             return false;
         }
 
+        /// <summary>
+        /// Valida la marca. En esta capa se realizan las validaciones de reglas de negocio.
+        /// </summary>
+        /// <param name="marca"></param>
+        /// <returns>true si es válido, false si no es válido</returns>
         private bool ValidarMarca(string marca)
         {
             if (Core.ValidarLetras(marca) == true && marca.Length < 15)
@@ -214,7 +229,11 @@ namespace Entidades
             return false;
         }
 
-
+        /// <summary>
+        /// Valida el precio. En esta capa se realizan las validaciones de reglas de negocio.
+        /// </summary>
+        /// <param name="precio"></param>
+        /// <returns>true si es válido, false si no es válido</returns>
         private bool ValidarPrecio(float precio)
         {
             if (precio > 0)
@@ -224,6 +243,11 @@ namespace Entidades
             return false;
         }
 
+        /// <summary>
+        /// Valida el peso. En esta capa se realizan las validaciones de reglas de negocio.
+        /// </summary>
+        /// <param name="peso"></param>
+        /// <returns>true si es válido, false si no es válido</returns>
         private bool ValidarPeso(float peso)
         {
             if (peso < 80)
@@ -233,15 +257,25 @@ namespace Entidades
             return false;
         }
 
+        /// <summary>
+        /// Valida la descripción. En esta capa se realizan las validaciones de reglas de negocio.
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns>true si es válido, false si no es válido</returns>
         private bool ValidarDescripcion(string nombre)
         {
-            if (Core.ValidarLetras(nombre) == true && nombre.Length < 255)
+            if (nombre.Length < 255)
             {
                 return true;
             }
             return false;
         }
 
+        /// <summary>
+        /// Valida la cantidad. En esta capa se realizan las validaciones de reglas de negocio.
+        /// </summary>
+        /// <param name="cantidad"></param>
+        /// <returns>true si es válido, false si no es válido</returns>
         private bool ValidarCantidad(int cantidad)
         {
             if (cantidad < 100)
@@ -251,17 +285,38 @@ namespace Entidades
             return false;
         }
 
+        /// <summary>
+        /// utiliza las validaciones para verificar que todos los parámetros sean válidos para crear un producto.
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="precio"></param>
+        /// <param name="marca"></param>
+        /// <param name="descripcion"></param>
+        /// <param name="cantidad"></param>
+        /// <param name="peso"></param>
+        /// <returns>true si es válido, false si no es válido</returns>
         public bool ValidarTodoProducto(string nombre, string precio, string marca, string descripcion, string cantidad, string peso)
         {
             if (Core.ValidarLetras(nombre) && Core.ValidarLetras(marca) 
-                && Core.ValidarLetras(descripcion) && Core.ValidarFlotante(precio) 
-                && Core.ValidarFlotante(peso) && Core.ValidarEntero(cantidad) )
+                && Core.ValidarFlotante(precio) && Core.ValidarFlotante(peso) && Core.ValidarEntero(cantidad) )
             {
                 return true;
             }
             return false;
         }
 
+        /// <summary>
+        /// Utiliza las propiedades para escribir todos los datos del producto.
+        /// De esta forma se aprovechan las validaciones de los setters.
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="precio"></param>
+        /// <param name="marca"></param>
+        /// <param name="categoriaAnimal"></param>
+        /// <param name="categoriaProducto"></param>
+        /// <param name="descripcion"></param>
+        /// <param name="cantidad"></param>
+        /// <param name="peso"></param>
         public void SetearTodo(string nombre, float precio, string marca, Producto.CategoriaAnimal categoriaAnimal,
                Producto.CategoriaProducto categoriaProducto, string descripcion, int cantidad, float peso)
         {
